@@ -1,0 +1,82 @@
+.tools {
+    width: 300px;
+}
+
+.folder {
+    background-color: black;
+    width: 100px;
+    color: white;
+    font-size: 20px;
+}
+
+.sub-folder {
+    font-size: 20px;
+    width: 200px;
+    background-color: rgb(197, 197, 197);
+    height: fit-content;
+}
+
+.sub-folder-item {
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.flex {
+    display: flex;
+}
+
+.folder-item {
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.active {
+    background-color: gray;
+}
+
+.filter-slide {
+    display: block;
+}
+
+.filter-item {
+    padding: 10px;
+}
+
+.filter-item-name {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.bg-black {
+    background-color: black;
+    color: white;
+}
+
+.properties-item {
+    padding: 20px 5px 20px 5px;
+}
+
+.input-sm {
+    width: 60px;
+}
+
+.clear-fix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+h2 {
+    text-align: center;
+}

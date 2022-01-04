@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/menu.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="tools flex">
+            <div class="folder">
+                <div class="folder-item active" id="properties">Properties</div>
+                <div class="folder-item" id="filters">Filters</div>
+                <div class="folder-item" id="text">Text</div>
+                <div class="folder-item" id="move">Move</div>
+                <div class="folder-item" id="draw">Draw</div>
+                <div class="folder-item" id="select">Select</div>
+            </div>
+            <div class="sub-folder">
+                <div class="sub-folder-item" id="filters-menu">
+                    <h2>Filters</h2>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Brightness</div>
+                            <span class="float-right" id="brightness-value">0</span>
+                        </div>
+
+                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="brightness">
+                    </div>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Contrast</div>
+                            <span class="float-right" id="contrast-value">0</span>
+                        </div>
+                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="contrast">
+                    </div>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Hue</div>
+                            <span class="float-right" id="hue-value">0</span>
+                        </div>
+                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="hue">
+                    </div>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Saturation</div>
+                            <span class="float-right" id="saturation-value">0</span>
+                        </div>
+                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="saturation">
+                    </div>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Blur</div>
+                            <span class="float-right" id="blur-value">0</span>
+                        </div>
+                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="value">
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="sub-folder-item" id="properties-menu">
+                    <h2>Properties</h2>
+                    <div class="properties-item clear-fix">
+                        <span>X</span><input type="text" id="properties-x" class="float-right input-sm">
+                    </div>
+                    <div class="properties-item clear-fix">
+                        <span>Y</span><input type="text" id="properties-y" class="float-right input-sm">
+                    </div>
+                    <div class="properties-item clear-fix">
+                        <span>Width</span><input type="text" id="properties-width" class="float-right input-sm">
+                    </div>
+                    <div class="properties-item clear-fix">
+                        <span>Height</span><input type="text" id="properties-height" class="float-right input-sm">
+                    </div>
+
+
+
+                </div>
+                <div class="sub-folder-item" id="text-menu">
+                    <h2>Text</h2>
+                    <textarea name="text" id="text-value" cols="18" rows="5">Enter you text</textarea>
+                    <div class="clear-fix">
+                        <div class="float-left">Font Size</div>
+                        <input type="text" id="font-size" class="float-right input-sm">
+                    </div>
+                </div>
+            </div>
+            <div class="viewport"></div>
+            <div class="layers"></div>
+        </div>
+
+</body>
+<script src="./js/index.js"></script>
+<script src="./menu.js"></script>
+
+</html>
