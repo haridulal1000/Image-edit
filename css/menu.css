@@ -1,3 +1,7 @@
+.main-container {
+    min-width: 1000px;
+}
+
 .tools {
     width: 300px;
 }

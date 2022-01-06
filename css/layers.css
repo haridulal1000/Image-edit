@@ -1,0 +1,12 @@
+#layers-panel {
+    width: 250px;
+    height: 600px;
+    background-color: rgb(214, 214, 214);
+}
+
+#layers-panel div {
+    /* width: fit-content;
+    margin: 300px auto;
+    font-size: 20px;
+    font-weight: bolder; */
+}

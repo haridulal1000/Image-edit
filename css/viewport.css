@@ -1,0 +1,36 @@
+#viewport {
+    width: 900px;
+    height: 600px;
+    background-color: gray;
+    overflow: scroll;
+}
+
+#upload-file {
+    display: none;
+}
+
+#upload-button {
+    display: block;
+    padding: 20px 20px 20px 20px;
+    font-size: 40px;
+    width: 50%;
+    text-align: center;
+    margin: 270px auto 0px auto;
+    background: transparent;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+#upload-button-icon {
+    border: 2px solid white;
+    width: 20px;
+}
+
+#imageView {
+    position: relative;
+}
+
+#upload-button:hover {
+    cursor: pointer;
+}

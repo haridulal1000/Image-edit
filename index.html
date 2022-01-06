@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/viewport.css">
+    <link rel="stylesheet" href="./css/layers.css">
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="main-container flex">
+        <!-- tools -->
         <div class="tools flex">
             <div class="folder">
                 <div class="folder-item active" id="properties">Properties</div>
@@ -29,35 +32,35 @@
                             <span class="float-right" id="brightness-value">0</span>
                         </div>
 
-                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="brightness">
+                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="brightness">
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Contrast</div>
                             <span class="float-right" id="contrast-value">0</span>
                         </div>
-                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="contrast">
+                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="contrast">
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Hue</div>
                             <span class="float-right" id="hue-value">0</span>
                         </div>
-                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="hue">
+                        <input type="range" max="360" min="0" value="0" class="filter-slide" id="hue">
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Saturation</div>
                             <span class="float-right" id="saturation-value">0</span>
                         </div>
-                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="saturation">
+                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="saturation">
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Blur</div>
                             <span class="float-right" id="blur-value">0</span>
                         </div>
-                        <input type="range" max="100" min="0" value="0" class="filter-slide" id="value">
+                        <input type="range" max="50" min="0" value="0" class="filter-slide" id="blur">
                     </div>
 
 
@@ -96,9 +99,34 @@
             <div class="viewport"></div>
             <div class="layers"></div>
         </div>
+        <!-- tools -->
+        <!-- viewport -->
+        <div id="viewport">
+            <div id="imageView">
+                <input type="file" id="upload-file">
+                <label for="upload-file" id="upload-button"><span id="upload-button-icon">+</span> Upload Image</label>
+            </div>
+
+        </div>
+
+        <!-- viewport -->
+        <!-- layers-panel -->
+        <div id="layers-panel">
+            <!-- <div>No layers added</div> -->
+        </div>
+        <!-- layers-panel -->
+    </div>
+
+
+
 
 </body>
 <script src="./js/index.js"></script>
-<script src="./menu.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/uploadImage.js"></script>
+<script src="./js/layerControl.js"></script>
+<script src="./js/layers.js"></script>
+<script src="./js/render.js"></script>
+<script src="./js/layerPanel.js"></script>
 
 </html>
