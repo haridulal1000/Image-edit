@@ -39,7 +39,7 @@ document.getElementById('new-text-btn').addEventListener('click', function() {
 
 function setTextProperties() {
     for (let i = 0; i < layers.length; i++) {
-        if (layers[i].id == selectedLayer) {
+        if (layers[i].id == selectedLayer && layers[i].type === 'text') {
             red.value = layers[i].color.r;
             green.value = layers[i].color.g;
             blue.value = layers[i].color.b;

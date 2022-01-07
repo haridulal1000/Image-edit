@@ -72,7 +72,12 @@ function renderLayerItemImage(layer) {
 function renderLayerItemText(layer) {
     let layerItem = document.createElement('div');
     let layerName = document.createElement('div');
+    let icon = document.createElement('img');
+    icon.src = './images/text-layer-icon.png';
+    icon.width = 100;
+    icon.height = 100;
     layerName.innerHTML = layer.type + ' ' + layer.id;
+    layerItem.appendChild(icon);
     layerItem.appendChild(layerName);
     layerItem.setAttribute('id', 'layer' + layer.id);
     layerItem.classList.add('layer-item');
