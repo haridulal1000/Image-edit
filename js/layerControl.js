@@ -14,6 +14,7 @@ function renderLayersAll() {
         renderLayer(layers[i]);
         renderLayerItem(layers[i]);
     }
+    setLayer('layer' + selectedLayer);
     setProperties();
     setFilters();
 

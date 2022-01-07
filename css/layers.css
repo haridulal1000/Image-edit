@@ -1,7 +1,8 @@
 #layers-panel {
     width: 250px;
-    height: 600px;
+    height: 750px;
     background-color: rgb(214, 214, 214);
+    overflow: scroll;
 }
 
 #layers-panel div {

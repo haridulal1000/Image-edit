@@ -6,9 +6,9 @@ function renderLayer(layer) {
 }
 
 function renderImageLayer(layer) {
-    if (document.getElementById('view' + layer.id)) {
-        document.getElementById('view' + layer.id).remove();
-    }
+    // if (document.getElementById('view' + layer.id)) {
+    //     document.getElementById('view' + layer.id).remove();
+    // }
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     layer.image.style.display = 'block';
@@ -16,7 +16,7 @@ function renderImageLayer(layer) {
     renderImage.src = layer.image.src;
     renderImage.width = layer.width;
     renderImage.height = layer.height;
-    renderImage.style.filter = `brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
+    renderImage.style = `filter: brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%)`;
 
 
     div.appendChild(renderImage);

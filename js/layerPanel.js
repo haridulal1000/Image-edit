@@ -25,11 +25,7 @@ function renderLayerItemImage(layer) {
     layerItem.setAttribute('id', 'layer' + layer.id);
     layerItem.classList.add('layer-item');
     layerItem.addEventListener('click', function(e) {
-        let layerItems = document.querySelectorAll('.layer-item');
-        layerItems.forEach(element => {
-            element.style.border = 'none';
-        });
-        this.style.border = '1px solid blue';
+        setLayer(this.getAttribute('id'));
         console.log(this.getAttribute('id'));
         setCurrentLayer(this.getAttribute('id'));
         setProperties();
@@ -55,7 +51,7 @@ function renderLayerItemImage(layer) {
                     width: image.width,
                     height: image.height,
                     image: image,
-                    x: 50,
+                    x: 0,
                     y: 0,
                     zIndex: id + 5,
                     brightness: 100,
@@ -74,4 +70,12 @@ function renderLayerItemImage(layer) {
     document.getElementById('layers-panel').appendChild(layerItem);
     document.getElementById('layers-panel').appendChild(file);
     // document.getElementById('layers-panel').appendChild(label);
+}
+
+function setLayer(e) {
+    console.log(e);
+    document.querySelectorAll('.layer-item').forEach(function(element) {
+        element.style.border = 'none';
+    });
+    document.getElementById(e).style.border = '1px solid blue';
 }

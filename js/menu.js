@@ -7,6 +7,13 @@ const menus = document.querySelectorAll('.folder-item');
 for (let i = 0; i < menus.length; i++) {
     menus[i].addEventListener('click', function(e) {
         let id = e.target.getAttribute('id');
+        if (id === 'move') {
+            currentTool = 'move';
+            document.getElementById('viewport').style.cursor = 'move';
+        } else {
+            currentTool = null;
+            document.getElementById('viewport').style.cursor = 'auto';
+        }
         // console.log(id);
         let menus = document.querySelectorAll('.folder-item');
         for (let j = 0; j < menus.length; j++) {
@@ -35,58 +42,7 @@ for (let i = 0; i < menus.length; i++) {
     });
 }
 
-function setProperties() {
-    console.log('set properties');
-    let x = document.getElementById('properties-x');
-    let y = document.getElementById('properties-y');
-    let width = document.getElementById('properties-width');
-    let height = document.getElementById('properties-height');
-    for (let i = 0; i < layers.length; i++) {
-        if (selectedLayer == layers[i].id) {
-            console.log(layers[i]);
-            x.value = layers[i].x;
-            y.value = layers[i].y;
-            width.value = layers[i].width;
-            height.value = layers[i].height;
-        }
-    }
-}
-//applying the propeties to each layer
-document.getElementById('properties-x').addEventListener('change', function(e) {
-    for (let i = 0; i < layers.length; i++) {
-        if (selectedLayer == layers[i].id) {
-            layers[i].x = this.value;
-        }
-    }
-    renderLayersAll();
-});
-document.getElementById('properties-y').addEventListener('change', function(e) {
-    for (let i = 0; i < layers.length; i++) {
-        if (selectedLayer == layers[i].id) {
-            layers[i].y = this.value;
-        }
-    }
-    renderLayersAll();
-});
-document.getElementById('properties-width').addEventListener('change', function(e) {
-    for (let i = 0; i < layers.length; i++) {
-        if (selectedLayer == layers[i].id) {
-            layers[i].width = this.value;
-            console.log(this.value);
-        }
-    }
-    renderLayersAll();
-});
-document.getElementById('properties-height').addEventListener('change', function(e) {
-    for (let i = 0; i < layers.length; i++) {
-        if (selectedLayer == layers[i].id) {
-            layers[i].height = this.value;
-            console.log(this.value);
-        }
-    }
-    renderLayersAll();
-});
-//applying the propeties to each layer
+
 function setFilters() {
     let slides = document.querySelectorAll('.filter-item input');
     for (let i = 0; i < layers.length; i++) {
@@ -114,7 +70,6 @@ document.getElementById('brightness').addEventListener('change', function(e) {
             layers[i].brightness = this.value;
             document.getElementById('brightness-value').innerHTML = this.value;
             console.log(this.value);
-            layers[i].image.style.filter = `brightness(${this.value}%)`;
             renderLayersAll();
         }
     }
@@ -126,7 +81,6 @@ document.getElementById('contrast').addEventListener('change', function(e) {
             layers[i].contrast = this.value;
             document.getElementById('contrast-value').innerHTML = this.value;
             console.log(this.value);
-            layers[i].image.style.filter = `contrast(${this.value}%)`;
             renderLayersAll();
         }
     }
@@ -137,7 +91,6 @@ document.getElementById('saturation').addEventListener('change', function(e) {
             layers[i].saturation = this.value;
             document.getElementById('saturation-value').innerHTML = this.value;
             console.log(this.value);
-            layers[i].image.style.filter = `saturate(${this.value}%)`;
             renderLayersAll();
         }
     }
@@ -148,7 +101,6 @@ document.getElementById('hue').addEventListener('change', function(e) {
             layers[i].hue = this.value;
             document.getElementById('hue-value').innerHTML = this.value;
             console.log(this.value);
-            layers[i].image.style.filter = `hue-rotate(${this.value}deg)`;
             renderLayersAll();
         }
     }
@@ -159,7 +111,6 @@ document.getElementById('blur').addEventListener('change', function(e) {
             layers[i].blur = this.value;
             document.getElementById('blur-value').innerHTML = this.value;
             console.log(this.value);
-            layers[i].image.style.filter = `blur(${this.value}px)`;
             renderLayersAll();
         }
     }
