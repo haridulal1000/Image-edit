@@ -29,6 +29,9 @@
 
 #imageView {
     position: relative;
+    overflow: hidden;
+    width: 750px;
+    height: 750px;
 }
 
 #upload-button:hover {

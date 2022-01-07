@@ -1,8 +1,12 @@
 let currentTool;
 let move = false;
+let xoffset;
+let yoffset;
 document.getElementById('viewport').addEventListener('mousedown', function(e) {
     if (currentTool === 'move' && move === false) {
         move = true;
+        xoffset = e.clientX;
+        yoffset = e.clientY;
     }
 });
 document.getElementById('viewport').addEventListener('mouseup', function(e) {
@@ -21,8 +25,12 @@ document.getElementById('viewport').addEventListener('mousemove', function(e) {
 
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
-                layers[i].x = e.clientX - rect.left - layers[i].width / 2;
-                layers[i].y = e.clientY - rect.top - layers[i].height / 2;
+                // layers[i].x = e.clientX - rect.left - layers[i].width / 2;
+                // layers[i].y = e.clientY - rect.top - layers[i].height / 2;
+                layers[i].x += e.clientX - xoffset;
+                layers[i].y += e.clientY - yoffset;
+                xoffset = e.clientX;
+                yoffset = e.clientY;
                 renderLayersAll();
                 break;
             }
