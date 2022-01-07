@@ -84,3 +84,36 @@
 h2 {
     text-align: center;
 }
+
+#new-text-btn {
+    border-radius: 10px;
+    background: transparent;
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+#edit-text {
+    display: none;
+}
+
+.fit-content {
+    width: fit-content;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.color-bar {
+    margin-top: 20px
+}
+
+.font-size {
+    margin: 20px 0 20px 0;
+}
+
+#red,
+#green,
+#blue {
+    width: 100px;
+}

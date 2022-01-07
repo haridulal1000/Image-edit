@@ -14,3 +14,14 @@ function ImageLayer(info) {
     this.zIndex = info.zIndex;
 
 }
+
+function TextLayer(info) {
+    this.type = info.type;
+    this.id = info.id;
+    this.text = info.text;
+    this.fontSize = info.fontSize;
+    this.color = info.color;
+    this.zIndex = info.zIndex;
+    this.x = info.x;
+    this.y = info.y;
+}

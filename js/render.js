@@ -3,6 +3,9 @@ function renderLayer(layer) {
         renderImageLayer(layer);
         // renderLayerItem(layer);
     }
+    if (layer.type === 'text') {
+        renderTextLayer(layer);
+    }
 }
 
 function renderImageLayer(layer) {
@@ -27,4 +30,19 @@ function renderImageLayer(layer) {
     document.getElementById('imageView').appendChild(div);
 
 
+}
+
+function renderTextLayer(layer) {
+    let div = document.createElement('div');
+    div.setAttribute('id', 'view' + layer.id);
+    div.innerHTML = layer.text;
+    div.style.position = 'absolute';
+    div.style.width = 'fit-content';
+    div.style.left = layer.x + 'px';
+    div.style.top = layer.y + 'px';
+    div.style.fontSize = layer.fontSize + 'px';
+    div.style.color = `rgb(${layer.color.r},${layer.color.g},${layer.color.b})`;
+    div.style.zIndex = layer.zIndex;
+    document.getElementById('imageView').appendChild(div);
+    console.log('text layer rendered');
 }

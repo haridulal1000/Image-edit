@@ -17,6 +17,8 @@ function renderLayersAll() {
     setLayer('layer' + selectedLayer);
     setProperties();
     setFilters();
+    setTextMenu();
+    setTextProperties();
 
 }
 

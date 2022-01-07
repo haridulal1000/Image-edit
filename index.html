@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/menu.css">
-    <link rel="stylesheet" href="./css/viewport.css">
-    <link rel="stylesheet" href="./css/layers.css">
+    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/viewport.css" />
+    <link rel="stylesheet" href="./css/layers.css" />
 </head>
 
 <body>
@@ -32,94 +32,127 @@
                             <span class="float-right" id="brightness-value">0</span>
                         </div>
 
-                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="brightness">
+                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="brightness" />
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Contrast</div>
                             <span class="float-right" id="contrast-value">0</span>
                         </div>
-                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="contrast">
+                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="contrast" />
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Hue</div>
                             <span class="float-right" id="hue-value">0</span>
                         </div>
-                        <input type="range" max="360" min="0" value="0" class="filter-slide" id="hue">
+                        <input type="range" max="360" min="0" value="0" class="filter-slide" id="hue" />
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Saturation</div>
                             <span class="float-right" id="saturation-value">0</span>
                         </div>
-                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="saturation">
+                        <input type="range" max="200" min="0" value="100" class="filter-slide" id="saturation" />
                     </div>
                     <div class="filter-item">
                         <div class="clear-fix">
                             <div class="filter-item-name">Blur</div>
                             <span class="float-right" id="blur-value">0</span>
                         </div>
-                        <input type="range" max="50" min="0" class="filter-slide" id="blur">
+                        <input type="range" max="50" min="0" class="filter-slide" id="blur" />
                     </div>
-
-
-
-
-
-
                 </div>
                 <div class="sub-folder-item" id="properties-menu">
                     <h2>Properties</h2>
                     <div class="properties-item clear-fix">
-                        <span>X</span><input type="text" id="properties-x" class="float-right input-sm">
-                    </div>
-                    <div class="properties-item clear-fix">
-                        <span>Y</span><input type="text" id="properties-y" class="float-right input-sm">
-                    </div>
-                    <div class="properties-item clear-fix">
-                        <span>Width</span><input type="text" id="properties-width" class="float-right input-sm">
-                    </div>
-                    <div class="properties-item clear-fix">
-                        <span>Height</span><input type="text" id="properties-height" class="float-right input-sm">
-                    </div>
-
-
-
-                </div>
-                <div class="sub-folder-item" id="text-menu">
-                    <h2>Text</h2>
-                    <textarea name="text" id="text-value" cols="18" rows="5">Enter you text</textarea>
-                    <div class="clear-fix">
-                        <div class="float-left">Font Size</div>
-                        <input type="text" id="font-size" class="float-right input-sm">
-                    </div>
-                </div>
+                        <span>X</span
+              ><input
+                type="text"
+                id="properties-x"
+                class="float-right input-sm"
+              />
             </div>
-            <div class="viewport"></div>
-            <div class="layers"></div>
-        </div>
-        <!-- tools -->
-        <!-- viewport -->
-        <div id="viewport">
-            <div id="imageView">
-                <input type="file" id="upload-file">
-                <label for="upload-file" id="upload-button"><span id="upload-button-icon">+</span> Upload Image</label>
+            <div class="properties-item clear-fix">
+              <span>Y</span
+              ><input
+                type="text"
+                id="properties-y"
+                class="float-right input-sm"
+              />
             </div>
-
+            <div class="properties-item clear-fix">
+              <span>Width</span
+              ><input
+                type="text"
+                id="properties-width"
+                class="float-right input-sm"
+              />
+            </div>
+            <div class="properties-item clear-fix">
+              <span>Height</span
+              ><input
+                type="text"
+                id="properties-height"
+                class="float-right input-sm"
+              />
+            </div>
+          </div>
+          <div class="sub-folder-item" id="text-menu">
+            <h2>Text</h2>
+            <div id="edit-text">
+              <textarea name="text" id="text-value" cols="18" rows="5">Enter you text</textarea>
+              <div class="clear-fix font-size">
+                <div class="float-left">Font Size</div>
+                <input
+                  type="text"
+                  id="font-size"
+                  class="float-right input-sm"
+                />
+                </div>
+                <div class="clear-fix">
+                    <div class="fit-content center color-bar">Red</div>
+                    <input type="range" min="0" max="255" id="red" class="float-left">
+                <div id="red-value" class="float-right">0</div>
+                </div>
+                <div class="clear-fix">
+                    <div class="fit-content center color-bar">Green</div>
+                    <input type="range" min="0" max="255" id="green" class="float-left">
+                <div id="green-value" class="float-right">0</div>
+                </div>
+                <div class="clear-fix">
+                    <div class="fit-content center color-bar">Red</div>
+                    <input type="range" min="0" max="255" id="blue" class="float-left">
+                <div id="blue-value" class="float-right">0</div>
+                </div>
+                
+              
+            </div>
+            <div id="new-text">
+              <button id="new-text-btn">New Text Layer</button>
+            </div>
+          </div>
         </div>
+        <div class="viewport"></div>
+        <div class="layers"></div>
+      </div>
+      <!-- tools -->
+      <!-- viewport -->
+      <div id="viewport">
+        <div id="imageView">
+          <input type="file" id="upload-file" />
+          <label for="upload-file" id="upload-button"
+            ><span id="upload-button-icon">+</span> Upload Image</label>
+                    </div>
+                </div>
 
-        <!-- viewport -->
-        <!-- layers-panel -->
-        <div id="layers-panel">
-            <!-- <div>No layers added</div> -->
-        </div>
-        <!-- layers-panel -->
-    </div>
-
-
-
-
+                <!-- viewport -->
+                <!-- layers-panel -->
+                <div id="layers-panel">
+                    <!-- <div>No layers added</div> -->
+                </div>
+                <!-- layers-panel -->
+            </div>
 </body>
 <script src="./js/index.js"></script>
 <script src="./js/menu.js"></script>
@@ -130,5 +163,7 @@
 <script src="./js/layerPanel.js"></script>
 <script src="./js/properties.js"></script>
 <script src="./js/move.js"></script>
+<script src="./js/text.js"></script>
+<script src="./js/filters.js"></script>
 
 </html>
