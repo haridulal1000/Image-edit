@@ -97,37 +97,52 @@
                 class="float-right input-sm"
               />
             </div>
+            <input type="checkbox" id='proportion'>
+            <label for="proportion">Maintain Ratio</label>
           </div>
           <div class="sub-folder-item" id="text-menu">
             <h2>Text</h2>
             <div id="edit-text">
-              <textarea name="text" id="text-value" cols="18" rows="5">Enter you text</textarea>
+              <textarea name="text" id="text-value" cols="18" rows="5">
+Enter you text</textarea
+              >
               <div class="clear-fix font-size">
                 <div class="float-left">Font Size</div>
+                <input type="range" id="font-size" min="0" max="200" />
+              </div>
+              <div class="clear-fix">
+                <div class="fit-content center color-bar">Red</div>
                 <input
                   type="range"
-                  id="font-size"
                   min="0"
-                  max="200"
+                  max="255"
+                  id="red"
+                  class="float-left"
                 />
-                </div>
-                <div class="clear-fix">
-                    <div class="fit-content center color-bar">Red</div>
-                    <input type="range" min="0" max="255" id="red" class="float-left">
                 <div id="red-value" class="float-right">0</div>
-                </div>
-                <div class="clear-fix">
-                    <div class="fit-content center color-bar">Green</div>
-                    <input type="range" min="0" max="255" id="green" class="float-left">
+              </div>
+              <div class="clear-fix">
+                <div class="fit-content center color-bar">Green</div>
+                <input
+                  type="range"
+                  min="0"
+                  max="255"
+                  id="green"
+                  class="float-left"
+                />
                 <div id="green-value" class="float-right">0</div>
-                </div>
-                <div class="clear-fix">
-                    <div class="fit-content center color-bar">Blue</div>
-                    <input type="range" min="0" max="255" id="blue" class="float-left">
+              </div>
+              <div class="clear-fix">
+                <div class="fit-content center color-bar">Blue</div>
+                <input
+                  type="range"
+                  min="0"
+                  max="255"
+                  id="blue"
+                  class="float-left"
+                />
                 <div id="blue-value" class="float-right">0</div>
-                </div>
-                
-              
+              </div>
             </div>
             <div id="new-text">
               <button id="new-text-btn">New Text Layer</button>

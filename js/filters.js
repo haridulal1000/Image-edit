@@ -24,8 +24,7 @@ document.getElementById('brightness').addEventListener('change', function(e) {
         if (selectedLayer == layers[i].id) {
             layers[i].brightness = this.value;
             document.getElementById('brightness-value').innerHTML = this.value;
-            console.log(this.value);
-            renderLayersAll();
+            renderLayer(layers[i]);
         }
     }
 });
@@ -36,7 +35,7 @@ document.getElementById('contrast').addEventListener('change', function(e) {
             layers[i].contrast = this.value;
             document.getElementById('contrast-value').innerHTML = this.value;
             console.log(this.value);
-            renderLayersAll();
+            renderLayer(layers[i]);
         }
     }
 });
@@ -46,7 +45,7 @@ document.getElementById('saturation').addEventListener('change', function(e) {
             layers[i].saturation = this.value;
             document.getElementById('saturation-value').innerHTML = this.value;
             console.log(this.value);
-            renderLayersAll();
+            renderLayer(layers[i]);
         }
     }
 });
@@ -56,7 +55,7 @@ document.getElementById('hue').addEventListener('change', function(e) {
             layers[i].hue = this.value;
             document.getElementById('hue-value').innerHTML = this.value;
             console.log(this.value);
-            renderLayersAll();
+            renderLayer(layers[i]);
         }
     }
 });
@@ -66,7 +65,7 @@ document.getElementById('blur').addEventListener('change', function(e) {
             layers[i].blur = this.value;
             document.getElementById('blur-value').innerHTML = this.value;
             console.log(this.value);
-            renderLayersAll();
+            renderLayer(layers[i]);
         }
     }
 });

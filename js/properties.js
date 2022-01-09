@@ -1,12 +1,13 @@
+let propCheck = document.getElementById('proportion');
+propCheck.checked = true;
+
 function setProperties() {
-    console.log('set properties');
     let x = document.getElementById('properties-x');
     let y = document.getElementById('properties-y');
     let width = document.getElementById('properties-width');
     let height = document.getElementById('properties-height');
     for (let i = 0; i < layers.length; i++) {
         if (selectedLayer == layers[i].id) {
-            console.log(layers[i]);
             x.value = layers[i].x;
             y.value = layers[i].y;
             width.value = layers[i].width;
@@ -60,77 +61,123 @@ document.getElementById('properties-y').addEventListener('keydown', function(e) 
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
                 layers[i].y = (parseInt(this.value) + 5);
+                renderLayer(layers[i]);
             }
         }
-        renderLayersAll();
+
 
     }
     if (e.key === 'ArrowDown') {
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
                 layers[i].y = (parseInt(this.value) - 5);
+                renderLayer(layers[i]);
             }
         }
-        renderLayersAll();
+
 
     }
 });
 document.getElementById('properties-width').addEventListener('change', function(e) {
     for (let i = 0; i < layers.length; i++) {
         if (selectedLayer == layers[i].id) {
-            layers[i].width = this.value;
-            console.log(this.value);
+            if (propCheck.checked === true) {
+                let ratio = layers[i].width / layers[i].height;
+                layers[i].width = this.value;
+                layers[i].height = this.value / ratio;
+
+            } else {
+                layers[i].width = this.value;
+            }
+
+            renderLayer(layers[i]);
         }
     }
-    renderLayersAll();
 });
 document.getElementById('properties-width').addEventListener('keydown', function(e) {
     if (e.key === 'ArrowUp') {
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
-                layers[i].width = (parseInt(this.value) + 5);
+                if (propCheck.checked === true) {
+                    let ratio = layers[i].width / layers[i].height;
+                    layers[i].width = parseInt(this.value) + 5;
+                    layers[i].height = parseInt(layers[i].width) / ratio;
+
+                } else {
+                    layers[i].width = parseInt(this.value) + 5;
+                }
+                renderLayer(layers[i]);
             }
         }
-        renderLayersAll();
 
     }
     if (e.key === 'ArrowDown') {
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
-                layers[i].width = (parseInt(this.value) - 5);
+                if (propCheck.checked === true) {
+                    let ratio = layers[i].width / layers[i].height;
+                    layers[i].width = parseInt(this.value) - 5;
+                    layers[i].height = parseInt(layers[i].width) / ratio;
+
+                } else {
+                    layers[i].width = parseInt(this.value) - 5;
+                }
+                renderLayer(layers[i]);
             }
         }
-        renderLayersAll();
 
     }
 });
 document.getElementById('properties-height').addEventListener('change', function(e) {
     for (let i = 0; i < layers.length; i++) {
         if (selectedLayer == layers[i].id) {
-            layers[i].height = this.value;
-            console.log(this.value);
+            if (propCheck.checked === true) {
+                let ratio = layers[i].width / layers[i].height;
+                layers[i].height = this.value;
+                layers[i].width = this.value * ratio;
+
+            } else {
+                layers[i].height = this.value;
+            }
+            renderLayer(layers[i]);
         }
     }
-    renderLayersAll();
 });
 document.getElementById('properties-height').addEventListener('keydown', function(e) {
     if (e.key === 'ArrowUp') {
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
-                layers[i].height = (parseInt(this.value) + 5);
+                if (propCheck.checked === true) {
+                    let ratio = layers[i].width / layers[i].height;
+                    layers[i].height = parseInt(this.value) + 5;
+                    layers[i].width = parseInt(layers[i].height) * ratio;
+
+                } else {
+                    layers[i].height = parseInt(this.value) + 5;
+                }
+                renderLayer(layers[i]);
             }
         }
-        renderLayersAll();
+
 
     }
     if (e.key === 'ArrowDown') {
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
-                layers[i].height = (parseInt(this.value) - 5);
-            }
-        }
-        renderLayersAll();
 
+                if (propCheck.checked === true) {
+                    let ratio = layers[i].width / layers[i].height;
+                    layers[i].height = parseInt(this.value) - 5;
+                    layers[i].width = parseInt(layers[i].height) * ratio;
+
+                } else {
+                    layers[i].height = parseInt(this.value) - 5;
+                }
+                renderLayer(layers[i]);
+
+            }
+
+        }
     }
 });
 //applying the propeties to each layer

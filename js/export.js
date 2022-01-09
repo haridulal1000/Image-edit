@@ -6,10 +6,11 @@ function Export() {
     canvas.width = layers[0].width;
     canvas.height = layers[0].height;
     for (let i = 0; i < layers.length; i++) {
-        if (layers[i].type === 'image') {
+        if (layers[i].type === 'image' && layers[i].visible === true) {
             exportImage(layers[i]);
         }
-        if (layers[i].type === 'text') {
+        if (layers[i].type === 'text' &&
+            layers[i].visible === true) {
             exportText(layers[i]);
         }
     }
@@ -30,12 +31,10 @@ function exportImage(layer) {
 }
 
 function exportText(layer) {
-    console.log('Text export start');
     context.fillStyle = `rgb(${layer.color.r},${layer.color.g},${layer.color.b})`;
     // context.font = `${layer.fontSize}px Arial`;
     context.font = layer.fontSize + "px " + " Arial";
     // context.fillStyle = 'red';
-    console.log(layer.fontSize);
+
     context.fillText(layer.text, layer.x, layer.y + parseInt(layer.fontSize));
-    console.log('text export end');
 }

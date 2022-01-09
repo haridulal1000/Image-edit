@@ -12,6 +12,7 @@ function ImageLayer(info) {
     this.saturation = info.saturation;
     this.blue = info.blur;
     this.zIndex = info.zIndex;
+    this.visible = info.visible;
 
 }
 
@@ -24,4 +25,5 @@ function TextLayer(info) {
     this.zIndex = info.zIndex;
     this.x = info.x;
     this.y = info.y;
+    this.visible = info.visible;
 }

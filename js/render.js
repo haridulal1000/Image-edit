@@ -1,4 +1,10 @@
 function renderLayer(layer) {
+    if (layer.visible === false) {
+        if (document.getElementById('view' + layer.id)) {
+            document.getElementById('view' + layer.id).remove();
+        }
+        return;
+    }
     if (document.getElementById('view' + layer.id)) {
         document.getElementById('view' + layer.id).remove();
     }
@@ -9,6 +15,14 @@ function renderLayer(layer) {
     if (layer.type === 'text') {
         renderTextLayer(layer);
     }
+    if (selectedLayer != null) {
+        setProperties();
+        setFilters();
+        setTextMenu();
+        setTextProperties();
+        setImageView();
+    }
+
 }
 
 function renderImageLayer(layer) {
@@ -45,5 +59,4 @@ function renderTextLayer(layer) {
     div.style.color = `rgb(${layer.color.r},${layer.color.g},${layer.color.b})`;
     div.style.zIndex = layer.zIndex;
     document.getElementById('imageView').appendChild(div);
-    console.log('text layer rendered');
 }

@@ -21,7 +21,8 @@ uploadFile.addEventListener('change', function() {
                 contrast: 100,
                 hue: 0,
                 saturation: 100,
-                blur: 0
+                blur: 0,
+                visible: true
             }));
             selectedLayer = 0;
             document.getElementById('imageView').style.width = layers[0].width;

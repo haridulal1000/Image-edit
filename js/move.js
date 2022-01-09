@@ -31,7 +31,7 @@ document.getElementById('viewport').addEventListener('mousemove', function(e) {
                 layers[i].y += e.clientY - yoffset;
                 xoffset = e.clientX;
                 yoffset = e.clientY;
-                renderLayersAll();
+                renderLayer(layers[i]);
                 break;
             }
         }
