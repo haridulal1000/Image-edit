@@ -22,6 +22,8 @@ function renderLayersAll() {
         setTextMenu();
         setTextProperties();
     }
+    addNextLayer();
+    downloadButton();
 
 
 }

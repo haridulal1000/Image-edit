@@ -1,6 +1,5 @@
 let canvas = document.createElement('canvas');
 let context = canvas.getContext('2d');
-document.getElementById('export').addEventListener('click', Export);
 
 function Export() {
     canvas.width = layers[0].width;

@@ -11,3 +11,16 @@
     font-size: 20px;
     font-weight: bolder; */
 }
+
+.btn-delete {
+    width: 100%;
+    display: block;
+    background-color: tomato;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 5px auto 5px auto;
+}
+
+.layer-item {
+    margin: 5px;
+}

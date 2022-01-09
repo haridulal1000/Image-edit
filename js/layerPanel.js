@@ -13,6 +13,10 @@ function renderLayerItemImage(layer) {
     let renderImage = document.createElement('img');
     let del = document.createElement('button');
     del.innerHTML = "DELETE";
+    del.classList.add('btn-delete');
+    if (layer.id === 0) {
+        del.disabled = true;
+    }
     del.addEventListener('click', function() {
         for (let i = 0; i < layers.length; i++) {
             if (layer.id === layers[i].id && i != 0) {
@@ -66,8 +70,85 @@ function renderLayerItemImage(layer) {
 
 
     });
+
+
+    document.getElementById('layers-panel').appendChild(layerItem);
+
+}
+
+function renderLayerItemText(layer) {
+    let deleteFlag = false;
+    let layerItem = document.createElement('div');
+    let layerName = document.createElement('div');
+    let icon = document.createElement('img');
+    let visible = document.createElement('input');
+    let label = document.createElement('label');
+    icon.src = './images/text-layer-icon.png';
+    icon.width = 100;
+    icon.height = 100;
+    visible.setAttribute('type', 'checkbox');
+    visible.setAttribute('id', 'visible' + layer.id);
+    visible.checked = layer.visible;
+    visible.addEventListener('change', function(e) {
+        layer.visible = this.checked;
+        renderLayer(layer);
+    });
+    label.setAttribute('for', 'visible' + layer.id);
+    label.innerHTML = 'Visible';
+    layerName.innerHTML = layer.type + ' ' + layer.id;
+    layerItem.classList.add('layer-item');
+    layerItem.appendChild(icon);
+    layerItem.appendChild(label);
+    layerItem.appendChild(visible);
+    layerItem.appendChild(layerName);
+
+    let del = document.createElement('button');
+    del.classList.add('btn-delete');
+    del.innerHTML = "DELETE";
+    del.addEventListener('click', function() {
+        for (let i = 0; i < layers.length; i++) {
+            if (layer.id === layers[i].id && i != 0) {
+                layers.splice(i, 1);
+                selectedLayer = null;
+                deleteFlag = true;
+
+                renderLayersAll();
+                return;
+            }
+        }
+    });
+    layerItem.appendChild(del);
+
+    layerItem.setAttribute('id', 'layer' + layer.id);
+    layerItem.classList.add('layer-item');
+    layerItem.addEventListener('click', function(e) {
+        if (!deleteFlag) {
+            setLayer(this.getAttribute('id'));
+            setCurrentLayer(this.getAttribute('id'));
+            setProperties();
+            setFilters();
+            setTextMenu();
+            setTextProperties();
+        }
+
+    });
+    document.getElementById('layers-panel').appendChild(layerItem);
+
+}
+
+function setLayer(e) {
+    // console.log(e);
+    if (e != null) {
+        document.querySelectorAll('.layer-item').forEach(function(element) {
+            element.style.border = 'none';
+        });
+        document.getElementById(e).style.outline = '2px solid blue';
+    }
+}
+
+function addNextLayer() {
     let file = document.createElement('input');
-    file.setAttribute('id', 'add-layer' + id);
+    file.setAttribute('id', 'add-layer');
     file.setAttribute('type', 'file');
     file.addEventListener('change', function() {
         let image = new Image();
@@ -99,78 +180,36 @@ function renderLayerItemImage(layer) {
         });
 
     });
-
-    document.getElementById('layers-panel').appendChild(layerItem);
-    document.getElementById('layers-panel').appendChild(file);
-}
-
-function renderLayerItemText(layer) {
-    let deleteFlag = false;
-    let layerItem = document.createElement('div');
-    let layerName = document.createElement('div');
-    let icon = document.createElement('img');
-    let visible = document.createElement('input');
+    file.style.display = 'none';
     let label = document.createElement('label');
-    icon.src = './images/text-layer-icon.png';
-    icon.width = 100;
-    icon.height = 100;
-    visible.setAttribute('type', 'checkbox');
-    visible.setAttribute('id', 'visible' + layer.id);
-    visible.checked = layer.visible;
-    visible.addEventListener('change', function(e) {
-        layer.visible = this.checked;
-        renderLayer(layer);
-    });
-    label.setAttribute('for', 'visible' + layer.id);
-    label.innerHTML = 'Visible';
-    layerName.innerHTML = layer.type + ' ' + layer.id;
-    layerItem.appendChild(icon);
-    layerItem.appendChild(label);
-    layerItem.appendChild(visible);
-    layerItem.appendChild(layerName);
+    label.setAttribute('for', 'add-layer');
+    label.style.background = '#136e8a';
+    label.style.padding = '10px';
+    label.style.textAlign = 'center';
+    label.style.display = 'block';
+    label.style.margin = '5px auto 5px auto';
+    label.style.borderRadius = '10px';
+    label.style.color = 'white';
 
-    let del = document.createElement('button');
-    del.innerHTML = "DELETE";
-    del.addEventListener('click', function() {
-        for (let i = 0; i < layers.length; i++) {
-            if (layer.id === layers[i].id && i != 0) {
-                layers.splice(i, 1);
-                selectedLayer = null;
-                deleteFlag = true;
-
-                renderLayersAll();
-                return;
-            }
-        }
-    });
-    layerItem.appendChild(del);
-
-    layerItem.setAttribute('id', 'layer' + layer.id);
-    layerItem.classList.add('layer-item');
-    layerItem.addEventListener('click', function(e) {
-        if (!deleteFlag) {
-            setLayer(this.getAttribute('id'));
-            setCurrentLayer(this.getAttribute('id'));
-            setProperties();
-            setFilters();
-            setTextMenu();
-            setTextProperties();
-        }
-
-    });
+    label.innerHTML = 'Add New Layer';
+    document.getElementById('layers-panel').appendChild(file);
+    document.getElementById('layers-panel').appendChild(label);
 
 }
 
-function setLayer(e) {
-    // console.log(e);
-    if (e != null) {
-        document.querySelectorAll('.layer-item').forEach(function(element) {
-            element.style.border = 'none';
-        });
-        document.getElementById(e).style.border = '1px solid blue';
-    }
-}
-
-function addNextLayer() {
+function downloadButton() {
+    let downloadBtn = document.createElement('button');
+    downloadBtn.setAttribute('id', 'export');
+    downloadBtn.innerHTML = 'Export';
+    downloadBtn.style.display = 'block';
+    downloadBtn.style.backgroundColor = '#3ae86e';
+    downloadBtn.style.margin = '5px auto 5px auto';
+    downloadBtn.style.padding = '10px';
+    downloadBtn.style.textAlign = 'center';
+    downloadBtn.style.width = '100%';
+    downloadBtn.style.borderRadius = '10px';
+    downloadBtn.addEventListener('click',
+        Export);
+    document.getElementById('layers-panel').appendChild(downloadBtn);
 
 }
