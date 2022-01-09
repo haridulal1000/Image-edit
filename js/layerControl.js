@@ -9,6 +9,11 @@ function renderLayersAll() {
         return;
     }
     document.getElementById('imageView').innerHTML = '';
+    document.getElementById('imageView').style.width = layers[0].width + 'px';
+    document.getElementById('imageView').style.height = layers[0].height + 'px';
+    document.getElementById('imageView').style.overflow = 'hidden';
+    document.getElementById('imageView').style.transform = `scale(${scale},${scale})`;
+    document.getElementById('imageView').style.border = `2px solid white`;
     document.getElementById('layers-panel').innerHTML = '';
     for (let i = 0; i < layers.length; i++) {
         renderLayer(layers[i]);

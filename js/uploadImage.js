@@ -24,6 +24,8 @@ uploadFile.addEventListener('change', function() {
                 blur: 0
             }));
             selectedLayer = 0;
+            document.getElementById('imageView').style.width = layers[0].width;
+            document.getElementById('imageView').style.height = layers[0].height;
             renderLayersAll();
         }
 

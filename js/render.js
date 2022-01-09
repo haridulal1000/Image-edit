@@ -1,4 +1,7 @@
 function renderLayer(layer) {
+    if (document.getElementById('view' + layer.id)) {
+        document.getElementById('view' + layer.id).remove();
+    }
     if (layer.type === 'image') {
         renderImageLayer(layer);
         // renderLayerItem(layer);
@@ -9,9 +12,6 @@ function renderLayer(layer) {
 }
 
 function renderImageLayer(layer) {
-    // if (document.getElementById('view' + layer.id)) {
-    //     document.getElementById('view' + layer.id).remove();
-    // }
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     layer.image.style.display = 'block';
@@ -41,6 +41,7 @@ function renderTextLayer(layer) {
     div.style.left = layer.x + 'px';
     div.style.top = layer.y + 'px';
     div.style.fontSize = layer.fontSize + 'px';
+    div.style.fontFamily = 'Arial';
     div.style.color = `rgb(${layer.color.r},${layer.color.g},${layer.color.b})`;
     div.style.zIndex = layer.zIndex;
     document.getElementById('imageView').appendChild(div);

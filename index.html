@@ -105,9 +105,10 @@
               <div class="clear-fix font-size">
                 <div class="float-left">Font Size</div>
                 <input
-                  type="text"
+                  type="range"
                   id="font-size"
-                  class="float-right input-sm"
+                  min="0"
+                  max="200"
                 />
                 </div>
                 <div class="clear-fix">
@@ -121,7 +122,7 @@
                 <div id="green-value" class="float-right">0</div>
                 </div>
                 <div class="clear-fix">
-                    <div class="fit-content center color-bar">Red</div>
+                    <div class="fit-content center color-bar">Blue</div>
                     <input type="range" min="0" max="255" id="blue" class="float-left">
                 <div id="blue-value" class="float-right">0</div>
                 </div>
@@ -153,6 +154,7 @@
                 </div>
                 <!-- layers-panel -->
             </div>
+            <button id="export">Download</button>
 </body>
 <script src="./js/index.js"></script>
 <script src="./js/menu.js"></script>
@@ -165,5 +167,7 @@
 <script src="./js/move.js"></script>
 <script src="./js/text.js"></script>
 <script src="./js/filters.js"></script>
+<script src="./js/export.js"></script>
+<script src="./js/scale.js"></script>
 
 </html>
