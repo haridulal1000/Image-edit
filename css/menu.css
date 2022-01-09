@@ -3,19 +3,19 @@
 }
 
 .tools {
-    width: 300px;
+    width: 363px;
 }
 
 .folder {
     background-color: black;
-    width: 100px;
+    width: 150px;
     color: white;
     font-size: 20px;
 }
 
 .sub-folder {
     font-size: 20px;
-    width: 200px;
+    width: 223px;
     background-color: rgb(197, 197, 197);
     height: fit-content;
 }
@@ -25,6 +25,7 @@
     padding-left: 20px;
     padding-right: 20px;
     height: 750px;
+    /* width: 179px; */
 }
 
 .flex {

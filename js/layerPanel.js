@@ -140,7 +140,7 @@ function setLayer(e) {
     // console.log(e);
     if (e != null) {
         document.querySelectorAll('.layer-item').forEach(function(element) {
-            element.style.border = 'none';
+            element.style.outline = 'none';
         });
         document.getElementById(e).style.outline = '2px solid blue';
     }
