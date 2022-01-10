@@ -1,3 +1,6 @@
+let source;
+let destination;
+
 function renderLayerItem(layer) {
     if (layer.type === 'image') {
         renderLayerItemImage(layer);
@@ -10,6 +13,59 @@ function renderLayerItem(layer) {
 function renderLayerItemImage(layer) {
     let deleteFlag = false;
     let layerItem = document.createElement('div');
+    layerItem.setAttribute('draggable', true);
+    layerItem.addEventListener('dragstart', function(e) {
+        source = this.getAttribute('id').slice(5);
+        // console.log('source: ' + source);
+    });
+    layerItem.addEventListener('dragover', function(e) {
+        this.style.outline = '2px solid red';
+    });
+    layerItem.addEventListener('dragleave', function(e) {
+        destination = this.getAttribute('id').slice(5);
+        this.style.outline = 'none';
+        // console.log('source: ' + source + ' dest: ' + destination);
+    });
+    layerItem.addEventListener('dragend', function(e) {
+        let sourceIndex;
+        let destinationIndex;
+        if (source === destination || source == 0 || destination == 0) {
+            return;
+        }
+
+        for (let i = 0; i < layers.length; i++) {
+            if (layers[i].id == source) {
+                sourceIndex = i;
+            }
+            if (layers[i].id == destination) {
+                destinationIndex = i;
+            }
+
+        }
+
+        if (sourceIndex > destinationIndex) {
+            for (let i = destinationIndex; i < sourceIndex; i++) {
+                layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
+            }
+            let sourceNode = layers[sourceIndex];
+            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) - 1;
+            layers.splice(sourceIndex, 1);
+            layers.splice(destinationIndex, 0, sourceNode);
+            // console.log('here');
+            renderLayersAll();
+
+        } else {
+            for (let i = destinationIndex; i > sourceIndex; i--) {
+                layers[i].zIndex = parseInt(layers[i].zIndex) - 1;
+            }
+            let sourceNode = layers[sourceIndex];
+            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) + 1;
+            layers.splice(sourceIndex, 1);
+            layers.splice(destinationIndex, 0, sourceNode);
+            renderLayersAll();
+        }
+
+    });
     let renderImage = document.createElement('img');
     let del = document.createElement('button');
     del.innerHTML = "DELETE";
@@ -40,7 +96,7 @@ function renderLayerItemImage(layer) {
     visible.checked = layer.visible;
     visible.addEventListener('change', function(e) {
         layer.visible = this.checked;
-        console.log(this.checked);
+        // console.log(this.checked);
         renderLayer(layer);
         return;
     });
@@ -80,6 +136,62 @@ function renderLayerItemText(layer) {
     let deleteFlag = false;
     let layerItem = document.createElement('div');
     let layerName = document.createElement('div');
+
+
+    layerItem.addEventListener('dragstart', function(e) {
+        source = this.getAttribute('id').slice(5);
+        // console.log('source: ' + source);
+    });
+    layerItem.addEventListener('dragover', function(e) {
+        this.style.outline = '2px solid red';
+    });
+    layerItem.addEventListener('dragleave', function(e) {
+        destination = this.getAttribute('id').slice(5);
+        this.style.outline = 'none';
+        // console.log('source: ' + source + ' dest: ' + destination);
+    });
+    layerItem.addEventListener('dragend', function(e) {
+        let sourceIndex;
+        let destinationIndex;
+        if (source === destination || source == 0 || destination == 0) {
+            return;
+        }
+
+        for (let i = 0; i < layers.length; i++) {
+            if (layers[i].id == source) {
+                sourceIndex = i;
+            }
+            if (layers[i].id == destination) {
+                destinationIndex = i;
+            }
+
+        }
+
+        if (sourceIndex > destinationIndex) {
+            for (let i = destinationIndex; i < sourceIndex; i++) {
+                layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
+            }
+            let sourceNode = layers[sourceIndex];
+            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) - 1;
+            layers.splice(sourceIndex, 1);
+            layers.splice(destinationIndex, 0, sourceNode);
+            // console.log('here');
+            renderLayersAll();
+
+        } else {
+            for (let i = destinationIndex; i > sourceIndex; i--) {
+                layers[i].zIndex = parseInt(layers[i].zIndex) - 1;
+            }
+            let sourceNode = layers[sourceIndex];
+            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) + 1;
+            layers.splice(sourceIndex, 1);
+            layers.splice(destinationIndex, 0, sourceNode);
+            renderLayersAll();
+        }
+
+    });
+
+
     let icon = document.createElement('img');
     let visible = document.createElement('input');
     let label = document.createElement('label');
