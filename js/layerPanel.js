@@ -8,6 +8,9 @@ function renderLayerItem(layer) {
     if (layer.type === 'text') {
         renderLayerItemText(layer);
     }
+    if (layer.type === 'circle') {
+        renderLayerItemCircle(layer);
+    }
 }
 
 function renderLayerItemImage(layer) {
@@ -16,7 +19,6 @@ function renderLayerItemImage(layer) {
     layerItem.setAttribute('draggable', true);
     layerItem.addEventListener('dragstart', function(e) {
         source = this.getAttribute('id').slice(5);
-        // console.log('source: ' + source);
     });
     layerItem.addEventListener('dragover', function(e) {
         this.style.outline = '2px solid red';
@@ -24,46 +26,9 @@ function renderLayerItemImage(layer) {
     layerItem.addEventListener('dragleave', function(e) {
         destination = this.getAttribute('id').slice(5);
         this.style.outline = 'none';
-        // console.log('source: ' + source + ' dest: ' + destination);
     });
     layerItem.addEventListener('dragend', function(e) {
-        let sourceIndex;
-        let destinationIndex;
-        if (source === destination || source == 0 || destination == 0) {
-            return;
-        }
-
-        for (let i = 0; i < layers.length; i++) {
-            if (layers[i].id == source) {
-                sourceIndex = i;
-            }
-            if (layers[i].id == destination) {
-                destinationIndex = i;
-            }
-
-        }
-
-        if (sourceIndex > destinationIndex) {
-            for (let i = destinationIndex; i < sourceIndex; i++) {
-                layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
-            }
-            let sourceNode = layers[sourceIndex];
-            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) - 1;
-            layers.splice(sourceIndex, 1);
-            layers.splice(destinationIndex, 0, sourceNode);
-            // console.log('here');
-            renderLayersAll();
-
-        } else {
-            for (let i = destinationIndex; i > sourceIndex; i--) {
-                layers[i].zIndex = parseInt(layers[i].zIndex) - 1;
-            }
-            let sourceNode = layers[sourceIndex];
-            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) + 1;
-            layers.splice(sourceIndex, 1);
-            layers.splice(destinationIndex, 0, sourceNode);
-            renderLayersAll();
-        }
+        dragend();
 
     });
     let renderImage = document.createElement('img');
@@ -122,6 +87,8 @@ function renderLayerItemImage(layer) {
             setProperties();
             setFilters();
             setTextMenu();
+            setShapesProperties();
+            setShapesMenu();
         }
 
 
@@ -136,7 +103,7 @@ function renderLayerItemText(layer) {
     let deleteFlag = false;
     let layerItem = document.createElement('div');
     let layerName = document.createElement('div');
-
+    layerItem.setAttribute('draggable', true);
 
     layerItem.addEventListener('dragstart', function(e) {
         source = this.getAttribute('id').slice(5);
@@ -151,43 +118,7 @@ function renderLayerItemText(layer) {
         // console.log('source: ' + source + ' dest: ' + destination);
     });
     layerItem.addEventListener('dragend', function(e) {
-        let sourceIndex;
-        let destinationIndex;
-        if (source === destination || source == 0 || destination == 0) {
-            return;
-        }
-
-        for (let i = 0; i < layers.length; i++) {
-            if (layers[i].id == source) {
-                sourceIndex = i;
-            }
-            if (layers[i].id == destination) {
-                destinationIndex = i;
-            }
-
-        }
-
-        if (sourceIndex > destinationIndex) {
-            for (let i = destinationIndex; i < sourceIndex; i++) {
-                layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
-            }
-            let sourceNode = layers[sourceIndex];
-            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) - 1;
-            layers.splice(sourceIndex, 1);
-            layers.splice(destinationIndex, 0, sourceNode);
-            // console.log('here');
-            renderLayersAll();
-
-        } else {
-            for (let i = destinationIndex; i > sourceIndex; i--) {
-                layers[i].zIndex = parseInt(layers[i].zIndex) - 1;
-            }
-            let sourceNode = layers[sourceIndex];
-            sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) + 1;
-            layers.splice(sourceIndex, 1);
-            layers.splice(destinationIndex, 0, sourceNode);
-            renderLayersAll();
-        }
+        dragend();
 
     });
 
@@ -241,12 +172,161 @@ function renderLayerItemText(layer) {
             setFilters();
             setTextMenu();
             setTextProperties();
+            setShapesProperties();
+            setShapesMenu();
         }
 
     });
     document.getElementById('layers-panel').appendChild(layerItem);
 
 }
+
+
+
+function renderLayerItemCircle(layer) {
+    let deleteFlag = false;
+    let layerItem = document.createElement('div');
+    let layerName = document.createElement('div');
+
+    layerItem.setAttribute('draggable', true);
+    layerItem.addEventListener('dragstart', function(e) {
+        source = this.getAttribute('id').slice(5);
+        console.log('source: ' + source);
+    });
+    layerItem.addEventListener('dragover', function(e) {
+        this.style.outline = '2px solid red';
+    });
+    layerItem.addEventListener('dragleave', function(e) {
+        destination = this.getAttribute('id').slice(5);
+        this.style.outline = 'none';
+        // console.log('source: ' + source + ' dest: ' + destination);
+    });
+    layerItem.addEventListener('dragend', function(e) {
+        dragend();
+
+    });
+
+
+    let icon = document.createElement('img');
+    let visible = document.createElement('input');
+    let label = document.createElement('label');
+    icon.src = './images/circle.png';
+    icon.width = 100;
+    icon.height = 100;
+    visible.setAttribute('type', 'checkbox');
+    visible.setAttribute('id', 'visible' + layer.id);
+    visible.checked = layer.visible;
+    visible.addEventListener('change', function(e) {
+        layer.visible = this.checked;
+        renderLayer(layer);
+    });
+    label.setAttribute('for', 'visible' + layer.id);
+    label.innerHTML = 'Visible';
+    layerName.innerHTML = layer.type + ' ' + layer.id;
+    layerItem.classList.add('layer-item');
+    layerItem.appendChild(icon);
+    layerItem.appendChild(label);
+    layerItem.appendChild(visible);
+    layerItem.appendChild(layerName);
+
+    let del = document.createElement('button');
+    del.classList.add('btn-delete');
+    del.innerHTML = "DELETE";
+    del.addEventListener('click', function() {
+        for (let i = 0; i < layers.length; i++) {
+            if (layer.id === layers[i].id && i != 0) {
+                layers.splice(i, 1);
+                selectedLayer = null;
+                deleteFlag = true;
+
+                renderLayersAll();
+                return;
+            }
+        }
+    });
+    layerItem.appendChild(del);
+
+    layerItem.setAttribute('id', 'layer' + layer.id);
+    layerItem.classList.add('layer-item');
+    layerItem.addEventListener('click', function(e) {
+        if (!deleteFlag) {
+            setLayer(this.getAttribute('id'));
+            setCurrentLayer(this.getAttribute('id'));
+            setProperties();
+            setFilters();
+            setTextMenu();
+            setTextProperties();
+            setShapesMenu();
+            setShapesProperties();
+        }
+
+    });
+    document.getElementById('layers-panel').appendChild(layerItem);
+
+}
+
+function dragend() {
+
+    let sourceIndex;
+    let destinationIndex;
+    if (source === destination || source == 0 || destination == 0) {
+        return;
+    }
+
+    for (let i = 0; i < layers.length; i++) {
+        if (layers[i].id == source) {
+            sourceIndex = i;
+        }
+        if (layers[i].id == destination) {
+            destinationIndex = i;
+        }
+
+    }
+
+    if (sourceIndex > destinationIndex) {
+        for (let i = destinationIndex; i < sourceIndex; i++) {
+            layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
+        }
+        let sourceNode = layers[sourceIndex];
+        sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) - 1;
+        layers.splice(sourceIndex, 1);
+        layers.splice(destinationIndex, 0, sourceNode);
+        // console.log('here');
+        renderLayersAll();
+
+    } else {
+        for (let i = destinationIndex; i > sourceIndex; i--) {
+            layers[i].zIndex = parseInt(layers[i].zIndex) - 1;
+        }
+        let sourceNode = layers[sourceIndex];
+        sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) + 1;
+        layers.splice(sourceIndex, 1);
+        layers.splice(destinationIndex, 0, sourceNode);
+        renderLayersAll();
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function setLayer(e) {
     // console.log(e);

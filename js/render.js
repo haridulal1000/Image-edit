@@ -15,6 +15,9 @@ function renderLayer(layer) {
     if (layer.type === 'text') {
         renderTextLayer(layer);
     }
+    if (layer.type === 'circle') {
+        renderCircleLayer(layer);
+    }
     if (selectedLayer != null) {
         setProperties();
         setFilters();
@@ -58,5 +61,19 @@ function renderTextLayer(layer) {
     div.style.fontFamily = 'Arial';
     div.style.color = `rgb(${layer.color.r},${layer.color.g},${layer.color.b})`;
     div.style.zIndex = layer.zIndex;
+    document.getElementById('imageView').appendChild(div);
+}
+
+function renderCircleLayer(layer) {
+    let div = document.createElement('div');
+    div.setAttribute('id', 'view' + layer.id);
+    div.style.position = 'absolute';
+    div.style.left = layer.x + 'px';
+    div.style.top = layer.y + 'px';
+    div.style.zIndex = layer.zIndex;
+    div.innerHTML = ` <svg  width="${layer.width}" height="${layer.height}">
+      <circle cx="${layer.center.x}" cy="${layer.center.y}" r="${layer.radius}" fill="rgb(${layer.fill.r},${layer.fill.g},${layer.fill.b})"/>
+    </svg>
+    `;
     document.getElementById('imageView').appendChild(div);
 }

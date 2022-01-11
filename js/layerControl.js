@@ -21,6 +21,8 @@ function renderLayersAll() {
         setFilters();
         setTextMenu();
         setTextProperties();
+        setShapesProperties();
+        setShapesMenu();
     }
     addNextLayer();
     downloadButton();

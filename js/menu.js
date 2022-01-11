@@ -15,6 +15,8 @@ for (let i = 0; i < menus.length; i++) {
             document.getElementById('viewport').style.cursor = 'auto';
         }
         setTextMenu();
+        setShapesMenu();
+        setShapesProperties();
         // console.log(id);
         let menus = document.querySelectorAll('.folder-item');
         for (let j = 0; j < menus.length; j++) {

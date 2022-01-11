@@ -20,7 +20,7 @@
                 <div class="folder-item" id="filters">Filters</div>
                 <div class="folder-item" id="text">Text</div>
                 <div class="folder-item" id="move">Move</div>
-                <div class="folder-item" id="draw">Draw</div>
+                <div class="folder-item" id="shapes">Shapes</div>
                 <div class="folder-item" id="select">Select</div>
             </div>
             <div class="sub-folder">
@@ -66,109 +66,188 @@
                 <div class="sub-folder-item" id="properties-menu">
                     <h2>Properties</h2>
                     <div class="properties-item clear-fix">
-                        <span>X</span
-              ><input
-                type="text"
-                id="properties-x"
-                class="float-right input-sm"
-              />
-            </div>
-            <div class="properties-item clear-fix">
-              <span>Y</span
-              ><input
-                type="text"
-                id="properties-y"
-                class="float-right input-sm"
-              />
-            </div>
-            <div class="properties-item clear-fix">
-              <span>Width</span
-              ><input
-                type="text"
-                id="properties-width"
-                class="float-right input-sm"
-              />
-            </div>
-            <div class="properties-item clear-fix">
-              <span>Height</span
-              ><input
-                type="text"
-                id="properties-height"
-                class="float-right input-sm"
-              />
-            </div>
-            <input type="checkbox" id='proportion'>
-            <label for="proportion">Maintain Ratio</label>
-          </div>
-          <div class="sub-folder-item" id="text-menu">
-            <h2>Text</h2>
-            <div id="edit-text">
-              <textarea name="text" id="text-value" cols="18" rows="5">
-Enter you text</textarea
-              >
-              <div class="clear-fix font-size">
-                <div class="float-left">Font Size</div>
-                <input type="range" id="font-size" min="0" max="200" />
-              </div>
-              <div class="clear-fix">
-                <div class="fit-content center color-bar">Red</div>
-                <input
-                  type="range"
-                  min="0"
-                  max="255"
-                  id="red"
-                  class="float-left"
-                />
-                <div id="red-value" class="float-right">0</div>
-              </div>
-              <div class="clear-fix">
-                <div class="fit-content center color-bar">Green</div>
-                <input
-                  type="range"
-                  min="0"
-                  max="255"
-                  id="green"
-                  class="float-left"
-                />
-                <div id="green-value" class="float-right">0</div>
-              </div>
-              <div class="clear-fix">
-                <div class="fit-content center color-bar">Blue</div>
-                <input
-                  type="range"
-                  min="0"
-                  max="255"
-                  id="blue"
-                  class="float-left"
-                />
-                <div id="blue-value" class="float-right">0</div>
-              </div>
-            </div>
-            <div id="new-text">
-              <button id="new-text-btn">New Text Layer</button>
-            </div>
-          </div>
-        </div>
-        <div class="viewport"></div>
-        <div class="layers"></div>
-      </div>
-      <!-- tools -->
-      <!-- viewport -->
-      <div id="viewport">
-        <div id="imageView">
-          <input type="file" id="upload-file" />
-          <label for="upload-file" id="upload-button"
-            ><span id="upload-button-icon">+</span> Upload Image</label>
+                        <span>X</span><input type="text" id="properties-x" class="float-right input-sm" />
+                    </div>
+                    <div class="properties-item clear-fix">
+                        <span>Y</span><input type="text" id="properties-y" class="float-right input-sm" />
+                    </div>
+                    <div class="properties-item clear-fix">
+                        <span>Width</span><input type="text" id="properties-width" class="float-right input-sm" />
+                    </div>
+                    <div class="properties-item clear-fix">
+                        <span>Height</span><input type="text" id="properties-height" class="float-right input-sm" />
+                    </div>
+                    <input type="checkbox" id="proportion" />
+                    <label for="proportion">Maintain Ratio</label>
+                </div>
+                <div class="sub-folder-item" id="text-menu">
+                    <h2>Text</h2>
+                    <div id="edit-text">
+                        <textarea name="text" id="text-value" cols="18" rows="5">Enter you text</textarea>
+                        <div class="clear-fix font-size">
+                            <div class="float-left">Font Size</div>
+                            <input type="range" id="font-size" min="0" max="200" />
+                        </div>
+                        <div class="clear-fix">
+                            <div class="fit-content center color-bar">Red</div>
+                            <input type="range" min="0" max="255" id="red" class="float-left" />
+                            <div id="red-value" class="float-right">0</div>
+                        </div>
+                        <div class="clear-fix">
+                            <div class="fit-content center color-bar">Green</div>
+                            <input type="range" min="0" max="255" id="green" class="float-left" />
+                            <div id="green-value" class="float-right">0</div>
+                        </div>
+                        <div class="clear-fix">
+                            <div class="fit-content center color-bar">Blue</div>
+                            <input type="range" min="0" max="255" id="blue" class="float-left" />
+                            <div id="blue-value" class="float-right">0</div>
+                        </div>
+                    </div>
+                    <div id="new-text">
+                        <button id="new-text-btn">New Text Layer</button>
                     </div>
                 </div>
+                <div class="sub-folder-item" id="shapes-menu">
+                    <div id="line-properties" class="shape-properties">
+                        <div class="clear-fix">
+                            <div class="float-left">Stroke</div>
+                            <div class="float-right">
+                                <input type="text" id="line-stroke" class="input-sm">
+                            </div>
+                        </div>
+                        <h5>Stroke Color</h2>
+                            <div class="clear-fix">
+                                <div>Red</div>
+                                <input type="range" id="line-red" min="0" max="255" class="float-left">
+                                <div class="float-right" id="line-red-value">0</div>
+                            </div>
+                            <div class="clear-fix">
+                                <div>Green</div>
+                                <input type="range" id="line-green" min="0" max="255" class="float-left">
+                                <div class="float-right" id="line-red-value">0</div>
+                            </div>
+                            <div class="clear-fix">
+                                <div>Blue</div>
+                                <input type="range" id="line-blue" min="0" max="255" class="float-left">
+                                <div class="float-right" id="line-blue-value">0</div>
+                            </div>
 
-                <!-- viewport -->
-                <!-- layers-panel -->
-                <div id="layers-panel">
-                    <!-- <div>No layers added</div> -->
+
+                    </div>
+
+                    <div id="circle-properties" class="shape-properties">
+                        <div class="clear-fix">
+                            <div class="float-left">Stroke</div>
+                            <div class="float-right">
+                                <input type="text" id="circle-stroke" class="input-sm">
+                            </div>
+                        </div>
+                        <h5>Stroke Color</h2>
+                            <div class="clear-fix">
+                                <div>Red</div>
+                                <input type="range" id="circle-stroke-red" min="0" max="255" class="float-left">
+                                <div class="float-right" id="circle-stroke-red-value">0</div>
+                            </div>
+                            <div class="clear-fix">
+                                <div>Green</div>
+                                <input type="range" id="circle-stroke-green" min="0" max="255" class="float-left">
+                                <div class="float-right" id="circle-stroke-green-value">0</div>
+                            </div>
+                            <div class="clear-fix">
+                                <div>Blue</div>
+                                <input type="range" id="circle-stroke-blue" min="0" max="255" class="float-left">
+                                <div class="float-right" id="circle-stroke-blue-value">0</div>
+                            </div>
+                            <h5>Fill Color</h2>
+                                <div class="clear-fix">
+                                    <div>Red</div>
+                                    <input type="range" id="circle-fill-red" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="circle-fill-red-value">0</div>
+                                </div>
+                                <div class="clear-fix">
+                                    <div>Green</div>
+                                    <input type="range" id="circle-fill-green" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="circle-fill-green-value">0</div>
+                                </div>
+                                <div class="clear-fix">
+                                    <div>Blue</div>
+                                    <input type="range" id="circle-fill-blue" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="circle-fill-blue-value">0</div>
+                                </div>
+
+
+                    </div>
+                    <div id="rect-properties" class="shape-properties">
+                        <div class="clear-fix">
+                            <div class="float-left">Stroke</div>
+                            <div class="float-right">
+                                <input type="text" id="rerct-stroke" class="input-sm">
+                            </div>
+                        </div>
+                        <h5>Stroke Color</h2>
+                            <div class="clear-fix">
+                                <div>Red</div>
+                                <input type="range" id="rerct-stroke-red" min="0" max="255" class="float-left">
+                                <div class="float-right" id="rerct-stroke-red-value">0</div>
+                            </div>
+                            <div class="clear-fix">
+                                <div>Green</div>
+                                <input type="range" id="rerct-stroke-green" min="0" max="255" class="float-left">
+                                <div class="float-right" id="rerct-stroke-green-value">0</div>
+                            </div>
+                            <div class="clear-fix">
+                                <div>Blue</div>
+                                <input type="range" id="rerct-stroke-blue" min="0" max="255" class="float-left">
+                                <div class="float-right" id="rerct-stroke-blue-value">0</div>
+                            </div>
+                            <h5>Fill Color</h2>
+                                <div class="clear-fix">
+                                    <div>Red</div>
+                                    <input type="range" id="rerct-fill-red" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="rerct-fill-red-value">0</div>
+                                </div>
+                                <div class="clear-fix">
+                                    <div>Green</div>
+                                    <input type="range" id="rerct-fill-green" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="rerct-fill-green-value">0</div>
+                                </div>
+                                <div class="clear-fix">
+                                    <div>Blue</div>
+                                    <input type="range" id="rerct-fill-blue" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="rerct-fill-blue-value">0</div>
+                                </div>
+
+
+                    </div>
+                    <div id="shapes-tools">
+                        <img src="./images/line.png" alt="line" class="shape-menu-item" id="shapes-line">
+                        <img src="./images/circle.png" alt="circle" class="shape-menu-item" id="shapes-circle">
+                        <img src="./images/square.png" alt="rect" class="shape-menu-item" id="shapes-rect">
+                        <img src="./images/polygon.png" alt="polygon" class="shape-menu-item" id="shapes-polygon">
+                    </div>
+
+
+
                 </div>
-                <!-- layers-panel -->
             </div>
+        </div>
+        <!-- tools -->
+        <!-- viewport -->
+        <div id="viewport">
+            <div id="imageView">
+                <input type="file" id="upload-file" />
+                <label for="upload-file" id="upload-button"><span id="upload-button-icon">+</span> Upload Image</label>
+            </div>
+        </div>
+
+        <!-- viewport -->
+        <!-- layers-panel -->
+        <div id="layers-panel">
+            <!-- <div>No layers added</div> -->
+        </div>
+        <!-- layers-panel -->
+    </div>
 </body>
 <script src="./js/index.js"></script>
 <script src="./js/menu.js"></script>
@@ -183,5 +262,7 @@ Enter you text</textarea
 <script src="./js/filters.js"></script>
 <script src="./js/export.js"></script>
 <script src="./js/scale.js"></script>
+<script src="./js/shapes.js"></script>
+<script src="./js/test.js"></script>
 
 </html>

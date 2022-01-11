@@ -1,3 +1,9 @@
+body {
+    width: fit-content;
+    margin: 0 auto;
+    min-width: 1000px;
+}
+
 .main-container {
     min-width: 1000px;
 }
@@ -11,13 +17,17 @@
     width: 150px;
     color: white;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .sub-folder {
+    cursor: pointer;
     font-size: 20px;
-    width: 223px;
+    width: 250px;
     background-color: rgb(197, 197, 197);
     height: fit-content;
+    overflow: scroll;
+    height: 750px;
 }
 
 .sub-folder-item {
@@ -116,4 +126,24 @@ h2 {
 #green,
 #blue {
     width: 100px;
+}
+
+input[type='range'] {
+    cursor: pointer;
+}
+
+.shape-menu-item {
+    display: block;
+    width: 150px;
+    margin: 20px auto 10px auto;
+    background-color: white;
+    outline: 2px solid black;
+}
+
+.shape-menu-item:hover {
+    outline: 2px solid blue;
+}
+
+.shape-properties {
+    display: none;
 }
