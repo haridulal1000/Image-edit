@@ -2,18 +2,12 @@ let source;
 let destination;
 
 function renderLayerItem(layer) {
-    if (layer.type === 'image') {
-        renderLayerItemImage(layer);
-    }
-    if (layer.type === 'text') {
-        renderLayerItemText(layer);
-    }
-    if (layer.type === 'circle') {
-        renderLayerItemCircle(layer);
-    }
+    renderLayerItemImage(layer);
+
+
 }
 
-function renderLayerItemImage(layer) {
+function renderLayerItem(layer) {
     let deleteFlag = false;
     let layerItem = document.createElement('div');
     layerItem.setAttribute('draggable', true);
@@ -50,7 +44,19 @@ function renderLayerItemImage(layer) {
             }
         }
     });
-    renderImage.src = layer.image.src;
+    if (layer.type === 'image') {
+        renderImage.src = layer.image.src;
+    }
+    if (layer.type === 'text') {
+        renderImage.src = './images/text-layer-icon.png';
+    }
+    if (layer.type === 'circle') {
+        renderImage.src = './images/circle.png';
+    }
+    if (layer.type === 'rect') {
+        renderImage.src = './images/square.png';
+    }
+
     // console.log(renderImage);
     renderImage.width = 100;
     renderImage.height = 100;
@@ -95,172 +101,6 @@ function renderLayerItemImage(layer) {
     });
 
 
-    document.getElementById('layers-panel').appendChild(layerItem);
-
-}
-
-function renderLayerItemText(layer) {
-    let deleteFlag = false;
-    let layerItem = document.createElement('div');
-    let layerName = document.createElement('div');
-    layerItem.setAttribute('draggable', true);
-
-    layerItem.addEventListener('dragstart', function(e) {
-        source = this.getAttribute('id').slice(5);
-        // console.log('source: ' + source);
-    });
-    layerItem.addEventListener('dragover', function(e) {
-        this.style.outline = '2px solid red';
-    });
-    layerItem.addEventListener('dragleave', function(e) {
-        destination = this.getAttribute('id').slice(5);
-        this.style.outline = 'none';
-        // console.log('source: ' + source + ' dest: ' + destination);
-    });
-    layerItem.addEventListener('dragend', function(e) {
-        dragend();
-
-    });
-
-
-    let icon = document.createElement('img');
-    let visible = document.createElement('input');
-    let label = document.createElement('label');
-    icon.src = './images/text-layer-icon.png';
-    icon.width = 100;
-    icon.height = 100;
-    visible.setAttribute('type', 'checkbox');
-    visible.setAttribute('id', 'visible' + layer.id);
-    visible.checked = layer.visible;
-    visible.addEventListener('change', function(e) {
-        layer.visible = this.checked;
-        renderLayer(layer);
-    });
-    label.setAttribute('for', 'visible' + layer.id);
-    label.innerHTML = 'Visible';
-    layerName.innerHTML = layer.type + ' ' + layer.id;
-    layerItem.classList.add('layer-item');
-    layerItem.appendChild(icon);
-    layerItem.appendChild(label);
-    layerItem.appendChild(visible);
-    layerItem.appendChild(layerName);
-
-    let del = document.createElement('button');
-    del.classList.add('btn-delete');
-    del.innerHTML = "DELETE";
-    del.addEventListener('click', function() {
-        for (let i = 0; i < layers.length; i++) {
-            if (layer.id === layers[i].id && i != 0) {
-                layers.splice(i, 1);
-                selectedLayer = null;
-                deleteFlag = true;
-
-                renderLayersAll();
-                return;
-            }
-        }
-    });
-    layerItem.appendChild(del);
-
-    layerItem.setAttribute('id', 'layer' + layer.id);
-    layerItem.classList.add('layer-item');
-    layerItem.addEventListener('click', function(e) {
-        if (!deleteFlag) {
-            setLayer(this.getAttribute('id'));
-            setCurrentLayer(this.getAttribute('id'));
-            setProperties();
-            setFilters();
-            setTextMenu();
-            setTextProperties();
-            setShapesProperties();
-            setShapesMenu();
-        }
-
-    });
-    document.getElementById('layers-panel').appendChild(layerItem);
-
-}
-
-
-
-function renderLayerItemCircle(layer) {
-    let deleteFlag = false;
-    let layerItem = document.createElement('div');
-    let layerName = document.createElement('div');
-
-    layerItem.setAttribute('draggable', true);
-    layerItem.addEventListener('dragstart', function(e) {
-        source = this.getAttribute('id').slice(5);
-        console.log('source: ' + source);
-    });
-    layerItem.addEventListener('dragover', function(e) {
-        this.style.outline = '2px solid red';
-    });
-    layerItem.addEventListener('dragleave', function(e) {
-        destination = this.getAttribute('id').slice(5);
-        this.style.outline = 'none';
-        // console.log('source: ' + source + ' dest: ' + destination);
-    });
-    layerItem.addEventListener('dragend', function(e) {
-        dragend();
-
-    });
-
-
-    let icon = document.createElement('img');
-    let visible = document.createElement('input');
-    let label = document.createElement('label');
-    icon.src = './images/circle.png';
-    icon.width = 100;
-    icon.height = 100;
-    visible.setAttribute('type', 'checkbox');
-    visible.setAttribute('id', 'visible' + layer.id);
-    visible.checked = layer.visible;
-    visible.addEventListener('change', function(e) {
-        layer.visible = this.checked;
-        renderLayer(layer);
-    });
-    label.setAttribute('for', 'visible' + layer.id);
-    label.innerHTML = 'Visible';
-    layerName.innerHTML = layer.type + ' ' + layer.id;
-    layerItem.classList.add('layer-item');
-    layerItem.appendChild(icon);
-    layerItem.appendChild(label);
-    layerItem.appendChild(visible);
-    layerItem.appendChild(layerName);
-
-    let del = document.createElement('button');
-    del.classList.add('btn-delete');
-    del.innerHTML = "DELETE";
-    del.addEventListener('click', function() {
-        for (let i = 0; i < layers.length; i++) {
-            if (layer.id === layers[i].id && i != 0) {
-                layers.splice(i, 1);
-                selectedLayer = null;
-                deleteFlag = true;
-
-                renderLayersAll();
-                return;
-            }
-        }
-    });
-    layerItem.appendChild(del);
-
-    layerItem.setAttribute('id', 'layer' + layer.id);
-    layerItem.classList.add('layer-item');
-    layerItem.addEventListener('click', function(e) {
-        if (!deleteFlag) {
-            setLayer(this.getAttribute('id'));
-            setCurrentLayer(this.getAttribute('id'));
-            setProperties();
-            setFilters();
-            setTextMenu();
-            setTextProperties();
-            setShapesMenu();
-            setShapesProperties();
-        }
-
-    });
     document.getElementById('layers-panel').appendChild(layerItem);
 
 }

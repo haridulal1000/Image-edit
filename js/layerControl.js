@@ -47,3 +47,11 @@ function setImageView() {
     document.getElementById('imageView').style.transform = `scale(${scale},${scale})`;
     document.getElementById('imageView').style.border = `2px solid white`;
 }
+
+function indexOfSelectedLayer() {
+    for (let i = 0; i < layers.length; i++) {
+        if (selectedLayer == layers[i].id) {
+            return i;
+        }
+    }
+}

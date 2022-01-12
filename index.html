@@ -138,12 +138,20 @@
 
                     <div id="circle-properties" class="shape-properties">
                         <div class="clear-fix">
+                            <div class="float-left">Radius</div>
+                            <div class="float-right">
+                                <input type="text" id="circle-radius" class="input-sm">
+                            </div>
+                        </div>
+                        <div class="clear-fix">
                             <div class="float-left">Stroke</div>
                             <div class="float-right">
                                 <input type="text" id="circle-stroke" class="input-sm">
                             </div>
                         </div>
                         <h5>Stroke Color</h2>
+                            <input type="checkbox" id="circle-stroke-visible" checked=true>
+                            <label for="circle-stroke-visible">Turn On/Off Stroke</label>
                             <div class="clear-fix">
                                 <div>Red</div>
                                 <input type="range" id="circle-stroke-red" min="0" max="255" class="float-left">
@@ -160,6 +168,8 @@
                                 <div class="float-right" id="circle-stroke-blue-value">0</div>
                             </div>
                             <h5>Fill Color</h2>
+                                <input type="checkbox" id="circle-fill-visible" checked=true>
+                                <label for="circle-fill-visible">Turn On/Off Stroke</label>
                                 <div class="clear-fix">
                                     <div>Red</div>
                                     <input type="range" id="circle-fill-red" min="0" max="255" class="float-left">
@@ -180,42 +190,58 @@
                     </div>
                     <div id="rect-properties" class="shape-properties">
                         <div class="clear-fix">
+                            <div class="float-left">Width</div>
+                            <div class="float-right">
+                                <input type="text" id="rect-width" class="input-sm">
+                            </div>
+                        </div>
+                        <div class="clear-fix">
+                            <div class="float-left">Height</div>
+                            <div class="float-right">
+                                <input type="text" id="rect-height" class="input-sm">
+                            </div>
+                        </div>
+                        <div class="clear-fix">
                             <div class="float-left">Stroke</div>
                             <div class="float-right">
-                                <input type="text" id="rerct-stroke" class="input-sm">
+                                <input type="text" id="rect-stroke" class="input-sm">
                             </div>
                         </div>
                         <h5>Stroke Color</h2>
+                            <input type="checkbox" id="rect-stroke-visible" checked=true>
+                            <label for="rect-stroke-visible">Turn On/Off Stroke</label>
                             <div class="clear-fix">
                                 <div>Red</div>
-                                <input type="range" id="rerct-stroke-red" min="0" max="255" class="float-left">
-                                <div class="float-right" id="rerct-stroke-red-value">0</div>
+                                <input type="range" id="rect-stroke-red" min="0" max="255" class="float-left">
+                                <div class="float-right" id="rect-stroke-red-value">0</div>
                             </div>
                             <div class="clear-fix">
                                 <div>Green</div>
-                                <input type="range" id="rerct-stroke-green" min="0" max="255" class="float-left">
-                                <div class="float-right" id="rerct-stroke-green-value">0</div>
+                                <input type="range" id="rect-stroke-green" min="0" max="255" class="float-left">
+                                <div class="float-right" id="rect-stroke-green-value">0</div>
                             </div>
                             <div class="clear-fix">
                                 <div>Blue</div>
-                                <input type="range" id="rerct-stroke-blue" min="0" max="255" class="float-left">
-                                <div class="float-right" id="rerct-stroke-blue-value">0</div>
+                                <input type="range" id="rect-stroke-blue" min="0" max="255" class="float-left">
+                                <div class="float-right" id="rect-stroke-blue-value">0</div>
                             </div>
                             <h5>Fill Color</h2>
+                                <input type="checkbox" id="rect-fill-visible" checked=true>
+                                <label for="rect-fill-visible">Turn On/Off Fill</label>
                                 <div class="clear-fix">
                                     <div>Red</div>
-                                    <input type="range" id="rerct-fill-red" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="rerct-fill-red-value">0</div>
+                                    <input type="range" id="rect-fill-red" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="rect-fill-red-value">0</div>
                                 </div>
                                 <div class="clear-fix">
                                     <div>Green</div>
-                                    <input type="range" id="rerct-fill-green" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="rerct-fill-green-value">0</div>
+                                    <input type="range" id="rect-fill-green" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="rect-fill-green-value">0</div>
                                 </div>
                                 <div class="clear-fix">
                                     <div>Blue</div>
-                                    <input type="range" id="rerct-fill-blue" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="rerct-fill-blue-value">0</div>
+                                    <input type="range" id="rect-fill-blue" min="0" max="255" class="float-left">
+                                    <div class="float-right" id="rect-fill-blue-value">0</div>
                                 </div>
 
 

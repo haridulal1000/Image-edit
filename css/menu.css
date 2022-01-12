@@ -9,7 +9,7 @@ body {
 }
 
 .tools {
-    width: 363px;
+    width: 450px;
 }
 
 .folder {
@@ -23,15 +23,14 @@ body {
 .sub-folder {
     cursor: pointer;
     font-size: 20px;
-    width: 250px;
+    width: 300px;
     background-color: rgb(197, 197, 197);
-    height: fit-content;
+    /* height: fit-content; */
     overflow: scroll;
     height: 750px;
 }
 
 .sub-folder-item {
-    border: 1px solid black;
     padding-left: 20px;
     padding-right: 20px;
     height: 750px;
@@ -146,4 +145,9 @@ input[type='range'] {
 
 .shape-properties {
     display: none;
+    margin: 10px auto 10px auto;
+}
+
+#shapes-tools {
+    padding: 20px 0 20px 0;
 }

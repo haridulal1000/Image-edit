@@ -51,10 +51,9 @@ function Circle(info) {
     this.stroke = info.stroke;
     this.strokeWeight = info.strokeWeight;
     this.fill = info.fill;
-    this.width = info.width;
-    this.height = info.height;
     this.radius = info.radius;
-    this.center = info.center;
+    this.visibleStroke = info.visibleStroke;
+    this.visibleFill = info.visibleFill;
 }
 
 function Rect(info) {
@@ -62,12 +61,14 @@ function Rect(info) {
     this.id = info.id;
     this.x = info.x;
     this.y = info.y;
+    this.zIndex = info.zIndex;
     this.visible = info.visible;
     this.stroke = info.stroke;
     this.strokeWeight = info.strokeWeight;
     this.fill = info.fill;
     this.width = info.width;
     this.height = info.height;
-    this.points = info.point;
+    this.visibleStroke = info.visibleStroke;
+    this.visibleFill = info.visibleFill;
 
 }
