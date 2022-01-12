@@ -95,6 +95,7 @@ function renderLayerItem(layer) {
             setTextMenu();
             setShapesProperties();
             setShapesMenu();
+            setRotateProperties();
         }
 
 
@@ -195,6 +196,9 @@ function addNextLayer() {
                     width: image.width,
                     height: image.height,
                     image: image,
+                    originX: 0,
+                    originY: 0,
+                    rotate: 0,
                     x: 0,
                     y: 0,
                     zIndex: id + 5,

@@ -32,6 +32,9 @@ document.getElementById('new-text-btn').addEventListener('click', function() {
         color: { r: 255, g: 0, b: 0 },
         x: 20,
         y: 20,
+        originX: 0,
+        originY: 0,
+        rotate: 0,
         zIndex: (id + 5),
         visible: true
     }));

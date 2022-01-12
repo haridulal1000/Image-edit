@@ -27,6 +27,7 @@ function renderLayer(layer) {
         setTextMenu();
         setTextProperties();
         setImageView();
+        setRotateProperties();
     }
 
 }
@@ -47,6 +48,9 @@ function renderImageLayer(layer) {
     div.style.position = 'absolute';
     div.style.left = layer.x + 'px';
     div.style.top = layer.y + 'px';
+    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transform = `rotate(${layer.rotate}deg)`;
+    console.log('rotate: ' + layer.rotate + " " + layer.originX);
     document.getElementById('imageView').appendChild(div);
 
 
@@ -56,6 +60,9 @@ function renderTextLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     div.innerHTML = layer.text;
+    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transform = `rotate(${layer.rotate}deg)`;
+    console.log('rotate: ' + layer.rotate + " " + layer.originX);
     div.style.position = 'absolute';
     div.style.width = 'fit-content';
     div.style.left = layer.x + 'px';
@@ -74,6 +81,9 @@ function renderCircleLayer(layer) {
     div.style.left = layer.x + 'px';
     div.style.top = layer.y + 'px';
     div.style.zIndex = layer.zIndex;
+    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transform = `rotate(${layer.rotate}deg)`;
+    console.log('rotate: ' + layer.rotate + " " + layer.originX);
     let strokeOpacity;
     let fillOpacity;
     if (layer.visibleStroke) {
@@ -100,6 +110,9 @@ function renderRectLayer(layer) {
     div.style.left = layer.x + 'px';
     div.style.top = layer.y + 'px';
     div.style.zIndex = layer.zIndex;
+    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transform = `rotate(${layer.rotate}deg)`;
+    console.log('rotate: ' + layer.rotate + " " + layer.originX);
     let strokeOpacity;
     let fillOpacity;
     if (layer.visibleStroke) {

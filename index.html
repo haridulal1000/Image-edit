@@ -18,6 +18,7 @@
             <div class="folder">
                 <div class="folder-item active" id="properties">Properties</div>
                 <div class="folder-item" id="filters">Filters</div>
+                <div class="folder-item" id="rotate">Rotate</div>
                 <div class="folder-item" id="text">Text</div>
                 <div class="folder-item" id="move">Move</div>
                 <div class="folder-item" id="shapes">Shapes</div>
@@ -63,6 +64,28 @@
                         <input type="range" max="50" min="0" class="filter-slide" id="blur" />
                     </div>
                 </div>
+
+
+                <div class="sub-folder-item" id="rotate-menu">
+                    <h2>Rotate</h2>
+                    <div class="clear-fix">
+                        <div class="float-left">OriginX</div>
+                        <input type="text" class="float-right input-sm" id="origin-x" value="0">
+                    </div>
+                    <div class="clear-fix">
+                        <div class="float-left">OriginY</div>
+                        <input type="text" class="float-right input-sm" id="origin-y" value="0">
+                    </div>
+                    <div class="clear-fix">
+                        <input type="range" min="0" max="360" id="rotate-slide" class="float-left" value="0">
+                        <div class="float-right" id="rotate-value">0</div>
+                    </div>
+
+                </div>
+
+
+
+
                 <div class="sub-folder-item" id="properties-menu">
                     <h2>Properties</h2>
                     <div class="properties-item clear-fix">
@@ -109,6 +132,7 @@
                     </div>
                 </div>
                 <div class="sub-folder-item" id="shapes-menu">
+                    <h2>Shapes</h2>
                     <div id="line-properties" class="shape-properties">
                         <div class="clear-fix">
                             <div class="float-left">Stroke</div>
@@ -290,5 +314,6 @@
 <script src="./js/scale.js"></script>
 <script src="./js/shapes.js"></script>
 <script src="./js/test.js"></script>
+<script src="./js/rotate.js"></script>
 
 </html>

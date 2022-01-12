@@ -17,6 +17,7 @@ for (let i = 0; i < menus.length; i++) {
         setTextMenu();
         setShapesMenu();
         setShapesProperties();
+        setRotateProperties();
         // console.log(id);
         let menus = document.querySelectorAll('.folder-item');
         for (let j = 0; j < menus.length; j++) {

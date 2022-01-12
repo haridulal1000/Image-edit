@@ -1,6 +1,9 @@
 function ImageLayer(info) {
     this.type = info.type;
     this.id = info.id;
+    this.originX = info.originX;
+    this.originY = info.originY;
+    this.rotate = info.rotate;
     this.image = info.image;
     this.x = info.x;
     this.y = info.y;
@@ -19,6 +22,9 @@ function ImageLayer(info) {
 function TextLayer(info) {
     this.type = info.type;
     this.id = info.id;
+    this.originX = info.originX;
+    this.originY = info.originY;
+    this.rotate = info.rotate;
     this.text = info.text;
     this.fontSize = info.fontSize;
     this.color = info.color;
@@ -31,6 +37,9 @@ function TextLayer(info) {
 function Line(info) {
     this.type = info.type;
     this.id = info.id;
+    this.originX = info.originX;
+    this.originY = info.originY;
+    this.rotate = info.rotate;
     this.x = info.x;
     this.y = info.y;
     this.visible = info.visible;
@@ -44,6 +53,9 @@ function Line(info) {
 function Circle(info) {
     this.type = info.type;
     this.id = info.id;
+    this.originX = info.originX;
+    this.originY = info.originY;
+    this.rotate = info.rotate;
     this.x = info.x;
     this.y = info.y;
     this.zIndex = info.zIndex;
@@ -59,6 +71,9 @@ function Circle(info) {
 function Rect(info) {
     this.type = info.type;
     this.id = info.id;
+    this.originX = info.originX;
+    this.originY = info.originY;
+    this.rotate = info.rotate;
     this.x = info.x;
     this.y = info.y;
     this.zIndex = info.zIndex;

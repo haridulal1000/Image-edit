@@ -151,3 +151,7 @@ input[type='range'] {
 #shapes-tools {
     padding: 20px 0 20px 0;
 }
+
+#rotate-menu div {
+    margin: 10px 0 10px 0;
+}

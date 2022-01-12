@@ -11,6 +11,9 @@ uploadFile.addEventListener('change', function() {
             addLayer(new ImageLayer({
                 type: 'image',
                 id: id,
+                originX: 0,
+                originY: 0,
+                rotate: 0,
                 width: image.width,
                 height: image.height,
                 image: image,

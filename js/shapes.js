@@ -47,6 +47,9 @@ document.getElementById('shapes-circle').addEventListener('click', function(e) {
                 g: 255,
                 b: 0
             },
+            originX: 0,
+            originY: 0,
+            rotate: 0,
             visibleStroke: true,
             visibleFill: true,
             strokeWeight: 10,
@@ -76,6 +79,9 @@ document.getElementById('shapes-rect').addEventListener('click', function(e) {
                 g: 255,
                 b: 0
             },
+            originX: 0,
+            originY: 0,
+            rotate: 0,
             strokeWeight: 10,
             visibleStroke: true,
             visibleFill: true,

@@ -23,6 +23,7 @@ function renderLayersAll() {
         setTextProperties();
         setShapesProperties();
         setShapesMenu();
+        setRotateProperties();
     }
     addNextLayer();
     downloadButton();
