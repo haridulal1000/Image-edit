@@ -18,20 +18,24 @@ function createSelectionFunction() {
     selectCanvas.setAttribute('id', 'select' + indexOfSelectedLayer());
     selectCanvas.style.position = 'absolute';
     selectCanvas.style.zIndex = '50';
-    selectCanvas.width = layers[indexOfSelectedLayer()].width;
-    selectCanvas.height = layers[indexOfSelectedLayer()].height;
+    selectCanvas.width = layers[0].width;
+    selectCanvas.height = layers[0].height;
+    selectCanvas.style.border = '2px solid blue';
     iv.append(selectCanvas);
     canvasCreated = true;
     selectContext = selectCanvas.getContext('2d');
 }
 let draw = false;
+let ref = document.getElementById('imageView').getBoundingClientRect();
+let canRect;
 document.getElementById('imageView').addEventListener('mousedown', function(e) {
     if (canvasCreated === true && currentTool != 'move') {
         if (draw === false) {
             draw = true;
+            canRect = selectCanvas.getBoundingClientRect();
             selectContext.clearRect(0, 0, selectCanvas.width, selectCanvas.height);
             selectContext.beginPath();
-            selectContext.moveTo(e.offsetX, e.offsetY);
+            selectContext.moveTo((e.clientX - canRect.left) / scale, (e.clientY - canRect.top) / scale);
 
         }
     }
@@ -69,13 +73,15 @@ cancelSelection.addEventListener('click', function(e) {
 makeSelection.addEventListener('click', function() {
     edited = true;
     let image = layers[indexOfSelectedLayer()].image;
+    image.width = selectCanvas.width;
+    image.height = selectCanvas.height;
     let tempCanvas = document.createElement('canvas');
     let tempContext = tempCanvas.getContext('2d');
-    tempCanvas.width = layers[indexOfSelectedLayer()].width;
-    tempCanvas.height = layers[indexOfSelectedLayer()].height;
+    tempCanvas.width = selectCanvas.width
+    tempCanvas.height = selectCanvas.height;
     tempContext.drawImage(selectCanvas, 0, 0);
     tempContext.globalCompositeOperation = 'source-in';
-    tempContext.drawImage(image, 0, 0);
+    tempContext.drawImage(image, layers[indexOfSelectedLayer()].x, layers[indexOfSelectedLayer()].y);
 
     let tempImage = new Image();
 

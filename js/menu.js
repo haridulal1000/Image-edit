@@ -6,6 +6,9 @@ document.querySelector('#properties-menu').style.display = 'block';
 const menus = document.querySelectorAll('.folder-item');
 for (let i = 0; i < menus.length; i++) {
     menus[i].addEventListener('click', function(e) {
+        if (indexOfSelectedLayer() === null) {
+            return;
+        }
         let id = e.target.getAttribute('id');
         if (id === 'move') {
             currentTool = 'move';
