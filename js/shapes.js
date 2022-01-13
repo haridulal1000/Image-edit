@@ -99,11 +99,11 @@ document.getElementById('shapes-polygon').addEventListener('click', function(e) 
 function insertPolygon() {
     let sides = parseFloat(document.getElementById('polygon-sides').value);
     let arr = [];
-    let rad = 50;
+    let rad = 200;
     for (let i = 0; i < sides; i++) {
         arr.push({
-            x: 50 + rad + rad * Math.cos(i * Math.PI * 2 / (sides)),
-            y: 50 + rad + rad * Math.sin(i * Math.PI * 2 / (sides))
+            x: rad + rad * Math.cos(i * Math.PI * 2 / (sides)),
+            y: rad + rad * Math.sin(i * Math.PI * 2 / (sides))
         });
     }
     // console.log('before: ' + arr);
@@ -115,8 +115,8 @@ function insertPolygon() {
             y: 100,
             sides: 5,
             zIndex: id + 5,
-            width: 500,
-            height: 500,
+            width: cropWidth,
+            height: cropHeight,
             fill: '#1648c7',
             stroke: '#c20606',
             originX: 0,
@@ -127,12 +127,32 @@ function insertPolygon() {
             visibleStroke: true,
             visibleFill: true,
             visible: true,
-            opacity: 100
+            opacity: 100,
+            angle: 0,
+            radius: 200
         })
     );
     selectedLayer = id - 1;
     renderLayersAll();
     // console.log('here');
+}
+
+function updatePolygon() {
+    let sides = parseFloat(document.getElementById('polygon-sides').value);
+    let arr = [];
+    let rad = parseFloat(document.getElementById('polygon-radius').value);
+    let angle = document.getElementById('polygon-angle').value;
+    for (let i = 0; i < sides; i++) {
+        arr.push({
+            x: rad + rad * Math.cos(i * Math.PI * 2 / (sides) + parseFloat(angle * Math.PI / 180)),
+            y: rad + rad * Math.sin(i * Math.PI * 2 / (sides) + parseFloat(angle * Math.PI / 180))
+        });
+    }
+    layers[indexOfSelectedLayer()].point = arr;
+    layers[indexOfSelectedLayer()].sides = sides;
+    layers[indexOfSelectedLayer()].radius = rad;
+    layers[indexOfSelectedLayer()].angle = angle;
+    renderLayer(layers[indexOfSelectedLayer()]);
 }
 
 
@@ -207,12 +227,15 @@ function setRectProperties(layer) {
 }
 
 function setPolygonProperties(layer) {
+    document.getElementById('polygon-radius').value = layer.radius;
+    document.getElementById('polygon-angle').value = layer.angle;
     document.getElementById('polygon-sides').value = layer.sides;
 
     document.getElementById('polygon-stroke').value = layer.strokeWeight;
 
     document.getElementById('polygon-fill-color').value = layer.fill;
     document.getElementById('polygon-stroke-color').value = layer.stroke;
+
 }
 
 
@@ -285,7 +308,13 @@ inputs.forEach(element => {
 
 
         if (e.target.getAttribute('id') === 'polygon-sides') {
-            insertPolygon();
+            updatePolygon();
+        }
+        if (e.target.getAttribute('id') === 'polygon-radius') {
+            updatePolygon();
+        }
+        if (e.target.getAttribute('id') === 'polygon-angle') {
+            updatePolygon();
         }
 
         if (e.target.getAttribute('id') === 'polygon-stroke-visible') {
@@ -345,10 +374,21 @@ textInputs.forEach(element => {
             if (this.getAttribute('id') === 'polygon-sides') {
                 this.value = parseInt(this.value) + 1;
                 layers[indexOfSelectedLayer()].sides = parseInt(this.value);
+                updatePolygon();
+            }
+            if (this.getAttribute('id') === 'polygon-radius') {
+                this.value = parseInt(this.value) + 5;
+                layers[indexOfSelectedLayer()].sides = parseInt(this.value);
+                updatePolygon();
             }
             if (this.getAttribute('id') === 'polygon-stroke') {
                 this.value = parseInt(this.value) + 1;
                 layers[indexOfSelectedLayer()].strokeWeight = parseInt(this.value);
+            }
+            if (this.getAttribute('id') === 'polygon-angle') {
+                this.value = parseInt(this.value) + 5;
+                layers[indexOfSelectedLayer()].angle = parseInt(this.value);
+                updatePolygon();
             }
             renderLayer(layers[indexOfSelectedLayer()]);
         }
@@ -394,6 +434,21 @@ textInputs.forEach(element => {
             if (this.getAttribute('id') === 'polygon-stroke') {
                 this.value = parseInt(this.value) - 1;
                 layers[indexOfSelectedLayer()].strokeWeight = parseInt(this.value);
+            }
+            if (this.getAttribute('id') === 'polygon-sides') {
+                this.value = parseInt(this.value) - 1;
+                layers[indexOfSelectedLayer()].sides = parseInt(this.value);
+                updatePolygon();
+            }
+            if (this.getAttribute('id') === 'polygon-radius') {
+                this.value = parseInt(this.value) - 5;
+                layers[indexOfSelectedLayer()].sides = parseInt(this.value);
+                updatePolygon();
+            }
+            if (this.getAttribute('id') === 'polygon-angle') {
+                this.value = parseInt(this.value) - 5;
+                layers[indexOfSelectedLayer()].angle = parseInt(this.value);
+                updatePolygon();
             }
             renderLayer(layers[indexOfSelectedLayer()]);
         }
