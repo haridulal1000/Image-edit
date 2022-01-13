@@ -124,5 +124,7 @@ function Polygon(info) {
     this.visibleFill = info.visibleFill;
     this.opacity = info.opacity;
     this.blendMode = info.blendMode;
+    this.radius = info.radius;
+    this.angle = info.angle;
 
 }
