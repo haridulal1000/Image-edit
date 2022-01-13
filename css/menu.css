@@ -216,10 +216,19 @@ input[type='range'] {
 
 #bg-color-div {
     margin: 20px auto 20px auto;
-    display: none;
 }
 
 #bg-color {
     display: block;
     margin: 10px auto;
+}
+
+#font-label {
+    display: block;
+    margin-top: 20px;
+}
+
+#fonts {
+    font-size: 20px;
+    margin-top: 20px;
 }

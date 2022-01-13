@@ -14,6 +14,9 @@ function ImageLayer(info) {
     this.hue = info.hue;
     this.saturation = info.saturation;
     this.blur = info.blur;
+    this.grayscale = info.grayscale;
+    this.invert = info.invert;
+    this.sepia = info.sepia;
     this.zIndex = info.zIndex;
     this.visible = info.visible;
     this.opacity = info.opacity;
@@ -28,6 +31,7 @@ function TextLayer(info) {
     this.originY = info.originY;
     this.rotate = info.rotate;
     this.text = info.text;
+    this.fontType = info.fontType;
     this.fontSize = info.fontSize;
     this.color = info.color;
     this.zIndex = info.zIndex;

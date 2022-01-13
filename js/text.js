@@ -3,6 +3,7 @@ let editText = document.getElementById('edit-text');
 let textColor = document.getElementById('text-color');
 let textValue = document.getElementById('text-value');
 let fontSize = document.getElementById('font-size');
+let fontType = document.getElementById('fonts');
 
 
 
@@ -25,6 +26,7 @@ document.getElementById('new-text-btn').addEventListener('click', function() {
         id: id,
         text: 'Your Text',
         fontSize: 40,
+        fontType: 'Arial',
         color: '#c20606',
         x: 20,
         y: 20,
@@ -45,6 +47,7 @@ function setTextProperties() {
             textColor.value = layers[i].color;
             fontSize.value = layers[i].fontSize;
             textValue.value = layers[i].text;
+            fontType.value = layers[i].fontType;
         }
     }
 }
@@ -75,6 +78,17 @@ textValue.addEventListener('change', function(e) {
     for (let i = 0; i < layers.length; i++) {
         if (layers[i].id == selectedLayer) {
             layers[i].text = this.value;
+            renderLayer(layers[i]);
+            break;
+
+        }
+    }
+});
+fontType.addEventListener('change', function() {
+    console.log(this.value);
+    for (let i = 0; i < layers.length; i++) {
+        if (layers[i].id == selectedLayer) {
+            layers[i].fontType = this.value;
             renderLayer(layers[i]);
             break;
 

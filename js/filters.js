@@ -12,7 +12,14 @@ function setFilters() {
             document.getElementById('saturation-value').innerHTML = document.getElementById('saturation').value;
             document.getElementById('blur').value = layers[i].blur;
             document.getElementById('blur-value').innerHTML = document.getElementById('blur').value;
+            document.getElementById('grayscale').value = layers[i].grayscale;
+            document.getElementById('grayscale-value').innerHTML = document.getElementById('grayscale').value;
+            document.getElementById('invert').value = layers[i].invert;
+            document.getElementById('invert-value').innerHTML = document.getElementById('invert').value;
+            document.getElementById('sepia').value = layers[i].sepia;
+            document.getElementById('sepia-value').innerHTML = document.getElementById('sepia').value;
         }
+
     }
 
 }
@@ -64,6 +71,36 @@ document.getElementById('blur').addEventListener('change', function(e) {
         if (selectedLayer == layers[i].id) {
             layers[i].blur = this.value;
             document.getElementById('blur-value').innerHTML = this.value;
+            console.log(this.value);
+            renderLayer(layers[i]);
+        }
+    }
+});
+document.getElementById('grayscale').addEventListener('change', function(e) {
+    for (let i = 0; i < layers.length; i++) {
+        if (selectedLayer == layers[i].id) {
+            layers[i].grayscale = this.value;
+            document.getElementById('grayscale-value').innerHTML = this.value;
+            console.log(this.value);
+            renderLayer(layers[i]);
+        }
+    }
+});
+document.getElementById('invert').addEventListener('change', function(e) {
+    for (let i = 0; i < layers.length; i++) {
+        if (selectedLayer == layers[i].id) {
+            layers[i].invert = this.value;
+            document.getElementById('invert-value').innerHTML = this.value;
+            console.log(this.value);
+            renderLayer(layers[i]);
+        }
+    }
+});
+document.getElementById('sepia').addEventListener('change', function(e) {
+    for (let i = 0; i < layers.length; i++) {
+        if (selectedLayer == layers[i].id) {
+            layers[i].sepia = this.value;
+            document.getElementById('sepia-value').innerHTML = this.value;
             console.log(this.value);
             renderLayer(layers[i]);
         }

@@ -49,7 +49,7 @@ function renderImageLayer(layer) {
     renderImage.src = layer.image.src;
     renderImage.width = layer.width;
     renderImage.height = layer.height;
-    renderImage.style = `filter: brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
+    renderImage.style = `filter: brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px) invert(${layer.invert}%) grayscale(${layer.grayscale}%) sepia(${layer.sepia}%)`;
     if (layer.blendMode == null) {
         div.style.setProperty('mix-blend-mode', 'normal');
         layer.blendMode = 'normal';
@@ -77,7 +77,12 @@ function renderImageLayer(layer) {
 function renderTextLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
-    div.innerHTML = layer.text;
+    let textArray = layer.text.split('\n');
+    let text = '';
+    textArray.forEach(element => {
+        text = text + element + '<br>';
+    });
+    div.innerHTML = text;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
@@ -88,12 +93,12 @@ function renderTextLayer(layer) {
         div.style.setProperty('mix-blend-mode', layer.blendMode);
         console.log(layer.blendMode);
     }
+    div.style.setProperty('font-family', layer.fontType);
     div.style.position = 'absolute';
     div.style.width = 'fit-content';
     div.style.left = (parseFloat(layer.x) - cropX) + 'px';
     div.style.top = (parseFloat(layer.y) - cropY) + 'px';
     div.style.fontSize = layer.fontSize + 'px';
-    div.style.fontFamily = 'Arial';
     div.style.color = layer.color;
     div.style.zIndex = layer.zIndex;
     div.style.opacity = parseFloat(layer.opacity) / 100;

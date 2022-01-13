@@ -10,6 +10,12 @@ for (let i = 0; i < menus.length; i++) {
             return;
         }
         let id = e.target.getAttribute('id');
+        if (id === 'select' && layers[indexOfSelectedLayer()].type != 'image') {
+            return;
+        }
+        if (id === 'filters' && layers[indexOfSelectedLayer()].type != 'image') {
+            return;
+        }
         if (id === 'move') {
             currentTool = 'move';
             document.getElementById('viewport').style.cursor = 'move';
@@ -18,7 +24,7 @@ for (let i = 0; i < menus.length; i++) {
             document.getElementById('viewport').style.cursor = 'move';
         } else {
             currentTool = null;
-            document.getElementById('viewport').style.cursor = 'move';
+            document.getElementById('viewport').style.cursor = 'auto';
         }
         setTextMenu();
         setShapesMenu();

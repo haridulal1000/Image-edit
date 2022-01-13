@@ -67,6 +67,27 @@
                         </div>
                         <input type="range" max="50" min="0" class="filter-slide" id="blur" />
                     </div>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Gray-Scale</div>
+                            <span class="float-right" id="grayscale-value">0</span>
+                        </div>
+                        <input type="range" max="100" min="0" class="filter-slide" id="grayscale" />
+                    </div>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Invert</div>
+                            <span class="float-right" id="invert-value">0</span>
+                        </div>
+                        <input type="range" max="100" min="0" class="filter-slide" id="invert" />
+                    </div>
+                    <div class="filter-item">
+                        <div class="clear-fix">
+                            <div class="filter-item-name">Sepia</div>
+                            <span class="float-right" id="sepia-value">0</span>
+                        </div>
+                        <input type="range" max="100" min="0" class="filter-slide" id="sepia" />
+                    </div>
                 </div>
                 <div class="sub-folder-item" id="opacity-menu">
                     <h2>Opacity</h2>
@@ -158,6 +179,21 @@
                             <div class="float-left">Color</div>
                             <input type="color" id="text-color" class="float-right" value="#c20606">
                         </div>
+
+                        <label for="fonts" id="font-label">Choose a Font:</label>
+
+                        <select name="fonts" id="fonts">
+                               <option value="Arial">Arial</option>
+                               <option value="Verdana">Verdana</option>
+                            <option value="Helvetica">Helvetica</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Trebuchet MS">Trebuchet MS</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Garamond">Garamond</option>
+                                <option value="Courier New">Courier New</option>
+                                <option value="Brush Script MT">Brush Script MT</option>
+                                   </select>
                     </div>
                     <div id="new-text">
                         <button id="new-text-btn">New Text Layer</button>

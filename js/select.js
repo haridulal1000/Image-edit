@@ -111,6 +111,9 @@ makeSelection.addEventListener('click', function() {
             hue: 0,
             saturation: 100,
             blur: 0,
+            grayscale: 0,
+            invert: 0,
+            sepia: 0,
             visible: true
         }));
         id++;
