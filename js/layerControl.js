@@ -1,7 +1,6 @@
 let layers = [];
 let id = 0;
-let scaleX = 1;
-let scaleY = 1;
+let scale = 1;
 let selectedLayer;
 
 function renderLayersAll() {
@@ -25,6 +24,7 @@ function renderLayersAll() {
         setShapesMenu();
         setRotateProperties();
     }
+
     addNextLayer();
     downloadButton();
 
@@ -45,7 +45,7 @@ function setImageView() {
     document.getElementById('imageView').style.width = layers[0].width + 'px';
     document.getElementById('imageView').style.height = layers[0].height + 'px';
     document.getElementById('imageView').style.overflow = 'hidden';
-    document.getElementById('imageView').style.transform = `scale(${scale},${scale})`;
+    document.getElementById('imageView').style.transform = `scale(${scale})`;
     document.getElementById('imageView').style.border = `2px solid white`;
 }
 

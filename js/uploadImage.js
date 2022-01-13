@@ -8,6 +8,7 @@ uploadFile.addEventListener('change', function() {
         document.getElementById('upload-file').remove();
         document.getElementById('upload-button').remove();
         image.onload = function() {
+
             addLayer(new ImageLayer({
                 type: 'image',
                 id: id,
@@ -27,6 +28,7 @@ uploadFile.addEventListener('change', function() {
                 blur: 0,
                 visible: true
             }));
+
             selectedLayer = 0;
             document.getElementById('imageView').style.width = layers[0].width;
             document.getElementById('imageView').style.height = layers[0].height;

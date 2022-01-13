@@ -1,1 +1,0 @@
-let scale = 1;

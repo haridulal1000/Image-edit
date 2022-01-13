@@ -8,6 +8,9 @@ function renderLayer(layer) {
     if (document.getElementById('view' + layer.id)) {
         document.getElementById('view' + layer.id).remove();
     }
+    if (layer.type === 'line') {
+        renderLineLayer(layer);
+    }
     if (layer.type === 'image') {
         renderImageLayer(layer);
         // renderLayerItem(layer);
@@ -21,6 +24,9 @@ function renderLayer(layer) {
     if (layer.type === 'rect') {
         renderRectLayer(layer);
     }
+    if (layer.type === 'polygon') {
+        renderPolygonLayer(layer);
+    }
     if (selectedLayer != null) {
         setProperties();
         setFilters();
@@ -28,6 +34,8 @@ function renderLayer(layer) {
         setTextProperties();
         setImageView();
         setRotateProperties();
+        setShapesProperties();
+        setShapesMenu();
     }
 
 }
@@ -40,7 +48,7 @@ function renderImageLayer(layer) {
     renderImage.src = layer.image.src;
     renderImage.width = layer.width;
     renderImage.height = layer.height;
-    renderImage.style = `filter: brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%)`;
+    renderImage.style = `filter: brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
 
 
     div.appendChild(renderImage);
@@ -48,7 +56,7 @@ function renderImageLayer(layer) {
     div.style.position = 'absolute';
     div.style.left = layer.x + 'px';
     div.style.top = layer.y + 'px';
-    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
     document.getElementById('imageView').appendChild(div);
@@ -60,7 +68,7 @@ function renderTextLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     div.innerHTML = layer.text;
-    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
     div.style.position = 'absolute';
@@ -69,10 +77,39 @@ function renderTextLayer(layer) {
     div.style.top = layer.y + 'px';
     div.style.fontSize = layer.fontSize + 'px';
     div.style.fontFamily = 'Arial';
-    div.style.color = `rgb(${layer.color.r},${layer.color.g},${layer.color.b})`;
+    div.style.color = layer.color;
     div.style.zIndex = layer.zIndex;
     document.getElementById('imageView').appendChild(div);
 }
+
+
+
+
+function renderLineLayer(layer) {
+    let div = document.createElement('div');
+    div.setAttribute('id', 'view' + layer.id);
+    div.style.position = 'absolute';
+    div.style.left = layer.x + 'px';
+    div.style.top = layer.y + 'px';
+    div.style.zIndex = layer.zIndex;
+    div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
+    div.style.transform = `rotate(${layer.rotate}deg)`;
+    console.log('rotate: ' + layer.rotate + " " + layer.originX);
+
+    div.innerHTML = ` <svg  width="${Math.abs(parseFloat(layer.point.x2)-parseFloat(layer.point.x1))+parseFloat(layer.point.x1)+parseFloat(layer.strokeWeight)}" height="${Math.abs(parseFloat(layer.point.y2)-parseFloat(layer.point.y1))+parseFloat(layer.point.y1)+parseFloat(layer.strokeWeight)}">
+      <line  x1="${layer.point.x1}" y1="${layer.point.y1}" x2="${layer.point.x2}" y2="${layer.point.y2}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
+    </svg>
+    `;
+    document.getElementById('imageView').appendChild(div);
+}
+
+
+
+
+
+
+
+
 
 function renderCircleLayer(layer) {
     let div = document.createElement('div');
@@ -81,7 +118,7 @@ function renderCircleLayer(layer) {
     div.style.left = layer.x + 'px';
     div.style.top = layer.y + 'px';
     div.style.zIndex = layer.zIndex;
-    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
     let strokeOpacity;
@@ -97,7 +134,7 @@ function renderCircleLayer(layer) {
         fillOpacity = 0.0;
     }
     div.innerHTML = ` <svg  width="${layer.radius*2+layer.strokeWeight}" height="${layer.radius*2+layer.strokeWeight}">
-      <circle stroke-opacity="${strokeOpacity}" fill-opacity="${fillOpacity}" cx="${layer.radius+layer.strokeWeight/2}" cy="${layer.radius+layer.strokeWeight/2}" r="${layer.radius}" fill="rgb(${layer.fill.r},${layer.fill.g},${layer.fill.b})" stroke="rgb(${layer.stroke.r},${layer.stroke.g},${layer.stroke.b})" stroke-width="${layer.strokeWeight}"/>
+      <circle stroke-opacity="${strokeOpacity}" fill-opacity="${fillOpacity}" cx="${layer.radius+layer.strokeWeight/2}" cy="${layer.radius+layer.strokeWeight/2}" r="${layer.radius}" fill="${layer.fill}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
     </svg>
     `;
     document.getElementById('imageView').appendChild(div);
@@ -110,7 +147,7 @@ function renderRectLayer(layer) {
     div.style.left = layer.x + 'px';
     div.style.top = layer.y + 'px';
     div.style.zIndex = layer.zIndex;
-    div.style.transformOrigin = `${layer.originX} ${layer.originY}`;
+    div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
     let strokeOpacity;
@@ -127,7 +164,43 @@ function renderRectLayer(layer) {
     }
 
     div.innerHTML = ` <svg  width="${parseFloat(layer.width)+parseFloat(layer.strokeWeight)}" height="${parseFloat(layer.height)+parseFloat(layer.strokeWeight)}">
-      <rect stroke-opacity="${strokeOpacity}" fill-opacity="${fillOpacity}" x="${layer.strokeWeight/2}" y="${layer.strokeWeight/2}" width="${layer.width}" height="${layer.height}" fill="rgb(${layer.fill.r},${layer.fill.g},${layer.fill.b})" stroke="rgb(${layer.stroke.r},${layer.stroke.g},${layer.stroke.b})" stroke-width="${layer.strokeWeight}"/>
+      <rect stroke-opacity="${strokeOpacity}" fill-opacity="${fillOpacity}" x="${layer.strokeWeight/2}" y="${layer.strokeWeight/2}" width="${layer.width}" height="${layer.height}" fill="${layer.fill}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
+    </svg>
+    `;
+    console.log('here')
+    document.getElementById('imageView').appendChild(div);
+}
+
+
+function renderPolygonLayer(layer) {
+    let div = document.createElement('div');
+    div.setAttribute('id', 'view' + layer.id);
+    div.style.position = 'absolute';
+    div.style.left = layer.x + 'px';
+    div.style.top = layer.y + 'px';
+    div.style.zIndex = layer.zIndex;
+    div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
+    div.style.transform = `rotate(${layer.rotate}deg)`;
+    console.log('rotate: ' + layer.rotate + " " + layer.originX);
+    let strokeOpacity;
+    let fillOpacity;
+    if (layer.visibleStroke) {
+        strokeOpacity = 1.0;
+    } else {
+        strokeOpacity = 0.0;
+    }
+    if (layer.visibleFill) {
+        fillOpacity = 1.0;
+    } else {
+        fillOpacity = 0.0;
+    }
+    let points = '';
+    for (let i = 0; i < layer.point.length; i++) {
+        points = points + `${layer.point[i].x} ${layer.point[i].y} `;
+    }
+    console.log('points ' + points);
+    div.innerHTML = ` <svg  width="${layer.width}" height="${layer.height}">
+      <polygon points= "${points}" stroke-opacity="${strokeOpacity}" fill-opacity="${fillOpacity}" fill="${layer.fill}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
     </svg>
     `;
     console.log('here')

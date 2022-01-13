@@ -98,7 +98,7 @@ h2 {
     border-radius: 10px;
     background: transparent;
     font-size: 20px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
 #edit-text {
@@ -154,4 +154,36 @@ input[type='range'] {
 
 #rotate-menu div {
     margin: 10px 0 10px 0;
+}
+
+#create-selection {
+    display: block;
+    margin: 20px auto 20px auto;
+    padding: 10px 5px 10px 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#make-selection,
+#cancel-selection {
+    display: none;
+    margin: 20px auto 20px auto;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.zoom-btn {
+    width: 40%;
+    padding: 10px 0 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#zoom-value {
+    text-align: center;
+    margin: 20px 0 20px 0;
+    font-weight: bold;
 }

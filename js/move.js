@@ -27,8 +27,8 @@ document.getElementById('viewport').addEventListener('mousemove', function(e) {
             if (selectedLayer == layers[i].id) {
                 // layers[i].x = e.clientX - rect.left - layers[i].width / 2;
                 // layers[i].y = e.clientY - rect.top - layers[i].height / 2;
-                layers[i].x += e.clientX - xoffset;
-                layers[i].y += e.clientY - yoffset;
+                layers[i].x += (e.clientX - xoffset) / scale;
+                layers[i].y += (e.clientY - yoffset) / scale;
                 xoffset = e.clientX;
                 yoffset = e.clientY;
                 renderLayer(layers[i]);

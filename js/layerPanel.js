@@ -50,16 +50,23 @@ function renderLayerItem(layer) {
     if (layer.type === 'text') {
         renderImage.src = './images/text-layer-icon.png';
     }
+    if (layer.type === 'line') {
+        renderImage.src = './images/line.png';
+    }
     if (layer.type === 'circle') {
         renderImage.src = './images/circle.png';
     }
     if (layer.type === 'rect') {
         renderImage.src = './images/square.png';
     }
+    if (layer.type === 'polygon') {
+        renderImage.src = './images/polygon.png';
+    }
 
     // console.log(renderImage);
     renderImage.width = 100;
     renderImage.height = 100;
+    renderImage.style.background = 'white'
     let visible = document.createElement('input');
     let label = document.createElement('label');
     visible.setAttribute('type', 'checkbox');
@@ -190,6 +197,9 @@ function addNextLayer() {
         reader.addEventListener('load', function() {
             image.src = this.result;
             image.onload = function() {
+
+
+
                 addLayer(new ImageLayer({
                     type: 'image',
                     id: id,

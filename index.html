@@ -23,6 +23,7 @@
                 <div class="folder-item" id="move">Move</div>
                 <div class="folder-item" id="shapes">Shapes</div>
                 <div class="folder-item" id="select">Select</div>
+                <div class="folder-item" id="zoom">Zoom</div>
             </div>
             <div class="sub-folder">
                 <div class="sub-folder-item" id="filters-menu">
@@ -112,19 +113,8 @@
                             <input type="range" id="font-size" min="0" max="200" />
                         </div>
                         <div class="clear-fix">
-                            <div class="fit-content center color-bar">Red</div>
-                            <input type="range" min="0" max="255" id="red" class="float-left" />
-                            <div id="red-value" class="float-right">0</div>
-                        </div>
-                        <div class="clear-fix">
-                            <div class="fit-content center color-bar">Green</div>
-                            <input type="range" min="0" max="255" id="green" class="float-left" />
-                            <div id="green-value" class="float-right">0</div>
-                        </div>
-                        <div class="clear-fix">
-                            <div class="fit-content center color-bar">Blue</div>
-                            <input type="range" min="0" max="255" id="blue" class="float-left" />
-                            <div id="blue-value" class="float-right">0</div>
+                            <div class="float-left">Color</div>
+                            <input type="color" id="text-color" class="float-right" value="#c20606">
                         </div>
                     </div>
                     <div id="new-text">
@@ -136,30 +126,11 @@
                     <div id="line-properties" class="shape-properties">
                         <div class="clear-fix">
                             <div class="float-left">Stroke</div>
-                            <div class="float-right">
-                                <input type="text" id="line-stroke" class="input-sm">
-                            </div>
+                            <input type="text" class="float-right input-sm" id="line-stroke">
                         </div>
-                        <h5>Stroke Color</h2>
-                            <div class="clear-fix">
-                                <div>Red</div>
-                                <input type="range" id="line-red" min="0" max="255" class="float-left">
-                                <div class="float-right" id="line-red-value">0</div>
-                            </div>
-                            <div class="clear-fix">
-                                <div>Green</div>
-                                <input type="range" id="line-green" min="0" max="255" class="float-left">
-                                <div class="float-right" id="line-red-value">0</div>
-                            </div>
-                            <div class="clear-fix">
-                                <div>Blue</div>
-                                <input type="range" id="line-blue" min="0" max="255" class="float-left">
-                                <div class="float-right" id="line-blue-value">0</div>
-                            </div>
-
-
+                        <h5>Stroke Color</h5>
+                        <input type="color" id="line-stroke-color">
                     </div>
-
                     <div id="circle-properties" class="shape-properties">
                         <div class="clear-fix">
                             <div class="float-left">Radius</div>
@@ -176,39 +147,11 @@
                         <h5>Stroke Color</h2>
                             <input type="checkbox" id="circle-stroke-visible" checked=true>
                             <label for="circle-stroke-visible">Turn On/Off Stroke</label>
-                            <div class="clear-fix">
-                                <div>Red</div>
-                                <input type="range" id="circle-stroke-red" min="0" max="255" class="float-left">
-                                <div class="float-right" id="circle-stroke-red-value">0</div>
-                            </div>
-                            <div class="clear-fix">
-                                <div>Green</div>
-                                <input type="range" id="circle-stroke-green" min="0" max="255" class="float-left">
-                                <div class="float-right" id="circle-stroke-green-value">0</div>
-                            </div>
-                            <div class="clear-fix">
-                                <div>Blue</div>
-                                <input type="range" id="circle-stroke-blue" min="0" max="255" class="float-left">
-                                <div class="float-right" id="circle-stroke-blue-value">0</div>
-                            </div>
+                            <input type="color" id="circle-stroke-color">
                             <h5>Fill Color</h2>
                                 <input type="checkbox" id="circle-fill-visible" checked=true>
                                 <label for="circle-fill-visible">Turn On/Off Stroke</label>
-                                <div class="clear-fix">
-                                    <div>Red</div>
-                                    <input type="range" id="circle-fill-red" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="circle-fill-red-value">0</div>
-                                </div>
-                                <div class="clear-fix">
-                                    <div>Green</div>
-                                    <input type="range" id="circle-fill-green" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="circle-fill-green-value">0</div>
-                                </div>
-                                <div class="clear-fix">
-                                    <div>Blue</div>
-                                    <input type="range" id="circle-fill-blue" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="circle-fill-blue-value">0</div>
-                                </div>
+                                <input type="color" id="circle-fill-color">
 
 
                     </div>
@@ -234,42 +177,46 @@
                         <h5>Stroke Color</h2>
                             <input type="checkbox" id="rect-stroke-visible" checked=true>
                             <label for="rect-stroke-visible">Turn On/Off Stroke</label>
-                            <div class="clear-fix">
-                                <div>Red</div>
-                                <input type="range" id="rect-stroke-red" min="0" max="255" class="float-left">
-                                <div class="float-right" id="rect-stroke-red-value">0</div>
-                            </div>
-                            <div class="clear-fix">
-                                <div>Green</div>
-                                <input type="range" id="rect-stroke-green" min="0" max="255" class="float-left">
-                                <div class="float-right" id="rect-stroke-green-value">0</div>
-                            </div>
-                            <div class="clear-fix">
-                                <div>Blue</div>
-                                <input type="range" id="rect-stroke-blue" min="0" max="255" class="float-left">
-                                <div class="float-right" id="rect-stroke-blue-value">0</div>
-                            </div>
+                            <input type="color" id="rect-stroke-color">
                             <h5>Fill Color</h2>
                                 <input type="checkbox" id="rect-fill-visible" checked=true>
                                 <label for="rect-fill-visible">Turn On/Off Fill</label>
-                                <div class="clear-fix">
-                                    <div>Red</div>
-                                    <input type="range" id="rect-fill-red" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="rect-fill-red-value">0</div>
-                                </div>
-                                <div class="clear-fix">
-                                    <div>Green</div>
-                                    <input type="range" id="rect-fill-green" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="rect-fill-green-value">0</div>
-                                </div>
-                                <div class="clear-fix">
-                                    <div>Blue</div>
-                                    <input type="range" id="rect-fill-blue" min="0" max="255" class="float-left">
-                                    <div class="float-right" id="rect-fill-blue-value">0</div>
-                                </div>
+                                <input type="color" id="rect-fill-color">
+
 
 
                     </div>
+
+
+                    <div id="polygon-properties" class="shape-properties">
+                        <div class="clear-fix">
+                            <div class="float-left">Sides</div>
+                            <div class="float-right">
+                                <input type="text" id="polygon-sides" class="input-sm" value="5">
+                            </div>
+                        </div>
+                        <div class="clear-fix">
+                            <div class="float-left">Stroke</div>
+                            <div class="float-right">
+                                <input type="text" id="polygon-stroke" class="input-sm" value="5">
+                            </div>
+                        </div>
+                        <h5>Stroke Color</h2>
+                            <input type="checkbox" id="polygon-stroke-visible" checked=true>
+                            <label for="polygon-stroke-visible">Turn On/Off Stroke</label>
+                            <input type="color" id="polygon-stroke-color">
+                            <h5>Fill Color</h2>
+                                <input type="checkbox" id="polygon-fill-visible" checked=true>
+                                <label for="polygon-fill-visible">Turn On/Off Fill</label>
+                                <input type="color" id="polygon-fill-color">
+
+
+
+                    </div>
+
+
+
+
                     <div id="shapes-tools">
                         <img src="./images/line.png" alt="line" class="shape-menu-item" id="shapes-line">
                         <img src="./images/circle.png" alt="circle" class="shape-menu-item" id="shapes-circle">
@@ -277,6 +224,23 @@
                         <img src="./images/polygon.png" alt="polygon" class="shape-menu-item" id="shapes-polygon">
                     </div>
 
+
+
+                </div>
+                <div class="sub-folder-item" id="select-menu">
+                    <h2>Select Menu</h2>
+                    <input type="button" id="create-selection" value="Create A New Selection">
+                    <input type="button" id="make-selection" value="select">
+                    <input type="button" id="cancel-selection" value="cancel">
+
+                </div>
+                <div class="sub-folder-item" id="zoom-menu">
+                    <h2>Zoom Menu</h2>
+                    <div class="clear-fix">
+                        <input type="button" value="Zoom In" id="zoom-in" class='float-left zoom-btn'>
+                        <input type="button" value="Zoom Out" id="zoom-out" class='float-right zoom-btn'>
+                    </div>
+                    <div id="zoom-value">Zoom: 1</div>
 
 
                 </div>
@@ -288,6 +252,7 @@
             <div id="imageView">
                 <input type="file" id="upload-file" />
                 <label for="upload-file" id="upload-button"><span id="upload-button-icon">+</span> Upload Image</label>
+
             </div>
         </div>
 
@@ -299,6 +264,7 @@
         <!-- layers-panel -->
     </div>
 </body>
+<script src="./js/utils.js"></script>
 <script src="./js/index.js"></script>
 <script src="./js/menu.js"></script>
 <script src="./js/uploadImage.js"></script>
@@ -311,9 +277,10 @@
 <script src="./js/text.js"></script>
 <script src="./js/filters.js"></script>
 <script src="./js/export.js"></script>
-<script src="./js/scale.js"></script>
 <script src="./js/shapes.js"></script>
 <script src="./js/test.js"></script>
 <script src="./js/rotate.js"></script>
+<script src="./js/select.js"></script>
+<script src="./js/zoom.js"></script>
 
 </html>

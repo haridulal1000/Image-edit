@@ -34,7 +34,14 @@ function Export() {
 }
 
 function exportImage(layer) {
+    context.filter = `brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
+    context.save();
+    context.translate(parseFloat(layer.x) + parseFloat(layer.originX), parseFloat(layer.y) + parseFloat(layer.originY));
+    context.rotate(layer.rotate * Math.PI / 180);
+    context.translate(-(parseFloat(layer.x) + parseFloat(layer.originX)), -(parseFloat(layer.y) + parseFloat(layer.originY)));
+
     context.drawImage(layer.image, layer.x, layer.y, layer.width, layer.height);
+    context.restore();
 }
 
 function exportText(layer) {
@@ -48,7 +55,7 @@ function exportText(layer) {
 
 function exportCircle(layer) {
 
-    context.fillStyle = `rgb(${layer.fill.r},${layer.fill.g},${layer.fill.b})`;
+    context.fillStyle = layer.fill;
 
 
 
@@ -60,7 +67,7 @@ function exportCircle(layer) {
 
     let centerX = parseInt(layer.x) + parseInt(layer.radius) + parseFloat(layer.strokeWeight) / 2;
     let centerY = parseInt(layer.y) + parseInt(layer.radius) + parseFloat(layer.strokeWeight) / 2;
-    context.strokeStyle = `rgb(${layer.stroke.r},${layer.stroke.g},${layer.stroke.b})`;
+    context.strokeStyle = layer.stroke;
     context.beginPath();
     context.arc(centerX, centerY, parseInt(layer.radius), 0, Math.PI * 2);
     if (layer.visibleFill === true) {
@@ -76,13 +83,13 @@ function exportRect(layer) {
 
 
 
-    context.fillStyle = `rgb(${layer.fill.r},${layer.fill.g},${layer.fill.b})`;
+    context.fillStyle = layer.fill;
 
 
 
     context.lineWidth = parseFloat(layer.strokeWeight);
 
-    context.strokeStyle = `rgb(${layer.stroke.r},${layer.stroke.g},${layer.stroke.b})`;
+    context.strokeStyle = layer.stroke;
     let x = layer.x + layer.strokeWeight / 2;
     let y = layer.y + layer.strokeWeight / 2;
     context.beginPath();

@@ -13,7 +13,7 @@ function ImageLayer(info) {
     this.contrast = info.contrast;
     this.hue = info.hue;
     this.saturation = info.saturation;
-    this.blue = info.blur;
+    this.blur = info.blur;
     this.zIndex = info.zIndex;
     this.visible = info.visible;
 
@@ -48,6 +48,7 @@ function Line(info) {
     this.width = info.width;
     this.height = info.height;
     this.point = info.point;
+    this.zIndex = info.zIndex;
 }
 
 function Circle(info) {
@@ -84,6 +85,28 @@ function Rect(info) {
     this.width = info.width;
     this.height = info.height;
     this.visibleStroke = info.visibleStroke;
+    this.visibleFill = info.visibleFill;
+
+}
+
+function Polygon(info) {
+    this.type = info.type;
+    this.id = info.id;
+    this.originX = info.originX;
+    this.originY = info.originY;
+    this.rotate = info.rotate;
+    this.x = info.x;
+    this.y = info.y;
+    this.zIndex = info.zIndex;
+    this.visible = info.visible;
+    this.stroke = info.stroke;
+    this.strokeWeight = info.strokeWeight;
+    this.fill = info.fill;
+    this.width = info.width;
+    this.height = info.height;
+    this.visibleStroke = info.visibleStroke;
+    this.sides = info.sides;
+    this.point = info.point;
     this.visibleFill = info.visibleFill;
 
 }
