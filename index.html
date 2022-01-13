@@ -18,6 +18,7 @@
             <div class="folder">
                 <div class="folder-item active" id="properties">Properties</div>
                 <div class="folder-item" id="filters">Filters</div>
+                <div class="folder-item" id="opacity">Opacity</div>
                 <div class="folder-item" id="rotate">Rotate</div>
                 <div class="folder-item" id="text">Text</div>
                 <div class="folder-item" id="move">Move</div>
@@ -65,7 +66,14 @@
                         <input type="range" max="50" min="0" class="filter-slide" id="blur" />
                     </div>
                 </div>
+                <div class="sub-folder-item" id="opacity-menu">
+                    <h2>Opacity</h2>
+                    <div class="clear-fix">
+                        <input type="range" id="opacity-slider" min="0" max="100" value="100" class="float-left">
+                        <div class="float-right" id="opacity-value">1</div>
+                    </div>
 
+                </div>
 
                 <div class="sub-folder-item" id="rotate-menu">
                     <h2>Rotate</h2>
@@ -282,5 +290,6 @@
 <script src="./js/rotate.js"></script>
 <script src="./js/select.js"></script>
 <script src="./js/zoom.js"></script>
+<script src="./js/opacity.js"></script>
 
 </html>

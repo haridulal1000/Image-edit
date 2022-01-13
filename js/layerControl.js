@@ -23,6 +23,7 @@ function renderLayersAll() {
         setShapesProperties();
         setShapesMenu();
         setRotateProperties();
+        setOpacity();
     }
 
     addNextLayer();

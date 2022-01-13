@@ -38,6 +38,7 @@ function Export() {
 }
 
 function exportImage(layer) {
+    context.globalAlpha = parseFloat(layer.opacity) / 100;
     context.filter = `brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
     context.save();
     context.translate(parseFloat(layer.x) + parseFloat(layer.originX), parseFloat(layer.y) + parseFloat(layer.originY));
@@ -49,6 +50,7 @@ function exportImage(layer) {
 }
 
 function exportText(layer) {
+    context.globalAlpha = parseFloat(layer.opacity) / 100;
     context.fillStyle = `rgb(${layer.color.r},${layer.color.g},${layer.color.b})`;
     // context.font = `${layer.fontSize}px Arial`;
     context.font = layer.fontSize + "px " + " Arial";
@@ -61,7 +63,7 @@ function exportCircle(layer) {
 
     context.fillStyle = layer.fill;
 
-
+    context.globalAlpha = parseFloat(layer.opacity) / 100;
 
 
 
@@ -89,7 +91,7 @@ function exportRect(layer) {
 
     context.fillStyle = layer.fill;
 
-
+    context.globalAlpha = parseFloat(layer.opacity) / 100;
 
     context.lineWidth = parseFloat(layer.strokeWeight);
 
@@ -114,7 +116,7 @@ function exportRect(layer) {
 function exportLine(layer) {
 
 
-
+    context.globalAlpha = parseFloat(layer.opacity) / 100;
 
 
 

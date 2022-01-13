@@ -56,7 +56,8 @@ document.getElementById('shapes-circle').addEventListener('click', function(e) {
             visibleStroke: true,
             visibleFill: true,
             strokeWeight: 10,
-            visible: true
+            visible: true,
+            opacity: 100
         })
     );
     selectedLayer = id - 1;
@@ -81,7 +82,8 @@ document.getElementById('shapes-rect').addEventListener('click', function(e) {
             strokeWeight: 10,
             visibleStroke: true,
             visibleFill: true,
-            visible: true
+            visible: true,
+            opacity: 100
         })
     );
     selectedLayer = id - 1;
@@ -124,7 +126,8 @@ function insertPolygon() {
             point: arr,
             visibleStroke: true,
             visibleFill: true,
-            visible: true
+            visible: true,
+            opacity: 100
         })
     );
     selectedLayer = id - 1;

@@ -36,6 +36,7 @@ function renderLayer(layer) {
         setRotateProperties();
         setShapesProperties();
         setShapesMenu();
+        setOpacity();
     }
 
 }
@@ -58,6 +59,7 @@ function renderImageLayer(layer) {
     div.style.top = layer.y + 'px';
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
+    div.style.opacity = parseFloat(layer.opacity) / 100;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
     document.getElementById('imageView').appendChild(div);
 
@@ -79,6 +81,7 @@ function renderTextLayer(layer) {
     div.style.fontFamily = 'Arial';
     div.style.color = layer.color;
     div.style.zIndex = layer.zIndex;
+    div.style.opacity = parseFloat(layer.opacity) / 100;
     document.getElementById('imageView').appendChild(div);
 }
 
@@ -100,6 +103,7 @@ function renderLineLayer(layer) {
       <line  x1="${layer.point.x1}" y1="${layer.point.y1}" x2="${layer.point.x2}" y2="${layer.point.y2}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
     </svg>
     `;
+    div.style.opacity = parseFloat(layer.opacity) / 100;
     document.getElementById('imageView').appendChild(div);
 }
 
@@ -137,6 +141,7 @@ function renderCircleLayer(layer) {
       <circle stroke-opacity="${strokeOpacity}" fill-opacity="${fillOpacity}" cx="${layer.radius+layer.strokeWeight/2}" cy="${layer.radius+layer.strokeWeight/2}" r="${layer.radius}" fill="${layer.fill}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
     </svg>
     `;
+    div.style.opacity = parseFloat(layer.opacity) / 100;
     document.getElementById('imageView').appendChild(div);
 }
 
@@ -168,6 +173,7 @@ function renderRectLayer(layer) {
     </svg>
     `;
     console.log('here')
+    div.style.opacity = parseFloat(layer.opacity) / 100;
     document.getElementById('imageView').appendChild(div);
 }
 
@@ -204,5 +210,6 @@ function renderPolygonLayer(layer) {
     </svg>
     `;
     console.log('here')
+    div.style.opacity = parseFloat(layer.opacity) / 100;
     document.getElementById('imageView').appendChild(div);
 }

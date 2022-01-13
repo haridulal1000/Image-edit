@@ -32,7 +32,8 @@ document.getElementById('new-text-btn').addEventListener('click', function() {
         originY: 0,
         rotate: 0,
         zIndex: (id + 5),
-        visible: true
+        visible: true,
+        opacity: 100
     }));
     selectedLayer = id - 1;
     renderLayersAll();

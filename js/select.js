@@ -9,6 +9,7 @@ createSelection.addEventListener('click', createSelectionFunction);
 
 function createSelectionFunction() {
     console.log('here');
+    document.getElementById('viewport').style.cursor = 'crosshair';
 
     createSelection.style.display = 'none';
     makeSelection.style.display = 'block';
@@ -68,12 +69,14 @@ document.getElementById('imageView').addEventListener('mouseup', function(e) {
 });
 cancelSelection.addEventListener('click', function(e) {
     selectCanvas.remove();
+    document.getElementById('viewport').style.cursor = 'auto';
     createSelection.style.display = 'block';
     makeSelection.style.display = 'none';
     cancelSelection.style.display = 'none';
 });
 makeSelection.addEventListener('click', function() {
     edited = true;
+    document.getElementById('viewport').style.cursor = 'auto';
     let image = layers[indexOfSelectedLayer()].image;
     // image.width = selectCanvas.width;
     // image.height = selectCanvas.height;

@@ -103,6 +103,7 @@ function renderLayerItem(layer) {
             setShapesProperties();
             setShapesMenu();
             setRotateProperties();
+            setOpacity();
         }
 
 
@@ -217,7 +218,8 @@ function addNextLayer() {
                     hue: 0,
                     saturation: 100,
                     blur: 0,
-                    visible: true
+                    visible: true,
+                    opacity: 100
                 }));
                 selectedLayer = id - 1;
                 renderLayersAll();

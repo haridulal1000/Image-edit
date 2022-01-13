@@ -16,6 +16,7 @@ function ImageLayer(info) {
     this.blur = info.blur;
     this.zIndex = info.zIndex;
     this.visible = info.visible;
+    this.opacity = info.opacity;
 
 }
 
@@ -32,6 +33,7 @@ function TextLayer(info) {
     this.x = info.x;
     this.y = info.y;
     this.visible = info.visible;
+    this.opacity = info.opacity;
 }
 
 function Line(info) {
@@ -49,6 +51,7 @@ function Line(info) {
     this.height = info.height;
     this.point = info.point;
     this.zIndex = info.zIndex;
+    this.opacity = info.opacity;
 }
 
 function Circle(info) {
@@ -67,6 +70,7 @@ function Circle(info) {
     this.radius = info.radius;
     this.visibleStroke = info.visibleStroke;
     this.visibleFill = info.visibleFill;
+    this.opacity = info.opacity;
 }
 
 function Rect(info) {
@@ -86,6 +90,7 @@ function Rect(info) {
     this.height = info.height;
     this.visibleStroke = info.visibleStroke;
     this.visibleFill = info.visibleFill;
+    this.opacity = info.opacity;
 
 }
 
@@ -108,5 +113,6 @@ function Polygon(info) {
     this.sides = info.sides;
     this.point = info.point;
     this.visibleFill = info.visibleFill;
+    this.opacity = info.opacity;
 
 }

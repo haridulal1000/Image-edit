@@ -26,7 +26,8 @@ uploadFile.addEventListener('change', function() {
                 hue: 0,
                 saturation: 100,
                 blur: 0,
-                visible: true
+                visible: true,
+                opacity: 100
             }));
 
             selectedLayer = 0;
