@@ -203,3 +203,7 @@ input[type='range'] {
     display: block;
     margin-top: 20px;
 }
+
+#crop-menu div {
+    margin: 20px auto 20px auto;
+}

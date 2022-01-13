@@ -406,7 +406,10 @@ let lineX;
 let lineY;
 
 document.getElementById('imageView').addEventListener('mousedown', function(e) {
-    if (currentTool != 'move' && layers[indexOfSelectedLayer()].type === 'line') {
+    if (currentTool != 'move' && layers.length > 0) {
+        if (layers[indexOfSelectedLayer()].type != 'line') {
+            return;
+        }
         let layer = layers[indexOfSelectedLayer()];
         lineHold = true;
         let rec = document.getElementById('imageView').getBoundingClientRect();

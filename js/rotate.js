@@ -4,6 +4,9 @@ let originX = document.getElementById('origin-x');
 let originY = document.getElementById('origin-y');
 
 function setRotateProperties() {
+    if (layers[indexOfSelectedLayer()] === null || layers.length <= 0) {
+        return;
+    }
     rotateSlide.value = layers[indexOfSelectedLayer()].rotate;
     rotateValue.innerHTML = layers[indexOfSelectedLayer()].rotate;
     originX.value = layers[indexOfSelectedLayer()].originX;

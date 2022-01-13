@@ -1,9 +1,11 @@
 let canvas = document.createElement('canvas');
 let context = canvas.getContext('2d');
+let cropCanvas = document.createElement('canvas');
+let cropContext = cropCanvas.getContext('2d');
 
 function Export() {
-    canvas.width = layers[0].width;
-    canvas.height = layers[0].height;
+    canvas.width = cropWidth;
+    canvas.height = cropHeight;
     for (let i = 0; i < layers.length; i++) {
         if (layers[i].type === 'image' && layers[i].visible === true) {
             exportImage(layers[i]);
@@ -25,7 +27,10 @@ function Export() {
             exportRect(layers[i]);
         }
     }
-    var jpegUrl = canvas.toDataURL("image/jpg");
+    cropCanvas.width = canvas.width;
+    cropCanvas.height = canvas.height;
+    cropContext.drawImage(canvas, 0, 0);
+    var jpegUrl = cropCanvas.toDataURL("image/jpg");
 
     const link = document.createElement("a");
     document.body.appendChild(link);
@@ -44,11 +49,11 @@ function exportImage(layer) {
     }
     context.filter = `brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
     context.save();
-    context.translate(parseFloat(layer.x) + parseFloat(layer.originX), parseFloat(layer.y) + parseFloat(layer.originY));
+    context.translate(parseFloat((parseFloat(layer.x) - cropX)) + parseFloat(layer.originX), parseFloat((parseFloat(layer.y) - cropY)) + parseFloat(layer.originY));
     context.rotate(layer.rotate * Math.PI / 180);
-    context.translate(-(parseFloat(layer.x) + parseFloat(layer.originX)), -(parseFloat(layer.y) + parseFloat(layer.originY)));
+    context.translate(-(parseFloat((parseFloat(layer.x) - cropX)) + parseFloat(layer.originX)), -(parseFloat((parseFloat(layer.y) - cropY)) + parseFloat(layer.originY)));
 
-    context.drawImage(layer.image, layer.x, layer.y, layer.width, layer.height);
+    context.drawImage(layer.image, (parseFloat(layer.x) - cropX), (parseFloat(layer.y) - cropY), layer.width, layer.height);
     context.restore();
 }
 
@@ -59,7 +64,7 @@ function exportText(layer) {
     context.font = layer.fontSize + "px " + " Arial";
     // context.fillStyle = 'red';
 
-    context.fillText(layer.text, layer.x, layer.y + parseInt(layer.fontSize));
+    context.fillText(layer.text, (parseFloat(layer.x) - cropX), (parseFloat(layer.y) - cropY) + parseInt(layer.fontSize));
 }
 
 function exportCircle(layer) {
@@ -77,8 +82,8 @@ function exportCircle(layer) {
 
 
 
-    let centerX = parseInt(layer.x) + parseInt(layer.radius) + parseFloat(layer.strokeWeight) / 2;
-    let centerY = parseInt(layer.y) + parseInt(layer.radius) + parseFloat(layer.strokeWeight) / 2;
+    let centerX = parseInt((parseFloat(layer.x) - cropX)) + parseInt(layer.radius) + parseFloat(layer.strokeWeight) / 2;
+    let centerY = parseInt((parseFloat(layer.y) - cropY)) + parseInt(layer.radius) + parseFloat(layer.strokeWeight) / 2;
     context.strokeStyle = layer.stroke;
     context.beginPath();
     context.arc(centerX, centerY, parseInt(layer.radius), 0, Math.PI * 2);
@@ -105,8 +110,8 @@ function exportRect(layer) {
     context.lineWidth = parseFloat(layer.strokeWeight);
 
     context.strokeStyle = layer.stroke;
-    let x = layer.x + layer.strokeWeight / 2;
-    let y = layer.y + layer.strokeWeight / 2;
+    let x = (parseFloat(layer.x) - cropX) + layer.strokeWeight / 2;
+    let y = (parseFloat(layer.y) - cropY) + layer.strokeWeight / 2;
     context.beginPath();
     context.moveTo(x, y);
     context.lineTo(x, y + layer.height);

@@ -6,7 +6,7 @@ document.querySelector('#properties-menu').style.display = 'block';
 const menus = document.querySelectorAll('.folder-item');
 for (let i = 0; i < menus.length; i++) {
     menus[i].addEventListener('click', function(e) {
-        if (indexOfSelectedLayer() === null) {
+        if (layers[indexOfSelectedLayer()] === null || layers.length <= 0) {
             return;
         }
         let id = e.target.getAttribute('id');

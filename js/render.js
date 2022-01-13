@@ -63,8 +63,8 @@ function renderImageLayer(layer) {
     div.appendChild(renderImage);
     div.style.zIndex = layer.zIndex;
     div.style.position = 'absolute';
-    div.style.left = layer.x + 'px';
-    div.style.top = layer.y + 'px';
+    div.style.left = (parseFloat(layer.x) - cropX) + 'px';
+    div.style.top = (parseFloat(layer.y) - cropY) + 'px';
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     div.style.opacity = parseFloat(layer.opacity) / 100;
@@ -90,8 +90,8 @@ function renderTextLayer(layer) {
     }
     div.style.position = 'absolute';
     div.style.width = 'fit-content';
-    div.style.left = layer.x + 'px';
-    div.style.top = layer.y + 'px';
+    div.style.left = (parseFloat(layer.x) - cropX) + 'px';
+    div.style.top = (parseFloat(layer.y) - cropY) + 'px';
     div.style.fontSize = layer.fontSize + 'px';
     div.style.fontFamily = 'Arial';
     div.style.color = layer.color;
@@ -108,8 +108,8 @@ function renderLineLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     div.style.position = 'absolute';
-    div.style.left = layer.x + 'px';
-    div.style.top = layer.y + 'px';
+    div.style.left = (parseFloat(layer.x) - cropX) + 'px';
+    div.style.top = (parseFloat(layer.y) - cropY) + 'px';
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
@@ -142,8 +142,8 @@ function renderCircleLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     div.style.position = 'absolute';
-    div.style.left = layer.x + 'px';
-    div.style.top = layer.y + 'px';
+    div.style.left = (parseFloat(layer.x) - cropX) + 'px';
+    div.style.top = (parseFloat(layer.y) - cropY) + 'px';
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
@@ -179,8 +179,8 @@ function renderRectLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     div.style.position = 'absolute';
-    div.style.left = layer.x + 'px';
-    div.style.top = layer.y + 'px';
+    div.style.left = (parseFloat(layer.x) - cropX) + 'px';
+    div.style.top = (parseFloat(layer.y) - cropY) + 'px';
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
@@ -219,8 +219,8 @@ function renderPolygonLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
     div.style.position = 'absolute';
-    div.style.left = layer.x + 'px';
-    div.style.top = layer.y + 'px';
+    div.style.left = (parseFloat(layer.x) - cropX) + 'px';
+    div.style.top = (parseFloat(layer.y) - cropY) + 'px';
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;

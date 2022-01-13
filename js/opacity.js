@@ -7,6 +7,9 @@ opacity.addEventListener('change', function(e) {
 });
 
 function setOpacity() {
+    if (layers[indexOfSelectedLayer()] === null || layers.length <= 0) {
+        return;
+    }
     opacity.value = layers[indexOfSelectedLayer()].opacity;
     opacityValue.innerHTML = opacity.value;
     blendModes.forEach(element => {

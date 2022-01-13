@@ -43,8 +43,6 @@ function setCurrentLayer(e) {
 }
 
 function setImageView() {
-    document.getElementById('imageView').style.width = layers[0].width + 'px';
-    document.getElementById('imageView').style.height = layers[0].height + 'px';
     document.getElementById('imageView').style.overflow = 'hidden';
     document.getElementById('imageView').style.transform = `scale(${scale})`;
     document.getElementById('imageView').style.border = `2px solid white`;

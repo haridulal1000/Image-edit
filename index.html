@@ -25,6 +25,7 @@
                 <div class="folder-item" id="shapes">Shapes</div>
                 <div class="folder-item" id="select">Select</div>
                 <div class="folder-item" id="zoom">Zoom</div>
+                <div class="folder-item" id="crop">Crop</div>
             </div>
             <div class="sub-folder">
                 <div class="sub-folder-item" id="filters-menu">
@@ -284,6 +285,24 @@
 
 
                 </div>
+                <div class="sub-folder-item" id="crop-menu">
+                    <h2>Crop Menu</h2>
+                    <div class="crop-item clear-fix">
+                        <span>X</span><input type="text" id="crop-x" class="float-right input-sm" value="0" />
+                    </div>
+                    <div class="crop-item clear-fix">
+                        <span>Y</span><input type="text" id="crop-y" class="float-right input-sm" value="0" />
+                    </div>
+                    <div class="crop-item clear-fix">
+                        <span>Width</span><input type="text" id="crop-width" class="float-right input-sm" />
+                    </div>
+                    <div class="crop-item clear-fix">
+                        <span>Height</span><input type="text" id="crop-height" class="float-right input-sm" />
+                    </div>
+                    <input type="checkbox" id="crop-proportion" checked=true/>
+                    <label for="proportion">Maintain Ratio</label>
+
+                </div>
             </div>
         </div>
         <!-- tools -->
@@ -323,5 +342,6 @@
 <script src="./js/select.js"></script>
 <script src="./js/zoom.js"></script>
 <script src="./js/opacity.js"></script>
+<script src="./js/crop.js"></script>
 
 </html>

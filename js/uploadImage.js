@@ -31,8 +31,11 @@ uploadFile.addEventListener('change', function() {
             }));
 
             selectedLayer = 0;
-            document.getElementById('imageView').style.width = layers[0].width;
-            document.getElementById('imageView').style.height = layers[0].height;
+            cropWidth = layers[0].width;
+            cropHeight = layers[0].height;
+            cropX = 0;
+            cropY = 0;
+            setCrop();
             renderLayersAll();
         }
 
