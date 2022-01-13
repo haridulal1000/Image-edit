@@ -108,6 +108,7 @@ function renderLayerItem(layer) {
             setShapesMenu();
             setRotateProperties();
             setOpacity();
+
         }
 
 

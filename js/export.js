@@ -27,14 +27,7 @@ function Export() {
     let height = cropCanvas.height;
     let width = cropCanvas.width;
 
-    // if (width < 2 * cropRadius) cropRadius = width / 2;
-    // if (height < 2 * cropRadius) cropRadius = height / 2;
-    // context.beginPath();
-    // context.moveTo(x + cropRadius, y);
-    // context.arcTo(x + width, y, x + width, y + height, cropRadius);
-    // context.arcTo(x + width, y + height, x, y + height, cropRadius);
-    // context.closePath();
-    // context.fill();
+
 
 
 
@@ -67,6 +60,10 @@ function Export() {
         if (layers[i].type === 'rect' &&
             layers[i].visible === true) {
             exportRect(layers[i]);
+        }
+        if (layers[i].type === 'polygon' &&
+            layers[i].visible === true) {
+            exportPolygon(layers[i]);
         }
     }
     cropCanvas.width = canvas.width;
@@ -123,6 +120,7 @@ function Export() {
 }
 
 function exportImage(layer) {
+    context.save();
     context.globalAlpha = parseFloat(layer.opacity) / 100;
     if (layer.blendMode != 'normal') {
         context.globalCompositeOperation = layer.blendMode;
@@ -149,10 +147,11 @@ function exportText(layer) {
     };
 
 
-
+    context.restore();
 }
 
 function exportCircle(layer) {
+    context.save();
 
     context.fillStyle = layer.fill;
 
@@ -178,13 +177,14 @@ function exportCircle(layer) {
     if (layer.visibleStroke === true) {
         context.stroke();
     }
+    context.restore();
 
 }
 
 function exportRect(layer) {
 
 
-
+    context.save();
     context.fillStyle = layer.fill;
 
     context.globalAlpha = parseFloat(layer.opacity) / 100;
@@ -209,12 +209,12 @@ function exportRect(layer) {
     if (layer.visibleStroke === true) {
         context.stroke();
     }
-
+    context.restore();
 }
 
 function exportLine(layer) {
 
-
+    context.save();
     context.globalAlpha = parseFloat(layer.opacity) / 100;
     if (layer.blendMode != 'normal') {
         context.globalCompositeOperation = layer.blendMode;
@@ -231,6 +231,42 @@ function exportLine(layer) {
     context.moveTo(x, y);
     context.lineTo(layer.point.x2 + 2 * layer.strokeWeight, layer.point.y2 + 2 * layer.strokeWeight);
     context.stroke();
+    context.restore();
 
+
+}
+
+function exportPolygon(layer) {
+
+
+    context.save();
+    context.translate(layer.x, layer.y);
+    context.fillStyle = layer.fill;
+
+    context.globalAlpha = parseFloat(layer.opacity) / 100;
+    if (layer.blendMode != 'normal') {
+        context.globalCompositeOperation = layer.blendMode;
+    }
+
+    context.lineWidth = parseFloat(layer.strokeWeight);
+
+    context.strokeStyle = layer.stroke;
+    let x = (parseFloat(layer.x) - cropX) + layer.strokeWeight / 2;
+    let y = (parseFloat(layer.y) - cropY) + layer.strokeWeight / 2;
+    context.beginPath();
+    context.moveTo(layer.point[0].x, layer.point[0].y);
+    for (let i = 1; i < layer.sides; i++) {
+        context.lineTo(layer.point[i].x, layer.point[i].y);
+    }
+    context.closePath();
+
+
+    if (layer.visibleFill === true) {
+        context.fill();
+    }
+    if (layer.visibleStroke === true) {
+        context.stroke();
+    }
+    context.restore();
 
 }

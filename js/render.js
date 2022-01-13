@@ -37,6 +37,8 @@ function renderLayer(layer) {
         setShapesProperties();
         setShapesMenu();
         setOpacity();
+
+
     }
 
 }
@@ -44,6 +46,7 @@ function renderLayer(layer) {
 function renderImageLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
+    div.setAttribute('class', 'view');
     layer.image.style.display = 'block';
     let renderImage = document.createElement('img');
     renderImage.src = layer.image.src;
@@ -77,6 +80,7 @@ function renderImageLayer(layer) {
 function renderTextLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
+    div.setAttribute('class', 'view');
     let textArray = layer.text.split('\n');
     let text = '';
     textArray.forEach(element => {
@@ -112,6 +116,7 @@ function renderTextLayer(layer) {
 function renderLineLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
+    div.setAttribute('class', 'view');
     div.style.position = 'absolute';
     div.style.left = (parseFloat(layer.x) - cropX) + 'px';
     div.style.top = (parseFloat(layer.y) - cropY) + 'px';
@@ -146,6 +151,7 @@ function renderLineLayer(layer) {
 function renderCircleLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
+    div.setAttribute('class', 'view');
     div.style.position = 'absolute';
     div.style.left = (parseFloat(layer.x) - cropX) + 'px';
     div.style.top = (parseFloat(layer.y) - cropY) + 'px';
@@ -183,6 +189,7 @@ function renderCircleLayer(layer) {
 function renderRectLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
+    div.setAttribute('class', 'view');
     div.style.position = 'absolute';
     div.style.left = (parseFloat(layer.x) - cropX) + 'px';
     div.style.top = (parseFloat(layer.y) - cropY) + 'px';
@@ -223,6 +230,7 @@ function renderRectLayer(layer) {
 function renderPolygonLayer(layer) {
     let div = document.createElement('div');
     div.setAttribute('id', 'view' + layer.id);
+    div.setAttribute('class', 'view');
     div.style.position = 'absolute';
     div.style.left = (parseFloat(layer.x) - cropX) + 'px';
     div.style.top = (parseFloat(layer.y) - cropY) + 'px';
