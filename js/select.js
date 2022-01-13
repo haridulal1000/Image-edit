@@ -8,6 +8,7 @@ let edited = false;
 createSelection.addEventListener('click', createSelectionFunction);
 
 function createSelectionFunction() {
+    console.log('here');
 
     createSelection.style.display = 'none';
     makeSelection.style.display = 'block';
@@ -18,6 +19,7 @@ function createSelectionFunction() {
     selectCanvas.setAttribute('id', 'select' + indexOfSelectedLayer());
     selectCanvas.style.position = 'absolute';
     selectCanvas.style.zIndex = '50';
+    //comment
     selectCanvas.width = layers[0].width;
     selectCanvas.height = layers[0].height;
     selectCanvas.style.border = '2px solid blue';
