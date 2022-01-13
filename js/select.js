@@ -113,6 +113,7 @@ makeSelection.addEventListener('click', function() {
             blur: 0,
             visible: true
         }));
+        id++;
         for (let i = indexOfSelectedLayer() + 2; i < layers.length; i++) {
             layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
         }
