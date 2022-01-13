@@ -121,11 +121,11 @@ function exportLine(layer) {
     context.lineWidth = parseFloat(layer.strokeWeight);
 
     context.strokeStyle = layer.stroke;
-    let x = layer.point.x1 + layer.strokeWeight;
-    let y = layer.point.y1 + layer.strokeWeight;
+    let x = layer.point.x1 + 2 * layer.strokeWeight;
+    let y = layer.point.y1 + 2 * layer.strokeWeight;
     context.beginPath();
     context.moveTo(x, y);
-    context.lineTo(layer.point.x2 + layer.strokeWeight, layer.point.y2 + layer.strokeWeight);
+    context.lineTo(layer.point.x2 + 2 * layer.strokeWeight, layer.point.y2 + 2 * layer.strokeWeight);
     context.stroke();
 
 
