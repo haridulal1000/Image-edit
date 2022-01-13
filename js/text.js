@@ -35,7 +35,6 @@ document.getElementById('new-text-btn').addEventListener('click', function() {
         visible: true,
         opacity: 100
     }));
-    selectedLayer = id - 1;
     renderLayersAll();
 });
 
@@ -53,7 +52,7 @@ textColor.addEventListener('change', function(e) {
     for (let i = 0; i < layers.length; i++) {
         if (layers[i].id == selectedLayer) {
             layers[i].color = this.value;
-            renderLayersAll();
+            renderLayer(layers[i]);
             break;
 
         }
@@ -64,7 +63,7 @@ fontSize.addEventListener('change', function(e) {
     for (let i = 0; i < layers.length; i++) {
         if (layers[i].id == selectedLayer) {
             layers[i].fontSize = this.value;
-            renderLayersAll();
+            renderLayer(layers[i]);
             break;
 
         }
@@ -75,7 +74,7 @@ textValue.addEventListener('change', function(e) {
     for (let i = 0; i < layers.length; i++) {
         if (layers[i].id == selectedLayer) {
             layers[i].text = this.value;
-            renderLayersAll();
+            renderLayer(layers[i]);
             break;
 
         }

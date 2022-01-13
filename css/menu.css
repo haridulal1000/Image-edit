@@ -187,3 +187,19 @@ input[type='range'] {
     margin: 20px 0 20px 0;
     font-weight: bold;
 }
+
+#blend-modes {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#blend-modes-group label {
+    cursor: pointer;
+    margin: 20px auto 20px auto;
+}
+
+#blend-modes-group label::after {
+    content: '';
+    display: block;
+    margin-top: 20px;
+}

@@ -50,6 +50,14 @@ function renderImageLayer(layer) {
     renderImage.width = layer.width;
     renderImage.height = layer.height;
     renderImage.style = `filter: brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
+    if (layer.blendMode == null) {
+        div.style.setProperty('mix-blend-mode', 'normal');
+        layer.blendMode = 'normal';
+    } else {
+        div.style.setProperty('mix-blend-mode', layer.blendMode);
+        console.log(layer.blendMode);
+    }
+
 
 
     div.appendChild(renderImage);
@@ -73,6 +81,13 @@ function renderTextLayer(layer) {
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
+    if (layer.blendMode == null) {
+        div.style.setProperty('mix-blend-mode', 'normal');
+        layer.blendMode = 'normal';
+    } else {
+        div.style.setProperty('mix-blend-mode', layer.blendMode);
+        console.log(layer.blendMode);
+    }
     div.style.position = 'absolute';
     div.style.width = 'fit-content';
     div.style.left = layer.x + 'px';
@@ -82,6 +97,7 @@ function renderTextLayer(layer) {
     div.style.color = layer.color;
     div.style.zIndex = layer.zIndex;
     div.style.opacity = parseFloat(layer.opacity) / 100;
+
     document.getElementById('imageView').appendChild(div);
 }
 
@@ -98,6 +114,13 @@ function renderLineLayer(layer) {
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
+    if (layer.blendMode == null) {
+        div.style.setProperty('mix-blend-mode', 'normal');
+        layer.blendMode = 'normal';
+    } else {
+        div.style.setProperty('mix-blend-mode', layer.blendMode);
+        console.log(layer.blendMode);
+    }
 
     div.innerHTML = ` <svg  width="${Math.abs(parseFloat(layer.point.x2)-parseFloat(layer.point.x1))+parseFloat(layer.point.x1)+parseFloat(layer.strokeWeight)}" height="${Math.abs(parseFloat(layer.point.y2)-parseFloat(layer.point.y1))+parseFloat(layer.point.y1)+parseFloat(layer.strokeWeight)}">
       <line  x1="${layer.point.x1}" y1="${layer.point.y1}" x2="${layer.point.x2}" y2="${layer.point.y2}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
@@ -125,6 +148,13 @@ function renderCircleLayer(layer) {
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
+    if (layer.blendMode == null) {
+        div.style.setProperty('mix-blend-mode', 'normal');
+        layer.blendMode = 'normal';
+    } else {
+        div.style.setProperty('mix-blend-mode', layer.blendMode);
+        console.log(layer.blendMode);
+    }
     let strokeOpacity;
     let fillOpacity;
     if (layer.visibleStroke) {
@@ -155,6 +185,13 @@ function renderRectLayer(layer) {
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
+    if (layer.blendMode == null) {
+        div.style.setProperty('mix-blend-mode', 'normal');
+        layer.blendMode = 'normal';
+    } else {
+        div.style.setProperty('mix-blend-mode', layer.blendMode);
+        console.log(layer.blendMode);
+    }
     let strokeOpacity;
     let fillOpacity;
     if (layer.visibleStroke) {
@@ -188,6 +225,13 @@ function renderPolygonLayer(layer) {
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     console.log('rotate: ' + layer.rotate + " " + layer.originX);
+    if (layer.blendMode == null) {
+        div.style.setProperty('mix-blend-mode', 'normal');
+        layer.blendMode = 'normal';
+    } else {
+        div.style.setProperty('mix-blend-mode', layer.blendMode);
+        console.log(layer.blendMode);
+    }
     let strokeOpacity;
     let fillOpacity;
     if (layer.visibleStroke) {

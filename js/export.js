@@ -39,6 +39,9 @@ function Export() {
 
 function exportImage(layer) {
     context.globalAlpha = parseFloat(layer.opacity) / 100;
+    if (layer.blendMode != 'normal') {
+        context.globalCompositeOperation = layer.blendMode;
+    }
     context.filter = `brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px)`;
     context.save();
     context.translate(parseFloat(layer.x) + parseFloat(layer.originX), parseFloat(layer.y) + parseFloat(layer.originY));
@@ -64,6 +67,9 @@ function exportCircle(layer) {
     context.fillStyle = layer.fill;
 
     context.globalAlpha = parseFloat(layer.opacity) / 100;
+    if (layer.blendMode != 'normal') {
+        context.globalCompositeOperation = layer.blendMode;
+    }
 
 
 
@@ -92,6 +98,9 @@ function exportRect(layer) {
     context.fillStyle = layer.fill;
 
     context.globalAlpha = parseFloat(layer.opacity) / 100;
+    if (layer.blendMode != 'normal') {
+        context.globalCompositeOperation = layer.blendMode;
+    }
 
     context.lineWidth = parseFloat(layer.strokeWeight);
 
@@ -117,6 +126,9 @@ function exportLine(layer) {
 
 
     context.globalAlpha = parseFloat(layer.opacity) / 100;
+    if (layer.blendMode != 'normal') {
+        context.globalCompositeOperation = layer.blendMode;
+    }
 
 
 
