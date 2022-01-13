@@ -21,8 +21,8 @@ function createSelectionFunction() {
     selectCanvas.style.position = 'absolute';
     selectCanvas.style.zIndex = '50';
     //comment
-    selectCanvas.width = layers[0].width;
-    selectCanvas.height = layers[0].height;
+    selectCanvas.width = cropWidth;
+    selectCanvas.height = cropHeight;
     selectCanvas.style.border = '2px solid blue';
     iv.append(selectCanvas);
     canvasCreated = true;
@@ -86,7 +86,7 @@ makeSelection.addEventListener('click', function() {
     tempCanvas.height = selectCanvas.height;
     tempContext.drawImage(selectCanvas, 0, 0);
     tempContext.globalCompositeOperation = 'source-in';
-    tempContext.drawImage(image, layers[indexOfSelectedLayer()].x, layers[indexOfSelectedLayer()].y, layers[indexOfSelectedLayer()].width, layers[indexOfSelectedLayer()].height);
+    tempContext.drawImage(image, parseFloat(layers[indexOfSelectedLayer()].x) - parseFloat(cropX), parseFloat(layers[indexOfSelectedLayer()].y) - parseFloat(cropY), layers[indexOfSelectedLayer()].width, layers[indexOfSelectedLayer()].height);
 
     let tempImage = new Image();
 
