@@ -13,9 +13,12 @@ for (let i = 0; i < menus.length; i++) {
         if (id === 'move') {
             currentTool = 'move';
             document.getElementById('viewport').style.cursor = 'move';
+        } else if (id == 'crop') {
+            currentTool = 'crop';
+            document.getElementById('viewport').style.cursor = 'move';
         } else {
             currentTool = null;
-            document.getElementById('viewport').style.cursor = 'auto';
+            document.getElementById('viewport').style.cursor = 'move';
         }
         setTextMenu();
         setShapesMenu();

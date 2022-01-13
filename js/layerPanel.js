@@ -64,11 +64,13 @@ function renderLayerItem(layer) {
     }
 
     // console.log(renderImage);
-    renderImage.width = 100;
-    renderImage.height = 100;
-    renderImage.style.background = 'white'
+    renderImage.width = 50;
+    renderImage.height = 50;
+    renderImage.style.background = 'white';
+    renderImage.style.display = 'block';
     let visible = document.createElement('input');
     let label = document.createElement('label');
+    let visibleDiv = document.createElement('div');
     visible.setAttribute('type', 'checkbox');
     visible.setAttribute('id', 'visible' + layer.id);
     visible.checked = layer.visible;
@@ -81,12 +83,14 @@ function renderLayerItem(layer) {
     label.setAttribute('for', 'visible' + layer.id);
     label.innerHTML = 'Visible';
 
-
+    visibleDiv.appendChild(visible);
+    visibleDiv.appendChild(label);
+    visibleDiv.classList.add('float-right');
     let layerName = document.createElement('div');
-    layerName.innerHTML = layer.type + ' ' + layer.id;
+    layerName.classList.add('float-left');
+    layerName.innerHTML = (layer.type + ' ' + layer.id).toUpperCase();
     layerItem.appendChild(renderImage);
-    layerItem.appendChild(label);
-    layerItem.appendChild(visible);
+    layerItem.appendChild(visibleDiv);
     layerItem.appendChild(layerName);
     layerItem.appendChild(del);
 

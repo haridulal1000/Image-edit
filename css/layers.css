@@ -5,11 +5,8 @@
     overflow: scroll;
 }
 
-#layers-panel div {
-    /* width: fit-content;
-    margin: 300px auto;
+.layer-item {
     font-size: 20px;
-    font-weight: bolder; */
 }
 
 .btn-delete {

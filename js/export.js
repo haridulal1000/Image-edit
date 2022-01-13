@@ -29,6 +29,32 @@ function Export() {
     }
     cropCanvas.width = canvas.width;
     cropCanvas.height = canvas.height;
+    let x = 0;
+    let y = 0;
+    let height = cropCanvas.height;
+    let width = cropCanvas.width;
+
+    cropContext.beginPath();
+    cropContext.moveTo(x + parseFloat(cropRadius), y);
+    cropContext.lineTo(x + width - parseFloat(cropRadius), y);
+    cropContext.quadraticCurveTo(x + width, y, x + width, y + parseFloat(cropRadius));
+    cropContext.lineTo(x + width, y + height - parseFloat(cropRadius));
+    cropContext.quadraticCurveTo(x + width, y + height, x + width - parseFloat(cropRadius), y + height);
+    cropContext.lineTo(x + parseFloat(cropRadius), y + height);
+    cropContext.quadraticCurveTo(x, y + height, x, y + height - parseFloat(cropRadius));
+    cropContext.lineTo(x, y + parseFloat(cropRadius));
+    cropContext.quadraticCurveTo(x, y, x + parseFloat(cropRadius), y);
+    cropContext.closePath();
+    cropContext.fill();
+
+
+
+
+
+
+
+
+    cropContext.globalCompositeOperation = 'source-in';
     cropContext.drawImage(canvas, 0, 0);
     var jpegUrl = cropCanvas.toDataURL("image/jpg");
 
