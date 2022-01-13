@@ -83,7 +83,7 @@ makeSelection.addEventListener('click', function() {
     selectCanvas.remove();
     tempCanvas.remove();
     tempImage.onload = function() {
-        addLayer(new ImageLayer({
+        layers.splice(indexOfSelectedLayer() + 1, 0, new ImageLayer({
             type: 'image',
             id: id,
             originX: 0,
@@ -94,7 +94,7 @@ makeSelection.addEventListener('click', function() {
             image: tempImage,
             x: 0,
             y: 0,
-            zIndex: id + 5,
+            zIndex: layers[indexOfSelectedLayer()].zIndex + 1,
             brightness: 100,
             contrast: 100,
             hue: 0,
@@ -102,6 +102,9 @@ makeSelection.addEventListener('click', function() {
             blur: 0,
             visible: true
         }));
+        for (let i = indexOfSelectedLayer() + 2; i < layers.length; i++) {
+            layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
+        }
         layers[indexOfSelectedLayer()].visible = false;
         selectedLayer = id - 1;
         renderLayersAll();

@@ -12,6 +12,10 @@ function Export() {
             layers[i].visible === true) {
             exportText(layers[i]);
         }
+        if (layers[i].type === 'line' &&
+            layers[i].visible === true) {
+            exportLine(layers[i]);
+        }
         if (layers[i].type === 'circle' &&
             layers[i].visible === true) {
             exportCircle(layers[i]);
@@ -104,5 +108,25 @@ function exportRect(layer) {
     if (layer.visibleStroke === true) {
         context.stroke();
     }
+
+}
+
+function exportLine(layer) {
+
+
+
+
+
+
+    context.lineWidth = parseFloat(layer.strokeWeight);
+
+    context.strokeStyle = layer.stroke;
+    let x = layer.point.x1 + layer.strokeWeight;
+    let y = layer.point.y1 + layer.strokeWeight;
+    context.beginPath();
+    context.moveTo(x, y);
+    context.lineTo(layer.point.x2 + layer.strokeWeight, layer.point.y2 + layer.strokeWeight);
+    context.stroke();
+
 
 }
