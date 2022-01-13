@@ -251,7 +251,7 @@ function addNextLayer() {
 
 function downloadButton() {
     let downloadBtn = document.createElement('button');
-    downloadBtn.setAttribute('id', 'export');
+    downloadBtn.setAttribute('id', 'exportBtn');
     downloadBtn.innerHTML = 'Export';
     downloadBtn.style.display = 'block';
     downloadBtn.style.backgroundColor = '#3ae86e';

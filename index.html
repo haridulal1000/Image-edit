@@ -26,6 +26,7 @@
                 <div class="folder-item" id="select">Select</div>
                 <div class="folder-item" id="zoom">Zoom</div>
                 <div class="folder-item" id="crop">Crop</div>
+                <div class="folder-item" id="export">Export</div>
             </div>
             <div class="sub-folder">
                 <div class="sub-folder-item" id="filters-menu">
@@ -302,6 +303,18 @@
                     <div class="crop-item clear-fix">
                         <span>Radius</span><input type="text" id="crop-radius" class="float-right input-sm" value="0" />
                     </div>
+                </div>
+                <div class="sub-folder-item" id="export-menu">
+                    <h2>Export Menu</h2>
+                    <input type="radio" name="export-info" id="png-btn" value="png" checked=true>
+                    <label for="png-btn">Export as PNG</label>
+                    <input type="radio" name="export-info" id="jpg-btn" value="jpg">
+                    <label for="jpg-btn">Export as JPG</label>
+                    <div id="bg-color-div">
+                        <div>Choose a background Color</div>
+                        <input type="color" id="bg-color" value="#FFFFFF">
+                    </div>
+
                 </div>
             </div>
         </div>
