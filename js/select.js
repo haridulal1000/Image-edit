@@ -73,15 +73,15 @@ cancelSelection.addEventListener('click', function(e) {
 makeSelection.addEventListener('click', function() {
     edited = true;
     let image = layers[indexOfSelectedLayer()].image;
-    image.width = selectCanvas.width;
-    image.height = selectCanvas.height;
+    // image.width = selectCanvas.width;
+    // image.height = selectCanvas.height;
     let tempCanvas = document.createElement('canvas');
     let tempContext = tempCanvas.getContext('2d');
     tempCanvas.width = selectCanvas.width
     tempCanvas.height = selectCanvas.height;
     tempContext.drawImage(selectCanvas, 0, 0);
     tempContext.globalCompositeOperation = 'source-in';
-    tempContext.drawImage(image, layers[indexOfSelectedLayer()].x, layers[indexOfSelectedLayer()].y);
+    tempContext.drawImage(image, layers[indexOfSelectedLayer()].x, layers[indexOfSelectedLayer()].y, layers[indexOfSelectedLayer()].width, layers[indexOfSelectedLayer()].height);
 
     let tempImage = new Image();
 
