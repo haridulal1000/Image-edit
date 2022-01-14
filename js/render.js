@@ -27,6 +27,9 @@ function renderLayer(layer) {
     if (layer.type === 'polygon') {
         renderPolygonLayer(layer);
     }
+    if (layer.type === 'draw') {
+        renderDrawLayer(layer);
+    }
     if (selectedLayer != null) {
         setProperties();
         setFilters();
@@ -53,6 +56,39 @@ function renderImageLayer(layer) {
     renderImage.width = layer.width;
     renderImage.height = layer.height;
     renderImage.style = `filter: brightness(${layer.brightness}%) contrast(${layer.contrast}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px) invert(${layer.invert}%) grayscale(${layer.grayscale}%) sepia(${layer.sepia}%)`;
+    if (layer.blendMode == null) {
+        div.style.setProperty('mix-blend-mode', 'normal');
+        layer.blendMode = 'normal';
+    } else {
+        div.style.setProperty('mix-blend-mode', layer.blendMode);
+        console.log(layer.blendMode);
+    }
+
+
+
+    div.appendChild(renderImage);
+    div.style.zIndex = layer.zIndex;
+    div.style.position = 'absolute';
+    div.style.left = (parseFloat(layer.x) - cropX) + 'px';
+    div.style.top = (parseFloat(layer.y) - cropY) + 'px';
+    div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
+    div.style.transform = `rotate(${layer.rotate}deg)`;
+    div.style.opacity = parseFloat(layer.opacity) / 100;
+    console.log('rotate: ' + layer.rotate + " " + layer.originX);
+    document.getElementById('imageView').appendChild(div);
+
+
+}
+
+function renderDrawLayer(layer) {
+    let div = document.createElement('div');
+    div.setAttribute('id', 'view' + layer.id);
+    div.setAttribute('class', 'view');
+    let renderImage = document.createElement('canvas');
+    renderImage = layer.canvas;
+    renderImage.width = layer.width;
+    renderImage.height = layer.height;
+    renderImage.style = `filter: brightness(${layer.brightness|100}%) contrast(${layer.contrast|100}%) hue-rotate(${layer.hue}deg) saturate(${layer.saturation}%) blur(${layer.blur}px) invert(${layer.invert}%) grayscale(${layer.grayscale}%) sepia(${layer.sepia}%)`;
     if (layer.blendMode == null) {
         div.style.setProperty('mix-blend-mode', 'normal');
         layer.blendMode = 'normal';

@@ -22,6 +22,7 @@
                 <div class="folder-item" id="rotate">Rotate</div>
                 <div class="folder-item" id="text">Text</div>
                 <div class="folder-item" id="move">Move</div>
+                <div class="folder-item" id="draw">Draw</div>
                 <div class="folder-item" id="shapes">Shapes</div>
                 <div class="folder-item" id="select">Select</div>
                 <div class="folder-item" id="zoom">Zoom</div>
@@ -199,6 +200,22 @@
                         <button id="new-text-btn">New Text Layer</button>
                     </div>
                 </div>
+                <div class="sub-folder-item" id="draw-menu">
+                    <h2>Draw Menu</h2>
+                    <button id="draw-start">Start to Draw</button>
+                    <div id="draw-properties">
+                        <div class="clear-fix">
+                            <input type="range" id="draw-stroke" class="float-left" value="10">
+                            <div id="draw-stroke-value" class="float-right">10</div>
+                        </div>
+                        <h3>Stroke Color</h3>
+                        <input type="color" id="draw-color" value="#FFFFFF">
+                        <button id="draw-set">Set</button>
+                        <button id="draw-clear">Clear</button>
+                        <button id="draw-cancel">Cancel</button>
+
+                    </div>
+                </div>
                 <div class="sub-folder-item" id="shapes-menu">
                     <h2>Shapes</h2>
                     <div id="line-properties" class="shape-properties">
@@ -321,6 +338,7 @@
                     <h2>Select Menu</h2>
                     <input type="button" id="create-selection" value="Create A New Selection">
                     <input type="button" id="make-selection" value="select">
+                    <input type="button" id="invert-selection" value="Invert-Selection">
                     <input type="button" id="cancel-selection" value="cancel">
 
                 </div>
@@ -404,6 +422,7 @@
 <script src="./js/select.js"></script>
 <script src="./js/zoom.js"></script>
 <script src="./js/opacity.js"></script>
+<script src="./js/draw.js"></script>
 
 
 </html>

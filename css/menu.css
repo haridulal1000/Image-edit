@@ -166,6 +166,7 @@ input[type='range'] {
 }
 
 #make-selection,
+#invert-selection,
 #cancel-selection {
     display: none;
     margin: 20px auto 20px auto;
@@ -231,4 +232,61 @@ input[type='range'] {
 #fonts {
     font-size: 20px;
     margin-top: 20px;
+}
+
+#draw-start {
+    width: 80%;
+    padding: 20px auto 20px auto;
+    border-radius: 10px;
+    font-size: 20px;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+#draw-color {
+    width: 50%;
+    margin: 20px auto;
+    display: block;
+}
+
+#draw-set {
+    width: 80%;
+    padding: 20px auto 20px auto;
+    border-radius: 10px;
+    font-size: 20px;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+#draw-clear {
+    width: 80%;
+    padding: 20px auto 20px auto;
+    border-radius: 10px;
+    font-size: 20px;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+#draw-cancel {
+    width: 80%;
+    padding: 20px auto 20px auto;
+    border-radius: 10px;
+    font-size: 20px;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+#draw-properties {
+    display: none;
+}
+
+h2,
+h3,
+h4,
+h5 {
+    text-align: center;
 }

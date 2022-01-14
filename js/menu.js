@@ -22,6 +22,9 @@ for (let i = 0; i < menus.length; i++) {
         } else if (id == 'crop') {
             currentTool = 'crop';
             document.getElementById('viewport').style.cursor = 'move';
+        } else if (id == 'draw') {
+            currentTool = 'draw';
+            document.getElementById('viewport').style.cursor = 'crosshair';
         } else {
             currentTool = null;
             document.getElementById('viewport').style.cursor = 'auto';

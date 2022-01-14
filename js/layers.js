@@ -128,3 +128,20 @@ function Polygon(info) {
     this.angle = info.angle;
 
 }
+
+function Draw(info) {
+    this.type = info.type;
+    this.id = id;
+    this.originX = info.originX;
+    this.originY = info.originY;
+    this.rotate = info.rotate;
+    this.zIndex = info.zIndex;
+    this.visible = info.visible;
+    this.x = info.x;
+    this.y = info.y;
+    this.width = info.width;
+    this.height = info.height;
+    this.canvas = info.canvas;
+    this.strokeWeight = info.strokeWeight;
+    this.color = info.color;
+}
