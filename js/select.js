@@ -128,6 +128,7 @@ makeSelection.addEventListener('click', function() {
     createSelection.style.display = 'block';
     makeSelection.style.display = 'none';
     cancelSelection.style.display = 'none';
+    invertSelection.style.display = 'none';
 
 
 });
