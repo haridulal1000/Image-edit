@@ -106,5 +106,3 @@ document.getElementById('sepia').addEventListener('change', function(e) {
         }
     }
 });
-
-// setting filter values to layers
