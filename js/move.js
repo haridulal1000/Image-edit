@@ -1,4 +1,4 @@
-let currentTool;
+let currentTool = 'initialTool';
 let move = false;
 let xoffset;
 let yoffset;
