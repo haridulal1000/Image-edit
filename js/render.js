@@ -1,7 +1,5 @@
 function renderLayer(layer) {
-
     if (layer.visible === false) {
-
         if (document.getElementById("view" + layer.id)) {
             document.getElementById("view" + layer.id).remove();
         }
@@ -52,8 +50,6 @@ function renderLayer(layer) {
         setShapesMenu();
         setOpacity();
     }
-
-
 }
 
 function renderImageLayer(layer) {
@@ -72,7 +68,6 @@ function renderImageLayer(layer) {
         layer.blendMode = "normal";
     } else {
         div.style.setProperty("mix-blend-mode", layer.blendMode);
-        console.log(layer.blendMode);
     }
 
     div.appendChild(renderImage);
@@ -83,7 +78,6 @@ function renderImageLayer(layer) {
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     div.style.opacity = parseFloat(layer.opacity) / 100;
-    console.log("rotate: " + layer.rotate + " " + layer.originX);
     document.getElementById("imageView").appendChild(div);
 }
 
@@ -108,7 +102,6 @@ function renderDrawLayer(layer) {
         layer.blendMode = "normal";
     } else {
         div.style.setProperty("mix-blend-mode", layer.blendMode);
-        console.log(layer.blendMode);
     }
 
     div.appendChild(renderImage);
@@ -119,7 +112,6 @@ function renderDrawLayer(layer) {
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
     div.style.opacity = parseFloat(layer.opacity) / 100;
-    console.log("rotate: " + layer.rotate + " " + layer.originX);
     document.getElementById("imageView").appendChild(div);
 }
 
@@ -135,14 +127,12 @@ function renderTextLayer(layer) {
     div.innerHTML = text;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
-    console.log("rotate: " + layer.rotate + " " + layer.originX);
 
     if (layer.blendMode == null) {
         div.style.setProperty("mix-blend-mode", "normal");
         layer.blendMode = "normal";
     } else {
         div.style.setProperty("mix-blend-mode", layer.blendMode);
-        console.log(layer.blendMode);
     }
 
     div.style.setProperty("font-family", layer.fontType);
@@ -168,16 +158,13 @@ function renderLineLayer(layer) {
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
-    console.log("rotate: " + layer.rotate + " " + layer.originX);
 
     if (layer.blendMode == null) {
         div.style.setProperty("mix-blend-mode", "normal");
         layer.blendMode = "normal";
     } else {
         div.style.setProperty("mix-blend-mode", layer.blendMode);
-        console.log(layer.blendMode);
     }
-
 
     div.innerHTML = ` <svg  width="${
     Math.abs(parseFloat(layer.point.x2) - parseFloat(layer.point.x1)) +
@@ -209,14 +196,12 @@ function renderCircleLayer(layer) {
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
-    console.log("rotate: " + layer.rotate + " " + layer.originX);
 
     if (layer.blendMode == null) {
         div.style.setProperty("mix-blend-mode", "normal");
         layer.blendMode = "normal";
     } else {
         div.style.setProperty("mix-blend-mode", layer.blendMode);
-        console.log(layer.blendMode);
     }
 
     let strokeOpacity;
@@ -257,14 +242,12 @@ function renderRectLayer(layer) {
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
-    console.log("rotate: " + layer.rotate + " " + layer.originX);
 
     if (layer.blendMode == null) {
         div.style.setProperty("mix-blend-mode", "normal");
         layer.blendMode = "normal";
     } else {
         div.style.setProperty("mix-blend-mode", layer.blendMode);
-        console.log(layer.blendMode);
     }
 
     let strokeOpacity;
@@ -293,7 +276,7 @@ function renderRectLayer(layer) {
   }"/>
     </svg>
     `;
-    console.log("here");
+
     div.style.opacity = parseFloat(layer.opacity) / 100;
     document.getElementById("imageView").appendChild(div);
 }
@@ -308,14 +291,12 @@ function renderPolygonLayer(layer) {
     div.style.zIndex = layer.zIndex;
     div.style.transformOrigin = `${layer.originX}px ${layer.originY}px`;
     div.style.transform = `rotate(${layer.rotate}deg)`;
-    console.log("rotate: " + layer.rotate + " " + layer.originX);
 
     if (layer.blendMode == null) {
         div.style.setProperty("mix-blend-mode", "normal");
         layer.blendMode = "normal";
     } else {
         div.style.setProperty("mix-blend-mode", layer.blendMode);
-        console.log(layer.blendMode);
     }
 
     let strokeOpacity;
@@ -339,12 +320,10 @@ function renderPolygonLayer(layer) {
         points = points + `${layer.point[i].x} ${layer.point[i].y} `;
     }
 
-    console.log("points " + points);
     div.innerHTML = ` <svg  width="${layer.width}" height="${layer.height}">
       <polygon points= "${points}" stroke-opacity="${strokeOpacity}" fill-opacity="${fillOpacity}" fill="${layer.fill}" stroke="${layer.stroke}" stroke-width="${layer.strokeWeight}"/>
     </svg>
     `;
-    console.log("here");
     div.style.opacity = parseFloat(layer.opacity) / 100;
     document.getElementById("imageView").appendChild(div);
 }

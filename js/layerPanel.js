@@ -3,8 +3,6 @@ let destination;
 
 function renderLayerItem(layer) {
     renderLayerItemImage(layer);
-
-
 }
 
 function renderLayerItem(layer) {
@@ -29,11 +27,14 @@ function renderLayerItem(layer) {
     let del = document.createElement('button');
     del.innerHTML = "DELETE";
     del.classList.add('btn-delete');
+
     if (layer.id === 0) {
         del.disabled = true;
     }
     del.addEventListener('click', function() {
+
         for (let i = 0; i < layers.length; i++) {
+
             if (layer.id === layers[i].id && i != 0) {
                 layers.splice(i, 1);
                 selectedLayer = null;
@@ -44,26 +45,31 @@ function renderLayerItem(layer) {
             }
         }
     });
+
     if (layer.type === 'image') {
         renderImage.src = layer.image.src;
     }
+
     if (layer.type === 'text') {
         renderImage.src = './images/text-layer-icon.png';
     }
+
     if (layer.type === 'line') {
         renderImage.src = './images/line.png';
     }
+
     if (layer.type === 'circle') {
         renderImage.src = './images/circle.png';
     }
+
     if (layer.type === 'rect') {
         renderImage.src = './images/square.png';
     }
+
     if (layer.type === 'polygon') {
         renderImage.src = './images/polygon.png';
     }
 
-    // console.log(renderImage);
     renderImage.width = 50;
     renderImage.height = 50;
     renderImage.style.background = 'white';
@@ -74,19 +80,19 @@ function renderLayerItem(layer) {
     visible.setAttribute('type', 'checkbox');
     visible.setAttribute('id', 'visible' + layer.id);
     visible.checked = layer.visible;
+
     visible.addEventListener('change', function(e) {
         layer.visible = this.checked;
-        // console.log(this.checked);
         renderLayer(layer);
         return;
     });
+
     label.setAttribute('for', 'visible' + layer.id);
     label.innerHTML = 'Visible';
-
     visibleDiv.appendChild(visible);
     visibleDiv.appendChild(label);
     visibleDiv.classList.add('float-right');
-    let layerName = document.createElement('div');
+    const layerName = document.createElement('div');
     layerName.classList.add('float-left');
     layerName.innerHTML = (layer.type + ' ' + layer.id).toUpperCase();
     layerItem.appendChild(renderImage);
@@ -97,9 +103,9 @@ function renderLayerItem(layer) {
     layerItem.setAttribute('id', 'layer' + layer.id);
     layerItem.classList.add('layer-item');
     layerItem.addEventListener('click', function(e) {
+
         if (!deleteFlag) {
             setLayer(this.getAttribute('id'));
-            // console.log(this.getAttribute('id'));
             setCurrentLayer(this.getAttribute('id'));
             setProperties();
             setFilters();
@@ -108,31 +114,28 @@ function renderLayerItem(layer) {
             setShapesMenu();
             setRotateProperties();
             setOpacity();
-            setDrawMenu();
-            setDrawProperties();
-
         }
-
 
     });
 
-
     document.getElementById('layers-panel').appendChild(layerItem);
-
 }
 
 function dragend() {
 
     let sourceIndex;
     let destinationIndex;
+
     if (source === destination || source == 0 || destination == 0) {
         return;
     }
 
     for (let i = 0; i < layers.length; i++) {
+
         if (layers[i].id == source) {
             sourceIndex = i;
         }
+
         if (layers[i].id == destination) {
             destinationIndex = i;
         }
@@ -140,6 +143,7 @@ function dragend() {
     }
 
     if (sourceIndex > destinationIndex) {
+
         for (let i = destinationIndex; i < sourceIndex; i++) {
             layers[i].zIndex = parseInt(layers[i].zIndex) + 1;
         }
@@ -147,10 +151,10 @@ function dragend() {
         sourceNode.zIndex = parseInt(layers[destinationIndex].zIndex) - 1;
         layers.splice(sourceIndex, 1);
         layers.splice(destinationIndex, 0, sourceNode);
-        // console.log('here');
         renderLayersAll();
 
     } else {
+
         for (let i = destinationIndex; i > sourceIndex; i--) {
             layers[i].zIndex = parseInt(layers[i].zIndex) - 1;
         }
@@ -163,29 +167,8 @@ function dragend() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function setLayer(e) {
-    // console.log(e);
+
     if (e != null) {
         document.querySelectorAll('.layer-item').forEach(function(element) {
             element.style.outline = 'none';
@@ -198,6 +181,7 @@ function addNextLayer() {
     let file = document.createElement('input');
     file.setAttribute('id', 'add-layer');
     file.setAttribute('type', 'file');
+    file.setAttribute('accept', 'images/*');
     file.addEventListener('change', function() {
         let image = new Image();
         let reader = new FileReader();
@@ -205,9 +189,6 @@ function addNextLayer() {
         reader.addEventListener('load', function() {
             image.src = this.result;
             image.onload = function() {
-
-
-
                 addLayer(new ImageLayer({
                     type: 'image',
                     id: id,
@@ -248,7 +229,6 @@ function addNextLayer() {
     label.style.margin = '5px auto 5px auto';
     label.style.borderRadius = '10px';
     label.style.color = 'white';
-
     label.innerHTML = 'Add New Layer';
     document.getElementById('layers-panel').appendChild(file);
     document.getElementById('layers-panel').appendChild(label);

@@ -62,7 +62,7 @@ document.getElementById('shapes-circle').addEventListener('click', function(e) {
     );
     selectedLayer = id - 1;
     renderLayersAll();
-    // console.log('here');
+
 });
 document.getElementById('shapes-rect').addEventListener('click', function(e) {
     addLayer(
@@ -88,7 +88,7 @@ document.getElementById('shapes-rect').addEventListener('click', function(e) {
     );
     selectedLayer = id - 1;
     renderLayersAll();
-    // console.log('here');
+
 });
 
 document.getElementById('shapes-polygon').addEventListener('click', function(e) {
@@ -106,7 +106,7 @@ function insertPolygon() {
             y: rad + rad * Math.sin(i * Math.PI * 2 / (sides))
         });
     }
-    // console.log('before: ' + arr);
+
     addLayer(
         new Polygon({
             type: 'polygon',
@@ -134,7 +134,6 @@ function insertPolygon() {
     );
     selectedLayer = id - 1;
     renderLayersAll();
-    // console.log('here');
 }
 
 function updatePolygon() {
@@ -181,7 +180,7 @@ document.getElementById('shapes-line').addEventListener('click', function(e) {
     );
     selectedLayer = id - 1;
     renderLayersAll();
-    // console.log('here');
+
 });
 
 
@@ -271,10 +270,6 @@ inputs.forEach(element => {
             layers[parseInt(indexOfSelectedLayer())].fill = this.value;
         }
 
-
-
-
-
         if (e.target.getAttribute('id') === 'rect-width') {
             layers[parseInt(indexOfSelectedLayer())].width = parseInt(this.value);
         }
@@ -300,12 +295,6 @@ inputs.forEach(element => {
         if (e.target.getAttribute('id') === 'rect-fill-color') {
             layers[parseInt(indexOfSelectedLayer())].fill = this.value;
         }
-
-
-
-
-
-
 
         if (e.target.getAttribute('id') === 'polygon-sides') {
             updatePolygon();
@@ -340,6 +329,7 @@ inputs.forEach(element => {
         renderLayer(layers[parseInt(indexOfSelectedLayer())]);
     });
 });
+
 let textInputs = document.querySelectorAll('#shapes-menu input[type="text"]');
 textInputs.forEach(element => {
     element.addEventListener('keydown', function(e) {
@@ -356,9 +346,6 @@ textInputs.forEach(element => {
                 this.value = parseInt(this.value) + 1;
                 layers[indexOfSelectedLayer()].strokeWeight = parseInt(this.value);
             }
-
-
-
             if (this.getAttribute('id') === 'rect-width') {
                 this.value = parseInt(this.value) + 5;
                 layers[indexOfSelectedLayer()].width = parseInt(this.value);
@@ -409,10 +396,6 @@ textInputs.forEach(element => {
                 this.value = parseInt(this.value) - 1;
                 layers[indexOfSelectedLayer()].strokeWeight = parseInt(this.value);
             }
-
-
-
-
             if (this.getAttribute('id') === 'rect-width') {
                 this.value = parseInt(this.value) - 5;
                 layers[indexOfSelectedLayer()].width = parseInt(this.value);

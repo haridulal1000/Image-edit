@@ -85,7 +85,7 @@ body {
 }
 
 .clear-fix::after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
 }
@@ -114,7 +114,7 @@ h2 {
 }
 
 .color-bar {
-    margin-top: 20px
+    margin-top: 20px;
 }
 
 .font-size {
@@ -127,7 +127,7 @@ h2 {
     width: 100px;
 }
 
-input[type='range'] {
+input[type="range"] {
     cursor: pointer;
 }
 
@@ -200,7 +200,7 @@ input[type='range'] {
 }
 
 #blend-modes-group label::after {
-    content: '';
+    content: "";
     display: block;
     margin-top: 20px;
 }
@@ -210,7 +210,7 @@ input[type='range'] {
 }
 
 #export-menu label::after {
-    content: '';
+    content: "";
     display: block;
     margin: 10px 0 10px 0;
 }
@@ -289,4 +289,12 @@ h3,
 h4,
 h5 {
     text-align: center;
+}
+
+input {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
 }

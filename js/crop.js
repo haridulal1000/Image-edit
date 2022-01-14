@@ -5,7 +5,6 @@ let cropY = 0;
 let cropRadius = 0;
 
 function setCrop() {
-    console.log('setCrop');
     document.getElementById('imageView').style.width = cropWidth + 'px';
     document.getElementById('imageView').style.height = cropHeight + 'px';
     document.getElementById('imageView').style.borderRadius = cropRadius + 'px';

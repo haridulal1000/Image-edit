@@ -16,7 +16,6 @@ function createSelectionFunction() {
     invertSelection.style.display = 'block';
     cancelSelection.style.display = 'block';
     let iv = document.getElementById('imageView');
-    console.log('createSelection');
     selectCanvas = document.createElement('canvas');
     selectCanvas.setAttribute('id', 'select' + indexOfSelectedLayer());
     selectCanvas.style.position = 'absolute';

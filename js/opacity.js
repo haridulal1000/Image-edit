@@ -19,7 +19,7 @@ function setOpacity() {
     });
 }
 let blendModes = document.getElementsByName('blend-mode');
-console.log(blendModes);
+
 for (let i = 0; i < blendModes.length; i++) {
     blendModes[i].addEventListener('change', function(e) {
         blendModes.forEach(element => {
