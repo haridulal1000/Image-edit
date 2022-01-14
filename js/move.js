@@ -19,14 +19,11 @@ document.getElementById('viewport').addEventListener('mousemove', function(e) {
         e.preventDefault();
 
         let rect = document.getElementById('viewport').getBoundingClientRect();
-        // var x = e.clientX - rect.left; //x position within the element.
-        // var y = e.clientY - rect.top; //y position within the element.
+
 
 
         for (let i = 0; i < layers.length; i++) {
             if (selectedLayer == layers[i].id) {
-                // layers[i].x = e.clientX - rect.left - layers[i].width / 2;
-                // layers[i].y = e.clientY - rect.top - layers[i].height / 2;
                 layers[i].x += (e.clientX - xoffset) / scale;
                 layers[i].y += (e.clientY - yoffset) / scale;
                 xoffset = e.clientX;

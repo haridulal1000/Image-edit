@@ -135,8 +135,6 @@ invertSelection.addEventListener('click', function() {
     edited = true;
     document.getElementById('viewport').style.cursor = 'auto';
     let image = layers[indexOfSelectedLayer()].image;
-    // image.width = selectCanvas.width;
-    // image.height = selectCanvas.height;
     let tempCanvas = document.createElement('canvas');
     let tempContext = tempCanvas.getContext('2d');
     tempCanvas.width = selectCanvas.width

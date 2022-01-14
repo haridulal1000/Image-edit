@@ -106,14 +106,7 @@ document.getElementById('viewport').addEventListener('mousemove', function(e) {
         e.preventDefault();
 
         let rect = document.getElementById('viewport').getBoundingClientRect();
-        // var x = e.clientX - rect.left; //x position within the element.
-        // var y = e.clientY - rect.top; //y position within the element.
 
-
-
-
-        // layers[i].x = e.clientX - rect.left - layers[i].width / 2;
-        // layers[i].y = e.clientY - rect.top - layers[i].height / 2;
         cropX -= (e.clientX - cropXoffset) / scale;
         cropY -= (e.clientY - cropYoffset) / scale;
         cropXoffset = e.clientX;
