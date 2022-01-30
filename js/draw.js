@@ -91,6 +91,7 @@ document
                 drawStarting = true;
                 drawContext.strokeStyle = drawColor.value;
                 drawContext.lineWidth = drawStroke.value;
+                drawContext.lineCap='round';
                 canRect = drawCanvas.getBoundingClientRect();
                 drawContext.beginPath();
                 drawContext.moveTo(
