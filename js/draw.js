@@ -79,7 +79,7 @@ drawCancel.addEventListener("click", function() {
     drawProperties.style.display = "none";
     drawStart.style.display = "block";
 });
-
+//adding drawing logic
 let drawStarting = false;
 document
     .getElementById("imageView")
