@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image-Edit Tool</title>
-    <link rel="stylesheet" href="./css/menu.css" />
-    <link rel="stylesheet" href="./css/viewport.css" />
-    <link rel="stylesheet" href="./css/layers.css" />
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -165,8 +163,11 @@
                     <div class="properties-item clear-fix">
                         <span>Height</span><input type="text" id="properties-height" class="float-right input-sm" />
                     </div>
-                    <input type="checkbox" id="proportion" />
-                    <label for="proportion">Maintain Ratio</label>
+                    <div class="ratio-checkbox">
+                        <input type="checkbox" id="proportion" />
+                        <label for="proportion">Maintain Ratio</label>
+                    </div>
+                    
                 </div>
                 <div class="sub-folder-item" id="text-menu">
                     <h2>Text</h2>
@@ -184,17 +185,17 @@
                         <label for="fonts" id="font-label">Choose a Font:</label>
 
                         <select name="fonts" id="fonts">
-                               <option value="Arial">Arial</option>
-                               <option value="Verdana">Verdana</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
                             <option value="Helvetica">Helvetica</option>
-                                <option value="Tahoma">Tahoma</option>
-                                <option value="Trebuchet MS">Trebuchet MS</option>
-                                <option value="Times New Roman">Times New Roman</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Garamond">Garamond</option>
-                                <option value="Courier New">Courier New</option>
-                                <option value="Brush Script MT">Brush Script MT</option>
-                                   </select>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Brush Script MT">Brush Script MT</option>
+                        </select>
                     </div>
                     <div id="new-text">
                         <button id="new-text-btn">New Text Layer</button>
@@ -390,7 +391,13 @@
         <div id="viewport">
             <div id="imageView">
                 <input type="file" id="upload-file" accept="image/*" />
-                <label for="upload-file" id="upload-button"><span id="upload-button-icon">+</span> Upload Image</label>
+                <label for="upload-file" id="upload-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="24" height="24"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,11.36589l-53.13411,53.13411h31.63411v46.58333c0,5.85562 4.89438,10.75 10.75,10.75h21.5c5.85562,0 10.75,-4.89438 10.75,-10.75v-46.58333h31.63411zM86,31.63411l18.53256,18.53255h-11.36589v57.33333h-14.33333v-57.33333h-11.36589zM14.33333,143.33333v14.33333h143.33333v-14.33333z"></path></g></g></svg> 
+                   <span>Upload Image</span> 
+                </label>
 
             </div>
         </div>

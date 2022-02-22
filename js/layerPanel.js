@@ -222,13 +222,10 @@ function addNextLayer() {
     file.style.display = 'none';
     let label = document.createElement('label');
     label.setAttribute('for', 'add-layer');
-    label.style.background = '#136e8a';
-    label.style.padding = '10px';
+    label.setAttribute('id', 'add-layer');
     label.style.textAlign = 'center';
     label.style.display = 'block';
-    label.style.margin = '5px auto 5px auto';
-    label.style.borderRadius = '10px';
-    label.style.color = 'white';
+    label.style.margin = '10px auto';
     label.innerHTML = 'Add New Layer';
     document.getElementById('layers-panel').appendChild(file);
     document.getElementById('layers-panel').appendChild(label);
@@ -240,12 +237,9 @@ function downloadButton() {
     downloadBtn.setAttribute('id', 'exportBtn');
     downloadBtn.innerHTML = 'Export';
     downloadBtn.style.display = 'block';
-    downloadBtn.style.backgroundColor = '#3ae86e';
-    downloadBtn.style.margin = '5px auto 5px auto';
-    downloadBtn.style.padding = '10px';
+    downloadBtn.style.margin = '10px auto';
     downloadBtn.style.textAlign = 'center';
     downloadBtn.style.width = '100%';
-    downloadBtn.style.borderRadius = '10px';
     downloadBtn.addEventListener('click',
         Export);
     document.getElementById('layers-panel').appendChild(downloadBtn);

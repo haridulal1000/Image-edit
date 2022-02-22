@@ -1,19 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Parisienne&display=swap');
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    width: fit-content;
-    margin: 0 auto;
-    min-width: 1000px;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
 }
 
 .main-container {
-    min-width: 1000px;
+    width: 100%;
 }
 
 .tools {
-    width: 450px;
+    width: 30%;
 }
 
 .folder {
-    background-color: black;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
     width: 150px;
     color: white;
     font-size: 20px;
@@ -23,11 +29,10 @@ body {
 .sub-folder {
     cursor: pointer;
     font-size: 20px;
-    width: 300px;
-    background-color: rgb(197, 197, 197);
-    /* height: fit-content; */
-    overflow: scroll;
-    height: 750px;
+    width: 100%;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    overflow: auto;
+    height: auto;
 }
 
 .sub-folder-item {
@@ -296,5 +301,175 @@ input {
 }
 
 button {
+    cursor: pointer;
+}
+
+/* Layers */
+
+#layers-panel {
+    width: 20%;
+    height: auto;
+    background-color: rgb(214, 214, 214);
+    overflow: auto;
+    padding: 0 5px;
+}
+.layer-item {
+    font-size: 20px;
+}
+
+.btn-delete {
+    width: 100%;
+    display: block;
+    padding: 5px;
+    box-shadow: 0px 10px 14px -7px #d62b62;
+	background:linear-gradient(to bottom, #ce2f61 5%, #e9497c 100%);
+	background-color:#bd1e51;
+	border-radius:8px;
+	display:block;
+	cursor:pointer;
+	color:#ffffff;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b12853;
+}
+.btn-delete:hover {
+	background:linear-gradient(to bottom, #ec4b7e 5%, #c93765 100%);
+	background-color:#e9497c;
+}
+.btn-delete:active {
+	position:relative;
+	top:1px;
+}
+#exportBtn{
+    box-shadow: 0px 10px 14px -7px #f1b814;
+	background:linear-gradient(to bottom, #dbaf2b 5%, #fac528 100%);
+	background-color:#f1b814;
+	border-radius:8px;
+	display:block;
+	cursor:pointer;
+	color:#ffffff;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #eebf32;
+}
+#exportBtn:hover {
+	background:linear-gradient(to bottom, #f1b814 5%, #f1b814 100%);
+	background-color:#fac528;
+}
+#exportBtn:active {
+	position:relative;
+	top:1px;
+}
+#add-layer{
+    box-shadow: 0px 10px 14px -7px #6179e2;
+	background:linear-gradient(to bottom, #5e76e2 5%, #526eec 100%);
+	background-color:#4a5fc1;
+	border-radius:8px;
+	display:block;
+	cursor:pointer;
+	color:#ffffff;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #586ece;
+}
+#add-layer:hover {
+	background:linear-gradient(to bottom, #5871e0 5%, #3f5ad4 100%);
+	background-color:#4e67d6;
+}
+#add-layer:active {
+	position:relative;
+	top:1px;
+}
+.layer-item {
+    outline: none !important;
+    margin-bottom: 1rem;
+}
+#proportion,.float-right input{
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    background-color: #eee;
+}
+#proportion:hover{
+    background-color: #ccc;
+}
+#proportion:checked {
+    background-color: #2196F3;
+}
+.ratio-checkbox{
+    display: flex;
+    align-items: center;
+}
+.ratio-checkbox label,.float-right label{
+    margin-left: 5px;
+}
+
+/* Viewport */
+
+#viewport {
+    width: 50%;
+    height: auto;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-file {
+    display: none;
+}
+#view0{
+    width: 100%;
+}
+#view0 img{
+    max-width: 100%;
+    object-fit: contain;
+}
+#upload-button {
+    font-size: 40px;
+    font-family: 'Parisienne', cursive;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:block;
+	cursor:pointer;
+	color:#ffffff;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+#upload-button:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+#upload-button:active {
+	position:relative;
+	top:1px;
+}
+#upload-button svg{
+    vertical-align: middle;
+}
+
+#upload-button-icon {
+    border: 2px solid white;
+    width: 20px;
+}
+
+#imageView {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#upload-button:hover {
     cursor: pointer;
 }
