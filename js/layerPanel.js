@@ -30,6 +30,8 @@ function renderLayerItem(layer) {
 
     if (layer.id === 0) {
         del.disabled = true;
+        del.classList.remove('btn-delete');
+        del.classList.add('disabled');
     }
     del.addEventListener('click', function() {
 
