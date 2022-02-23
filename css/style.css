@@ -331,6 +331,7 @@ button {
 	padding:13px 32px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #b12853;
+    border: none;
 }
 .btn-delete:hover {
 	background:linear-gradient(to bottom, #ec4b7e 5%, #c93765 100%);
@@ -347,6 +348,7 @@ button {
     box-shadow: 0px 10px 14px -7px #d62b62;
 	background-color:#6e0d2c;
 	border-radius:8px;
+    border: none;
 	display:block;
 	cursor:pointer;
 	color:#ffffff;
@@ -367,6 +369,7 @@ button {
 	padding:13px 32px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #eebf32;
+    border: none;
 }
 #exportBtn:hover {
 	background:linear-gradient(to bottom, #f1b814 5%, #f1b814 100%);
@@ -388,6 +391,7 @@ button {
 	padding:13px 32px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #586ece;
+    border: none;
 }
 #add-layer:hover {
 	background:linear-gradient(to bottom, #5871e0 5%, #3f5ad4 100%);
